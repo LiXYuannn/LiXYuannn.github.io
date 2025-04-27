@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NOTE_REPO</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="index.html">index</a>
+    <a href="about.html">about_me</a>
+    <a href="album.html">album</a>
+    <a href="notes.html">note_repo</a>
+  </nav>
+
+  <section class="content-card note-list" id="content">
+    <h2>My_NoteRepo</h2>
+    <ul class="notes-list">
+      <li><a href="https://github.com/LiXYuannn/lxy-ml-notebook/blob/main/theory/study-abstraction/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%A6%82%E8%AE%BA.md" target="_blank" class="note-link fade-in">1.机器学习概论</a></li>
+      <li><a href="https://github.com/LiXYuannn/lxy-dl-notebook/blob/main/theory/deep-learning-models/%E6%84%9F%E7%9F%A5%E6%9C%BA.md" target="_blank" class="note-link fade-in">2.感知机模型</a></li>
+      <li><a href="https://github.com/LiXYuannn/lxy-ml-notebook/blob/main/theory/study-abstraction/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B%EF%BC%88Linar_Regression.md" target="_blank" class="note-link fade-in">3.线性回归模型</a></li>
+      <li><a href="https://github.com/LiXYuannn/lxy-dl-notebook/blob/main/theory/papers-notes/GenImage.md" target="_blank" class="note-link fade-in">4.GenImage论文笔记</a></li>
+    </ul>
+    <div id="note-content" class="note-content"></div>
+  </section>
+
+  <script>
+    function loadNote(file) {
+      fetch(file)
+        .then(response => response.text())
+        .then(text => {
+          document.getElementById('note-content').innerHTML = marked.parse(text);
+        });
+    }
+  </script>
+  <script src="assets/js/script.js"></script>
+</body>
+</html>
