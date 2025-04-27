@@ -1,0 +1,117 @@
+body {
+  font-family: 'Helvetica Neue', sans-serif;
+  background: url('../images/background.jpg') no-repeat center center fixed;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  background: rgba(100, 149, 237, 0.6);
+  padding: 15px;
+  border-radius: 0 0 20px 20px;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+}
+
+.navbar a:hover {
+  text-decoration: underline;
+}
+
+.hero {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.hero h1,
+.hero p {
+  color: white;
+}
+
+.avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.content-card {
+  max-width: 800px;
+  margin: 50px auto;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.album-grid {
+  background-color: lightgrey;
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 20px;
+  justify-content: center;
+  box-shadow: 0 8px 8px grey;
+}
+
+.album-img {
+  width: 360px;
+  height: 480px;
+  object-fit: cover;
+  margin: 10px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.note-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.note-list li {
+  margin: 10px 0;
+}
+
+.note-list a {
+  color: #4682b4;
+}
+
+.note-content {
+  margin-top: 30px;
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInMove 1s ease forwards;
+}
+
+@keyframes fadeInMove {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-transition {
+  animation: pageOut 0.6s forwards;
+}
+
+@keyframes pageOut {
+  to {
+    transform: rotateY(90deg);
+    opacity: 0;
+  }
+}
+
+html {
+  transform-origin: left center;
+}
