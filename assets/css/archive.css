@@ -1,0 +1,94 @@
+/* 页面背景和基本布局 */
+.archive-page {
+  background: transparent;
+  min-height: 100vh;
+  padding: 40px 0; /* 上下留白 */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 确保所有子元素水平居中 */
+  flex: 1;
+}
+
+/* 顶部头像和标题容器 */
+.archive-header {
+  text-align: center; /* 居中内容 */
+  margin-bottom: 50px; /* 增加与下方内容的间距 */
+  position: relative;
+  z-index: 10;
+}
+
+/* 居中的单个头像 */
+.archive-avatar {
+  width: 150px; /* 调整头像大小 */
+  height: 150px;
+  border-radius: 50%;
+  border: 4px solid white; /* 调整边框 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  object-fit: cover;
+  /* 移除定位，让其自然居中 */
+}
+
+/* 页面标题样式 */
+.archive-title {
+  margin-top: 15px;
+  font-size: 3em;
+  color: #ffa4a4; /* 假设标题颜色为白色，与背景搭配 */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* 内容容器 - 保持左右分栏布局 */
+.archive-container {
+  display: flex;
+  gap: 30px;
+  width: 80%; /* 控制整体宽度 */
+  max-width: 800px;
+  /* 移除 margin: 0 auto; 因为父元素已经通过 align-items: center 居中 */
+  padding: 20px;
+}
+
+/* 左右栏样式调整 */
+.archive-column {
+  flex: 1;
+  position: relative; /* 保持相对定位，以备将来需要 */
+  min-width: 0;
+}
+
+/* 卡片样式优化 */
+.archive-card {
+  background: rgba(255, 255, 255, 0.3);
+  text-shadow: 0 1px 3px rgba(22, 21, 21, 0.2);
+  backdrop-filter: blur(5px);
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  height: 100%;
+}
+
+/* 响应式调整 */
+@media (max-width: 1200px) {
+  .archive-container {
+    width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .archive-page {
+    padding: 20px 0;
+    flex: 1;
+  }
+  .archive-header {
+    margin-bottom: 30px;
+  }
+  .archive-container {
+    width: 95%;
+    flex-direction: column;
+    gap: 40px;
+  }
+  .archive-avatar {
+    width: 80px;
+    height: 80px;
+  }
+  .archive-card {
+    padding: 30px;
+  }
+}

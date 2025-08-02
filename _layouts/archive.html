@@ -1,0 +1,49 @@
+---
+layout: archive
+---
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{ page.title }}</title>
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/archive.css' | relative_url }}">
+</head>
+<body>
+
+  <div class="archive-page">
+    
+    <div class="archive-header">
+      <img src="{{ '/assets/images/avatar.jpg' | relative_url }}" class="archive-avatar">
+      <h1 class="archive-title">Luxynth's Space</h1> </div>
+      {% include navigation.html %}
+    <div class="archive-container">
+      <div class="archive-column">
+        <div class="archive-card">
+          <h2>笔记📒Note&Code</h2>
+          <ul>
+            
+          </ul>
+        </div>
+      </div>
+      
+      <div class="archive-column">
+        <div class="archive-card">
+          <h2>写作📖LiteratureBox</h2>
+          <ul>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div id="swup">
+    {{ content }}
+  </div>
+
+  {% include footer.html %}
+
+  <script src="{{ '/assets/js/page-transition.js' | relative_url }}"></script>
+  
+</body>
+</html>

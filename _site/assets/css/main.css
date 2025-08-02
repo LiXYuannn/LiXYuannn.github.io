@@ -1,0 +1,296 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,900;1,300;1,400;1,900&display=swap");
+
+:root {
+  /* Themes */
+  --text-dm-site-title: #ffa4a4;
+  --text-dm-primary: #ffa4a4;
+  /* Other vars */
+  --border-radius: 2rem;
+}
+
+* {
+  font-family: inherit;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  -webkit-user-drag: none;
+  -moz-window-dragging: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+* img {
+  max-width: 100%;
+}
+
+html,
+body {
+  color: #fff;
+  background-image: url("/assets/images/background.jpg");
+  background-color: #000000;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  font-family: "Simsun","宋体" sans-serif;
+  line-height: 2rem;
+
+  height: 100%; /* 确保元素高度为100% */
+  margin: 0;
+  padding: 0;
+}
+
+/* 新增 body 样式，用于 Flexbox 布局 */
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+  margin: 0 auto;
+  max-width: 800px;
+  width:80%;
+  padding: 3rem 0;
+  align-self: center;
+}
+
+main.blogfeed * {
+  font-weight: 900;
+}
+
+header {
+  padding: 2rem 0 4rem 0;
+}
+
+header .site-title {
+  font-size: 7rem;
+  font-weight: bolder;
+  line-height: 120%;
+  color: var(--text-dm-site-title);
+  text-shadow: 1px 1px 6px rgba(38, 37, 37, 0.6);
+}
+
+/* 添加一个过渡效果 */
+#swup {
+  transition: opacity 0.5s ease-in-out;
+}
+
+/* 隐藏内容的类 */
+#swup.fade-out {
+  opacity: 0;
+}
+
+#bio {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3rem;
+}
+/* #bio-avatar-wrapper {} */
+#bio-avatar {
+  width: 260px;
+  border-radius: 50%;
+  border:#fff 3px solid;
+  padding: 5px;
+}
+/* #bio-text-and-social-links {} */
+#bio-text {
+  line-height: 260%;
+  color: #fff;
+  text-shadow: 1px 1px 6px rgba(8, 8, 8, 0.6);
+  font-size: 1.25rem;
+}
+
+#bio-text a {
+  color: #a6c3ea;
+  text-decoration: underline;
+}
+
+#social-links {
+  margin: 2rem 0 3rem 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+}
+
+#social-links a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: var(--border-radius);
+  color: var(--bg-dm-secondary);
+  background-color: #92b6e5;
+}
+
+#social-links a img {
+  width: 20px;
+  border-radius: 50%;
+}
+
+/* article list styles */
+
+#articles {
+  display: grid;
+  grid-template-columns: none;
+  grid-template-rows: 1fr;
+  row-gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.article {
+  background-color: rgba(255, 255, 255, 0.2);
+  text-shadow: rgba(65, 65, 65, 0.2);
+  padding: 2rem 2.5rem;
+  border-radius: var(--border-radius);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  margin-top: 20px;
+}
+
+.article-thumbnail {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: inset 0 -80px 90px 11px rgba(255, 255, 255, 0.6);
+  width: 100%;
+  min-height: 160px;
+  height: auto;
+  margin: -2rem -2.5rem;
+  inset: 0;
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  margin-bottom: 0.2rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  padding: 0 2.5rem 1rem 2.5rem;
+
+}
+
+.article-title * {
+  color: inherit;
+  font-size: 2rem;
+  font-family: "宋体", "Simsun", sans-serif;
+  text-shadow: rgba(39, 38, 38, 0.2);
+  line-height: 120%;
+}
+
+.article-bottom {
+  margin-top: 1.5rem;
+}
+
+.article-date {
+  color: var(--dm-contrast);
+}
+
+.article-categories {
+  margin-top: 0.2rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.article-category {
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--border-radius);
+  color: var(--bg-dm-secondary);
+  background-color: var(--dm-contrast);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+}
+
+/* 导航栏容器样式 */
+.site-nav {
+  /* ... 原有样式 ... */
+  width: 80%; /* 关键：设置宽度 */
+  max-width: 630px; /* 关键：设置最大宽度 */
+  margin: 0 auto; /* 关键：水平居中 */
+  }
+
+.site-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 16px;
+  justify-content: center;
+  align-items: center;
+}
+
+.site-nav li {
+  padding: 10px 30px;
+}
+
+.site-nav a {
+  text-decoration: none;
+
+  color: #fff;
+}
+
+.site-nav a.active {
+  font-weight: bold;
+  color: #8abef7;
+  text-shadow: 1px 1px 6px rgba(54, 52, 52, 0.6);
+}
+
+/* 箭头容器样式 */
+.scroll-down-arrow {
+  position: absolute; /* 相对于父容器进行定位 */
+  bottom: 50px; /* 距离底部 50px */
+  left: 50%; /* 水平居中 */
+  transform: translateX(-50%); /* 修正水平居中的偏移 */
+  z-index: 10;
+  cursor: pointer;
+  
+  /* 添加平滑过渡和动画 */
+  transition: opacity 0.5s ease-in-out;
+  animation: bounce 2s infinite; /* 应用 bounce 动画，持续 2 秒，无限循环 */
+}
+
+/* 箭头 SVG 或 IMG 的样式 */
+.scroll-down-arrow img{
+  display: block; /* 确保是块级元素 */
+  width: 40px;  /* 调整箭头宽度 */
+  height: 40px; /* 调整箭头高度 */
+  fill: #fff;   /* 如果是 SVG，控制内部填充颜色 */
+  stroke: #fff; /* 如果是 SVG，控制边框颜色 */
+  text-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+/* 隐藏箭头的 CSS 类，JavaScript 会使用它 */
+.scroll-down-arrow.hidden {
+  opacity: 0; /* 将透明度设置为 0 */
+  pointer-events: none; /* 禁用点击事件 */
+}
+
+/* 动画关键帧：定义跳动效果 */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0); /* 初始位置和最终位置 */
+  }
+  40% {
+    transform: translateY(-20px); /* 向上跳动 */
+  }
+  60% {
+    transform: translateY(-10px); /* 向上跳动（幅度小一些） */
+  }
+}
+
+/* footer */
+footer {
+  background: rgba(82, 143, 228, 0.4);
+  margin-top: 3rem;
+  padding: 2rem 2.5rem;
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  font-size: 1.2rem;
+  color: var(--bg-dm-secondary);
+  width: 80%; /* 调整这个值以匹配你的 .archive-container 宽度 */
+  max-width: 1000px; /* 调整这个值以匹配你的 .archive-container 最大宽度 */
+  margin-left: auto;
+  margin-right: auto;
+}
