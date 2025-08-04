@@ -1,5 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,900;1,300;1,400;1,900&display=swap");
 
+@font-face {
+    font-family: 'MyCustomFont';
+    src: url('/assets/fonts/myfont.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 :root {
   /* Themes */
   --text-dm-site-title: #ffa4a4;
@@ -31,7 +39,7 @@ body {
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
-  font-family: "Simsun","宋体" sans-serif;
+  font-family: 'MyCustomFont', serif;
   line-height: 2rem;
 
   height: 100%; /* 确保元素高度为100% */
@@ -64,11 +72,11 @@ header {
 }
 
 header .site-title {
-  font-size: 7rem;
+  font-size: 7.8rem;
   font-weight: bolder;
-  line-height: 120%;
+  line-height: 110%;
   color: var(--text-dm-site-title);
-  text-shadow: 1px 1px 6px rgba(38, 37, 37, 0.6);
+  text-shadow: 1px 1px 6px rgba(38, 37, 37, 0.4);
 }
 
 #bio {
@@ -88,7 +96,7 @@ header .site-title {
 #bio-text {
   line-height: 260%;
   color: #fff;
-  text-shadow: 1px 1px 6px rgba(8, 8, 8, 0.6);
+  text-shadow: 1px 1px 6px rgba(8, 8, 8, 0.4);
   font-size: 1.25rem;
 }
 
@@ -164,7 +172,7 @@ header .site-title {
 .article-title * {
   color: inherit;
   font-size: 2rem;
-  font-family: "宋体", "Simsun", sans-serif;
+  font-family: 'MyCustomFont', serif;
   text-shadow: rgba(39, 38, 38, 0.2);
   line-height: 120%;
 }
@@ -219,14 +227,14 @@ header .site-title {
 
 .site-nav a {
   text-decoration: none;
-
+  font-size: 1.2rem;
   color: #fff;
 }
 
 .site-nav a.active {
   font-weight: bold;
   color: #8abef7;
-  text-shadow: 1px 1px 6px rgba(54, 52, 52, 0.6);
+  text-shadow: 1px 1px 6px rgba(54, 52, 52, 0.4);
 }
 
 /* 箭头容器样式 */
@@ -250,7 +258,7 @@ header .site-title {
   height: 40px; /* 调整箭头高度 */
   fill: #fff;   /* 如果是 SVG，控制内部填充颜色 */
   stroke: #fff; /* 如果是 SVG，控制边框颜色 */
-  text-shadow: 0 0 5px rgba(0,0,0,0.5);
+  text-shadow: 0 0 5px rgba(0,0,0,0.4);
 }
 /* 隐藏箭头的 CSS 类，JavaScript 会使用它 */
 .scroll-down-arrow.hidden {

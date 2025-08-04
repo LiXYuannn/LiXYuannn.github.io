@@ -1,0 +1,5 @@
+{%- if jekyll.environment == 'production' -%}
+  <img src="{{ site.jsdelivr_url }}/{{ include.src }}" alt="{{ include.alt }}">
+{%- else -%}
+  <img src="{{ site.baseurl }}/{{ include.src }}" alt="{{ include.alt }}">
+{%- endif -%}
