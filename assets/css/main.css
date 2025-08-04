@@ -71,16 +71,6 @@ header .site-title {
   text-shadow: 1px 1px 6px rgba(38, 37, 37, 0.6);
 }
 
-/* 添加一个过渡效果 */
-#swup {
-  transition: opacity 0.5s ease-in-out;
-}
-
-/* 隐藏内容的类 */
-#swup.fade-out {
-  opacity: 0;
-}
-
 #bio {
   display: flex;
   justify-content: space-between;

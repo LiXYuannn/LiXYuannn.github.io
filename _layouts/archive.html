@@ -37,13 +37,10 @@ layout: archive
     </div>
   </div>
   
-  <div id="swup">
-    {{ content }}
-  </div>
-
+  
+  {% include navigation.html %}
+  {{ content }}
   {% include footer.html %}
-
-  <script src="{{ '/assets/js/page-transition.js' | relative_url }}"></script>
   
 </body>
 </html>
