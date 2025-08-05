@@ -1,54 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-  {% include head.html %}
-  <script>
-    MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-        displayMath: [['$$', '$$'], ['\\[', '\\]']]
-      },
-      svg: {
-        fontCache: 'global'
-      }
-    };
-  </script>
-  <script type="text/javascript" async
-    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-  </script>
-  <body>
-    <main class="blogfeed">
-      {% include header.html %}{% include navigation.html %}
-      <section id="article">
-        {% if page.thumbnail %}
-        <!--  -->
-        {% assign page_thumbnail = page.thumbnail %}
-        <!--  -->
-        {% else %}
-        <!--  -->
-        {% assign page_thumbnail = '/assets/images/pattern.png' %}
-        <!--  -->
-        {% endif %}
-        <div
-          class="article-thumbnail"
-          style="
-            background-image: url('{{ site.baseurl }}/{{ page_thumbnail }}');
-          "
-        >
-          <h1 class="article-title">{{ page.title }}</h1>
-          <div class="article-bottom">
-            <small class="article-date">{{page.date | date_to_string}}</small>
-            <div class="article-categories">
-              {% for c in page.categories %}
-              <a href="#!" class="article-category">{{c}}</a>
-              {% endfor %}
-            </div>
-          </div>
+---
+layout: default
+---
+<main class="blogfeed">
+  <section id="article">
+    <div class="profile-header">
+      <img src="{{ '/assets/images/avatar.jpg' | relative_url }}" class="profile-avatar">
+      <h1 class="profile-title">{{ page.title }}</h1> 
+    </div>
+    {% include navigation.html %}
+    <div class="article-thumbnail">
+      <div class="article-bottom">
+        <small class="article-date">{{page.date | date_to_string}}</small>
+        <div class="article-categories">
+          {% for c in page.categories %}
+          <a href="#!" class="article-category">{{c}}</a>
+          {% endfor %}
         </div>
-        <div class="article-content">{{content}}</div>
-      </section>
-    </main>
+      </div>
+    </div>
 
-    {% include footer.html %}
-    {% include category-modal.html%}
-  </body>
-</html>
+    <div class="article-content">
+      {{ content }}
+    </div>
+  </section>
+</main>
+

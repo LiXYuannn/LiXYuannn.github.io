@@ -2,42 +2,89 @@
   font-size: 3rem;
 }
 
-#article .article-thumbnail {
-  margin: 0 auto;
-  width: 60%;
-  max-width: 800px;
+.profile-header {
+  text-align: center; /* 居中内容 */
+  margin-bottom: 50px; /* 增加与下方内容的间距 */
   position: relative;
-  padding: 1rem;
-  border-radius: var(--border-radius);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-top: 40px;
-} 
-
-#article .article-thumbnail .article-title {
-  font-size: 1.5rem !important;
-  color: var(--dm-contrast);
-  text-shadow: 0px 0px 3px var(--bg-dm-primary);
-  line-height: 120%;
+  z-index: 10;
 }
 
-/* #article .article-date {
-  padding: 4px 15px;
-  background: rgba(0, 0, 0, 0.7);
-  border: 1px solid var(--dm-contrast);
+/* 居中的单个头像 */
+.profile-avatar {
+  width: 150px; /* 调整头像大小 */
+  height: 150px;
+  border-radius: 50%;
+  border: 4px solid white; /* 调整边框 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  object-fit: cover;
+  /* 移除定位，让其自然居中 */
+}
+
+/* 页面标题样式 */
+.profile-title {
+  margin-top: 15px;
+  font-size: 3em;
+  color: #ffa4a4; /* 假设标题颜色为白色，与背景搭配 */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+
+#article .article-thumbnail {
+  margin: 0 auto;
+  width: 70%;
+  max-width: 800px;
+  position: relative;
+  padding: 1rem; /* 减小留白 */
   border-radius: var(--border-radius);
-} */
+  /* 关键：调整 Flex 布局和高度 */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* 将内容对齐到顶部 */
+  align-items: flex-start;
+  margin-top: 15px;
+  
+  /* 终极解决：让高度根据内容自适应 */
+  height: auto;
+  min-height: 0;
+  
+  /* 确保 flex 属性不会导致拉伸 */
+  flex-grow: 0;
+  flex-shrink: 1;
+}
+
+#article .article-date {
+  font-size: 1rem !important;
+  color: #fff;
+  text-shadow: 0px 0px 3px rgba(117, 113, 113, 0.5);
+  line-height: 100%;
+  padding: 4px 5px;
+  text-shadow:  0px 0px 3px rgba(117, 113, 113, 0.5);
+} 
+#article .article-category {
+  font-size: 1rem !important;
+  color: #fff;
+  text-shadow: 0px 0px 3px rgba(117, 113, 113, 0.5);
+  line-height: 120%;
+  padding-bottom: 1.5rem;
+  text-shadow:  0px 0px 3px rgba(117, 113, 113, 0.5);
+} 
 
 #article .article-content {
   margin-top: 3rem;
   font-size: 1.1rem;
-  width: 75%; /* 例如，设置为父元素宽度的75% */
+  width: 80%; /* 例如，设置为父元素宽度的75% */
   max-width: 800px; /* 或者，设置一个最大宽度，防止在大屏幕上过宽 */
   margin-left: auto; /* 配合 auto，居中显示 */
   margin-right: auto;
+
+  /* 新增：设置背景和字体颜色 */
+  background: rgba(255, 255, 255, 0.55); /* 白色半透明背景 */
+  color: #000; /* 字体颜色改为黑色 */
+  padding: 3rem; /* 可选：增加内边距，让内容和背景边缘有空间 */
+  border-radius: 30px; /* 可选：增加圆角 */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* 可选：增加阴影效果 */
 }
+
 
 #article .article-content * {
   font-weight: 400;
@@ -83,6 +130,7 @@
   margin: 1.75rem 0;
   font-weight: bolder !important;
 }
+
 .article-content blockquote {
   padding-left: 1.42188rem;
   margin-bottom: 1.75rem;
@@ -93,6 +141,7 @@
 }
 .article-content strong {
   font-weight: bold;
+  color: #020bb7;
 }
 .article-content ul {
   margin-left: 1rem;
@@ -175,6 +224,6 @@
   max-width: 90%;
   max-height: 80%;
   padding: 4px;
-  background-color: black;
+  background-color: rgb(33, 105, 198);
   border: 2px dashed var(--dm-contrast);
 }

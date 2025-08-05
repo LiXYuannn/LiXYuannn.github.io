@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>404 Page not found</title>
+  <link rel="stylesheet" href="/assets/css/main.css">
   <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -17,8 +21,56 @@
   
 </head>
 
+</head>
+<body>
+
+  <div id="swup">
+    <main class="blogfeed">
+  <section id="article">
+    <div class="profile-header">
+      <img src="/assets/images/avatar.jpg" class="profile-avatar">
+      <h1 class="profile-title">404 Page not found</h1> 
+    </div>
+    <nav class="site-nav">
+  <ul>
+    <li><a href="/" >首页</a></li>
+    <li><a href="/about" >关于我</a></li>
+    <li><a href="/archive" >文章归档</a></li>
+  </ul>
+</nav>
+    <div class="article-thumbnail">
+      <div class="article-bottom">
+        <small class="article-date"></small>
+        <div class="article-categories">
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="article-content">
+      <p>Oops! this page dosen’t exists, head back to <a href="">Homepage</a></p>
+
+    </div>
+  </section>
+</main>
+
+
+  </div>
+
+  <footer>
+  <p>&copy; 2025 | Luxynth</p>
+</footer>
+
+  <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+
+  <!-- ✅ 放这里：MathJax 配置 + 加载脚本 -->
   <script>
-    MathJax = {
+    window.MathJax = {
       tex: {
         inlineMath: [['$', '$'], ['\\(', '\\)']],
         displayMath: [['$$', '$$'], ['\\[', '\\]']]
@@ -31,54 +83,5 @@
   <script type="text/javascript" async
     src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
   </script>
-  <body>
-    <main class="blogfeed">
-      
-<header>
-  <a class="site-title article-page" href="/">Luxynth's Website</a>
-</header>
-
-<nav class="site-nav">
-  <ul>
-    <li><a href="/" >首页</a></li>
-    <li><a href="/about" >关于我</a></li>
-    <li><a href="/archive" >文章归档</a></li>
-  </ul>
-</nav>
-      <section id="article">
-        
-        <!--  -->
-        
-        <!--  -->
-        
-        <div
-          class="article-thumbnail"
-          style="
-            background-image: url('//assets/images/pattern.png');
-          "
-        >
-          <h1 class="article-title">404 Page not found</h1>
-          <div class="article-bottom">
-            <small class="article-date"></small>
-            <div class="article-categories">
-              
-            </div>
-          </div>
-        </div>
-        <div class="article-content"><p>Oops! this page dosen’t exists, head back to <a href="">Homepage</a></p>
-</div>
-      </section>
-    </main>
-
-    <footer>
-  <p>&copy; 2025 | Luxynth</p>
-</footer>
-
-    <section id="category-modal-bg"></section>
-<section id="category-modal">
-  <h1 id="category-modal-title"></h1>
-  <section id="category-modal-content"></section>
-</section>
-
-  </body>
+</body>
 </html>

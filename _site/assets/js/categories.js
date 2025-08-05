@@ -1,4 +1,4 @@
-const categories = { "word1": [{ url: `/posts/test1/`, date: `31 Jul 2025`, title: `test1`},],"word2": [{ url: `/posts/test2/`, date: `31 Jul 2025`, title: `test2`},{ url: `/posts/test1/`, date: `31 Jul 2025`, title: `test1`},],"word3": [{ url: `/posts/test2/`, date: `31 Jul 2025`, title: `test2`},], }
+const categories = { "深度学习": [{ url: `/posts/GenImage/`, date: `29 Apr 2025`, title: `GENIMAGE`},],"论文笔记": [{ url: `/posts/GenImage/`, date: `29 Apr 2025`, title: `GENIMAGE`},],"word2": [{ url: `/posts/test2/`, date: `31 Jul 2025`, title: `test2`},],"word3": [{ url: `/posts/test2/`, date: `31 Jul 2025`, title: `test2`},], }
 
 console.log(categories);
 

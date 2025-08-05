@@ -1,5 +1,5 @@
 title: Luxynth's Website
-markdown: kramdown
+markdown: redcarpet
 url: "www.luxynth.cn"
 
 
@@ -32,3 +32,16 @@ exclude: ["sitemap.xml", "feed.xml", "LICENSE", "README.md"]
 baseurl: ""
 # jsDelivr 图片的基础URL
 jsdelivr_url: "https://cdn.jsdelivr.net/gh/LiXYuannn/LiXYuannn.github.io"
+
+highlighter: rouge
+
+markdown: redcarpet
+redcarpet:
+  extensions: 
+    - no_intra_emphasis
+    - fenced_code_blocks
+    - autolink
+    - tables
+    - superscript
+    - strikethrough
+    - highlight

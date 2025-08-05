@@ -33,5 +33,5 @@
   margin-top: 15px;
   font-size: 3em;
   color: #ffa4a4; /* 假设标题颜色为白色，与背景搭配 */
-  text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }

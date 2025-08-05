@@ -47,6 +47,18 @@ body {
   padding: 0;
 }
 
+.global-background {
+  position: fixed; /* 固定在视口中 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* 确保它在所有内容之后 */
+  background-image: url('/assets/images/background.jpg');
+  background-size: cover; /* 确保图片覆盖整个背景 */
+  background-position: center; /* 图片居中显示 */
+}
+
 /* 新增 body 样式，用于 Flexbox 布局 */
 body {
   min-height: 100vh;
@@ -138,6 +150,7 @@ header .site-title {
   margin-bottom: 3rem;
 }
 
+
 .article {
   background-color: rgba(255, 255, 255, 0.2);
   text-shadow: rgba(65, 65, 65, 0.2);
@@ -170,7 +183,7 @@ header .site-title {
 }
 
 .article-title * {
-  color: inherit;
+  color: #fff;
   font-size: 2rem;
   font-family: 'MyCustomFont', serif;
   text-shadow: rgba(39, 38, 38, 0.2);
@@ -204,7 +217,7 @@ header .site-title {
 
 /* 导航栏容器样式 */
 .site-nav {
-  /* ... 原有样式 ... */
+  position: relative;
   width: 80%; /* 关键：设置宽度 */
   max-width: 630px; /* 关键：设置最大宽度 */
   margin: 0 auto; /* 关键：水平居中 */
