@@ -1,4 +1,4 @@
-const categories = { "深度学习": [{ url: `/posts/GenImage/`, date: `29 Apr 2025`, title: `GENIMAGE`},],"论文笔记": [{ url: `/posts/GenImage/`, date: `29 Apr 2025`, title: `GENIMAGE`},],"word2": [{ url: `/posts/test2/`, date: `31 Jul 2025`, title: `test2`},],"word3": [{ url: `/posts/test2/`, date: `31 Jul 2025`, title: `test2`},], }
+const categories = { "深度学习": [{ url: `/posts/Empowering_MLLMs_for_Forensics/`, date: `03 May 2025`, title: `Empowering_MLLMs_for_Forensics`},{ url: `/posts/GenImage/`, date: `29 Apr 2025`, title: `GENIMAGE`},],"论文笔记": [{ url: `/posts/Empowering_MLLMs_for_Forensics/`, date: `03 May 2025`, title: `Empowering_MLLMs_for_Forensics`},{ url: `/posts/GenImage/`, date: `29 Apr 2025`, title: `GENIMAGE`},],"word2": [{ url: `/posts/test2/`, date: `31 Jul 2025`, title: `test2`},],"word3": [{ url: `/posts/test2/`, date: `31 Jul 2025`, title: `test2`},], }
 
 console.log(categories);
 
