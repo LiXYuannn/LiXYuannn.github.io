@@ -64,13 +64,92 @@
   overflow-y: auto; 
 }
 
-.archive-card1 .article-category {
-  /* 把这里换成你想要的样式 */
-  background: none !important; /* 示例：去掉背景 */
-  color: #555 !important;      /* 示例：改成深灰色 */
-  padding: 0 !important;       /* 示例：去掉内边距 */
-  border-radius: 0 !important; /* 示例：去掉圆角 */
-  /* ... 其他你想要重置或修改的样式 ... */
+/* 搜索组件样式 - 匹配现有卡片风格 */
+.archive-search {
+  margin-bottom: 30px;
+}
+
+.search-title {
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  margin: 0 0 15px 0;
+  font-size: 1.1rem;
+}
+
+.search-box {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.search-input {
+  flex: 1;
+  padding: 10px 15px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px 0 0 20px;
+  color: white;
+  font-size: 0.95rem;
+  backdrop-filter: blur(5px);
+}
+
+.search-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.search-btn {
+  padding: 0 15px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-left: none;
+  border-radius: 0 20px 20px 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.search-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.search-btn svg {
+  vertical-align: middle;
+  stroke-width: 2;
+}
+
+.search-results {
+  max-height: 200px;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.search-results a {
+  display: block;
+  padding: 8px 12px;
+  margin-bottom: 5px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.search-results a:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateX(3px);
+}
+
+
+/* 滚动条样式 */
+.archive-card1::-webkit-scrollbar {
+  width: 6px;
+}
+
+.archive-card1::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+.archive-card1::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 .archive-column2 {
