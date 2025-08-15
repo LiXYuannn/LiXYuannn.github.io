@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <div class="fixed-background"></div>
+  <title>线性回归模型</title>
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luxynth's Website | 线性回归模型</title>
+
+  <link rel="preload" as="image" href="/assets/images/background.jpg">
+  <link rel="preload" href="/assets/fonts/myfont.woff2" as="font" type="font/woff2" crossorigin>
+  
+  
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+</head>
+
+</head>
+<body>
+
+  <div id="swup">
+    <main class="blogfeed">
+  <section id="article">
+    <div class="profile-header">
+      <img src="/assets/images/avatar.jpg" class="profile-avatar">
+      <h1 class="profile-title">线性回归模型</h1> 
+    </div>
+    <nav class="site-nav">
+  <ul>
+    <li><a href="/" >首页</a></li>
+    <li><a href="/about" >关于我</a></li>
+    <li><a href="/archive" >文章归档</a></li>
+    <li><a href="/explore" >探索</a></li>
+  </ul>
+</nav>
+    <div class="article-thumbnail">
+      <div class="article-bottom">
+        <small class="article-date">10 Apr 2025</small>
+        <div class="article-categories">
+          
+          <a href="#!" class="article-category">机器学习</a>
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="article-content">
+      <p><img src="/assets/images/posts/3-1.jpg" alt="配图" /></p>
+
+<p>//辅助房地产估价 （拟合直线</p>
+
+<p><strong>核心概念：</strong></p>
+<ul>
+  <li>用于训练模型的数据集称为训练集</li>
+  <li>输入变量（x） ：也称为特征或输入特征//input</li>
+  <li>输出变量（y） ：输出的量//output target</li>
+</ul>
+
+<p>（x，y）即一个训练示例, $x^{(i)}$ , $y^{(i)}$ 表示第i个训练示例
+<strong>训练模型</strong>：将训练集提供给学习算法，
+算法会产生功能function $x \to f \to \hat y$ <br />
+该过程即：feature -&gt; model -&gt; prediction
+ $f_{(w,b)}(x)=wx+b$</p>
+<h3 id="成本函数也称为代价函数">成本函数（也称为代价函数）</h3>
+<p>成本函数的思想是机器学习中最普遍和最重要的思想之一，用于线性回归和训练世界上许多最先进的人工智能模型。</p>
+
+<p>👉如何构建<strong>成本函数</strong>： <br />
+平方误差成本函数 <br />
+    \(J_{(w,b)}= \frac{1}{2m} \sum\limits_{i=1}^m(\hat{y}^{(i)} -y^{(i)})\) <br />
+    \(J_{(w,b)}= \frac{1}{2m} \sum\limits_{i=1}^m(f_{(w,b)}(x) -y^{(i)})\)</p>
+
+<p>P.S.</p>
+<ul>
+  <li>m指的是训练示例个数；</li>
+  <li>将每个预测的y值与真实的y值相差平方求和；</li>
+  <li>额外除的2是为了后续的计算更加简洁；</li>
+</ul>
+
+<p>目标是求： $minimize_{w,b} J(w,b)$
+  让成本函数尽可能的小，模型的准确度也就越高
+<img src="/assets/images/posts/3-2.jpg" alt="配图" /></p>
+
+<p>👉成本函数的可视化
+<img src="/assets/images/posts/3-3.jpg" alt="配图" /></p>
+
+<p>若规定了b一定 则图像为二维坐标图像 （汤碗侧切图状）
+<img src="/assets/images/posts/3-4.jpg" alt="配图" /></p>
+
+<p>然而用3D图形表示非常不便，于是可以化成等高线地形图的模式去表示</p>
+
+<h3 id="梯度下降算法">梯度下降算法</h3>
+<p><img src="/assets/images/posts/3-5.jpg" alt="配图" /></p>
+
+<p>在成本函数图像上，从最高点开始 不断“环顾四周”找到斜率最大的方向并移动一段极小的距离，继续找下降斜率最大的方向，如此重复。</p>
+
+<p>\(w=w-\alpha \frac{d}{dw} J_{(w,b)}\)  <br />
+ \(b=b-\alpha \frac{d}{db} J_{(w,b)}\)</p>
+
+<p>//‘=’作为赋值运算符；$\alpha$ 被称为学习率；学习率通常是0到1之间的一个小正数</p>
+
+<p>$\alpha$ 所做的是控制下坡的距离（每一步的步长）
+<strong>在曲面图图形中</strong>，我们需要采取一些小步子，直到到达值的底部；</p>
+
+<p><strong>在梯度下降算法中</strong>，我们需要不断重复上述两个公式，直到算法收敛（达到局部最小值）</p>
+
+<h4 id="学习率">学习率</h4>
+<p>👉如果学习率的值过于大会怎么样？</p>
+
+<p>有可能因为步长过长导致越过了成本函数的最小值</p>
+
+<h3 id="梯度下降算法实现">梯度下降算法实现</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 导入库
+</span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">from</span> <span class="nn">pyecharts.charts</span> <span class="kn">import</span> <span class="n">Line</span>
+<span class="kn">from</span> <span class="nn">pyecharts.options</span> <span class="kn">import</span> <span class="n">TitleOpts</span><span class="p">,</span> <span class="n">ToolboxOpts</span>
+
+<span class="c1"># 数据集导入
+</span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.18</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.16</span><span class="p">,</span> <span class="mf">0.08</span><span class="p">,</span> <span class="mf">0.09</span><span class="p">,</span> <span class="mf">0.11</span><span class="p">,</span> <span class="mf">0.17</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.14</span><span class="p">,</span> <span class="mf">0.13</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.18</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.16</span><span class="p">,</span> <span class="mf">0.08</span><span class="p">,</span> <span class="mf">0.09</span><span class="p">,</span> <span class="mf">0.11</span><span class="p">,</span> <span class="mf">0.17</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.14</span><span class="p">,</span> <span class="mf">0.13</span><span class="p">])</span>
+
+<span class="c1"># 确定学习率
+</span><span class="n">lr</span> <span class="o">=</span> <span class="mf">0.01</span>
+
+<span class="c1"># 初始化 w，为了减小难度暂时不考虑 b 的赋值
+</span><span class="n">w</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="c1"># epoches 为循环进行的次数
+</span><span class="n">epoches</span> <span class="o">=</span> <span class="mi">500</span>
+
+<span class="c1"># 先设置梯度为 0
+</span><span class="n">grad</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="c1"># 计算损失函数
+</span><span class="k">def</span> <span class="nf">loss_new</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="nb">sum</span><span class="p">((</span><span class="n">w</span> <span class="o">*</span> <span class="n">x</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># 计算梯度
+</span><span class="k">def</span> <span class="nf">grad_new</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">((</span><span class="n">x</span> <span class="o">*</span> <span class="n">w</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># 核心部分 -- 迭代
+</span><span class="n">list_w</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">list_loss</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">list_grad</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">list_i</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epoches</span><span class="p">):</span>
+    <span class="n">grad</span> <span class="o">=</span> <span class="n">grad_new</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+    <span class="c1"># 更新参数
+</span>    <span class="n">w</span> <span class="o">=</span> <span class="n">w</span> <span class="o">-</span> <span class="n">lr</span> <span class="o">*</span> <span class="n">grad</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="n">loss_new</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"第</span><span class="si">{</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="si">}</span><span class="s">次迭代，梯度为</span><span class="si">{</span><span class="n">grad</span><span class="si">}</span><span class="s">, 权值为</span><span class="si">{</span><span class="n">w</span><span class="si">}</span><span class="s">, 损失值为</span><span class="si">{</span><span class="n">loss</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+    <span class="n">list_w</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+    <span class="n">list_i</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">list_loss</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
+    <span class="n">list_grad</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">grad</span><span class="p">)</span>
+
+<span class="c1"># 绘制梯度与迭代次数的关系图
+</span><span class="n">line1</span> <span class="o">=</span> <span class="n">Line</span><span class="p">()</span>
+<span class="n">line1</span><span class="p">.</span><span class="n">add_xaxis</span><span class="p">(</span><span class="n">list_i</span><span class="p">)</span>
+<span class="n">line1</span><span class="p">.</span><span class="n">add_yaxis</span><span class="p">(</span><span class="s">"梯度"</span><span class="p">,</span> <span class="n">list_grad</span><span class="p">)</span>
+<span class="n">line1</span><span class="p">.</span><span class="n">set_global_opts</span><span class="p">(</span>
+    <span class="n">title_opts</span><span class="o">=</span><span class="n">TitleOpts</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">"梯度与迭代次数的关系"</span><span class="p">,</span> <span class="n">pos_left</span><span class="o">=</span><span class="s">"center"</span><span class="p">,</span> <span class="n">pos_bottom</span><span class="o">=</span><span class="s">"1%"</span><span class="p">),</span>
+    <span class="n">toolbox_opts</span><span class="o">=</span><span class="n">ToolboxOpts</span><span class="p">(</span><span class="n">is_show</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="n">line1</span><span class="p">.</span><span class="n">render</span><span class="p">()</span>
+
+<span class="c1"># 绘制损失值与参数的关系图
+</span><span class="n">line2</span> <span class="o">=</span> <span class="n">Line</span><span class="p">()</span>
+<span class="n">line2</span><span class="p">.</span><span class="n">add_xaxis</span><span class="p">(</span><span class="n">list_w</span><span class="p">)</span>
+<span class="n">line2</span><span class="p">.</span><span class="n">add_yaxis</span><span class="p">(</span><span class="s">"损失值"</span><span class="p">,</span> <span class="n">list_loss</span><span class="p">)</span>
+<span class="n">line2</span><span class="p">.</span><span class="n">set_global_opts</span><span class="p">(</span>
+    <span class="n">title_opts</span><span class="o">=</span><span class="n">TitleOpts</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">"损失值与参数的关系"</span><span class="p">,</span> <span class="n">pos_left</span><span class="o">=</span><span class="s">"center"</span><span class="p">,</span> <span class="n">pos_bottom</span><span class="o">=</span><span class="s">"1%"</span><span class="p">),</span>
+    <span class="n">toolbox_opts</span><span class="o">=</span><span class="n">ToolboxOpts</span><span class="p">(</span><span class="n">is_show</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="n">line2</span><span class="p">.</span><span class="n">render</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>### 运行结果大致情况
+ <img width="761" alt="截屏2025-04-10 22 29 05" src="https://github.com/user-attachments/assets/42d32c4d-94d0-4bd1-8b3f-fc242b1eb7d0" /></p>
+
+      <h6>说点什么…</h6>
+
+<div id="vcomments"></div>
+    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+    <script>
+        new Valine({
+            el: '#vcomments',
+            appId: 'it55DzxX1q0dJJ3x27Ietfhq-gzGzoHsz',
+            appKey: '0voRk494pOPc2N4hBNvAtgIa',
+            placeholder: '欢迎打扰！',
+            avatar: 'mp'
+        })
+    </script>
+    </div>
+  </section>
+</main>
+
+
+  </div>
+
+  <footer>
+   <div class="friends-links-container">
+      <div class="friends-links-header">
+        <p>Friend_Link😝</p>
+      </div>
+        
+      <div class="friends-list">
+            
+        <div class="friend-item">
+          <a href="https://www.cclmsy.cc" target="_blank" rel="noopener noreferrer">
+            <img src="/assets/images/cclmsy.jpg" alt="好友一" class="friend-avatar">
+          </a>
+          <span class="friend-name">深翼cclmsy</span>
+        </div>
+            
+        <!-- <div class="friend-item">
+          <a href="https://another-example.com" target="_blank" rel="noopener noreferrer">
+            <img src="/path/to/friend-avatar2.jpg" alt="好友二" class="friend-avatar">
+          </a>
+          <span class="friend-name">好友二</span>
+        </div> -->
+            
+      </div>
+    </div>
+    <p class="ps">—— 如果你也想添加友链，请邮箱联系我！💐</p>
+    <hr>
+      <p>&copy; 2025 | Luxynth</p>
+
+</footer>
+
+  <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  
+<!-- 懒加载 -->
+  <script>
+      window.addEventListener('DOMContentLoaded', (event) => {
+        const images = document.querySelectorAll('img');
+        images.forEach(image => {
+          if (!image.hasAttribute('loading')) {
+            image.setAttribute('loading', 'lazy');
+          }
+        });
+      });
+    </script>
+
+  <!-- ✅ 放这里：MathJax 配置 + 加载脚本 -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+  <script type="text/javascript" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+  <script src="/assets/js/script.js"></script>
+  <div class="announcement-container">
+   <div class="announcement-icon" id="announcement-icon">
+        <img src="/assets/images/logo.svg" alt="公告图标">
+    </div>
+    <div class="announcement-panel" id="announcement-panel">
+        <span class="close-btn">&times;</span>
+            <div class="announcement-content">
+                <div class="announcement-header">
+                <p>公告栏🪧</p>
+            </div>
+            <p>📌亲爱的读者，这里是Luxynth的小破站🌻～</p>
+            <p>📌很高兴，我们在这片广袤的网络世界相遇。请随意漫步，这里的一切都献给你❤️</p>
+            <p>📌文章持续更新中，欢迎你经常来访～</p>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

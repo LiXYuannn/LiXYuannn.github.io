@@ -1,0 +1,195 @@
+/* 页面背景和基本布局 */
+.explore-page {
+  background: transparent;
+  min-height: 100vh;
+  padding: 40px 0; /* 上下留白 */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 确保所有子元素水平居中 */
+  flex: 1;
+}
+
+/* 顶部头像和标题容器 */
+.explore-header {
+  text-align: center; /* 居中内容 */
+  margin-bottom: 50px; /* 增加与下方内容的间距 */
+  position: relative;
+  z-index: 10;
+}
+
+/* 居中的单个头像 */
+.explore-avatar {
+  width: 150px; /* 调整头像大小 */
+  height: 150px;
+  border-radius: 50%;
+  border: 4px solid white; /* 调整边框 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  object-fit: cover;
+  /* 移除定位，让其自然居中 */
+}
+
+/* 页面标题样式 */
+.explore-title {
+  margin-top: 15px;
+  font-size: 3em;
+  color: #ffa4a4; /* 假设标题颜色为白色，与背景搭配 */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.content-container {
+  width: 90%; /* 控制整体宽度 */
+  max-width: 1000px;
+  margin: 0 auto; /* 核心：左右外边距自动，实现水平居中 */
+  line-height: 250%;
+  padding: 10px; /* 可选：增加内边距，让内容与容器边缘有间距 */
+  box-sizing: border-box; /* 确保内边距和边框不会增加总宽度 */
+  background: transparent;
+  border-radius: 16px; /* 可选：圆角边框 */
+  margin-top: 20px; /* 可选：调整与上方导航的间距 */
+  font-size: 1.5em; /* 可选：调整字体大小 */
+  text-shadow:  1px 1px 3px rgba(0, 0, 0, 0.4);
+  margin-bottom: 50px; /* 可选：调整与下方页脚的间距 */
+}
+
+.explore-content {
+  margin-bottom: 25px; /* 与标题的间距 */
+  font-size: 1.2em; /* 调整内容字体大小 */
+  color: #fff; /* 假设内容颜色为白色 */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* 添加文字阴影 */
+}
+
+@media (max-width: 768px) {
+  .content-container {
+    width: 90%; /* 在小屏幕上使用更宽的比例 */
+  }
+}
+
+/* 为特殊页面中的图片定义的样式 */
+.special-image-style {
+  border: 5px solid #a2d3ff;
+  border-radius: 30px; /* 圆角 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 阴影 */
+  margin: 20px left; /* 居中并留白 */
+  display: block; /* 居中必备 */
+  width: 80%; /* 宽度调整 */
+  max-width: 400px;
+}
+
+
+.v[data-class=v] {
+font-size: 1rem !important;
+text-align: left;
+}
+
+.v[data-class=v] .vwrap {
+border: 2px solid rgba(255, 255, 255, 0.8) !important;
+border-radius: 16px !important;
+margin-bottom: 10px;
+overflow: hidden;
+
+position: relative;
+padding: 10px;
+}
+
+.v[data-class=v] .vinput {
+border: none;
+resize: none;
+outline: none;
+padding: 10px 5px;
+max-width: 100%;
+font-size: 1rem !important;
+-webkit-box-sizing: border-box;
+box-sizing: border-box;
+}
+
+/* 修改 Valine 输入框 placeholder 的样式 */
+.v[data-class=v] .vinput::placeholder {
+  color: #fff !important; /* 将颜色改为黑色 */
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  opacity: 1 !important; /* 可选：设置透明度，让提示词不那么突兀 */
+}
+
+.v[data-class=v] .vcol.vcol-70 .vsubmit.vbtn {
+  border: 1.5px solid rgba(255, 255, 255, 0.8) !important;
+  color: rgba(255, 255, 255, 0.8)!important;
+  background-color: transparent;
+  padding: 8px 16px;
+  border-radius: 8px;
+}
+
+/* 悬停时的样式 */
+.v[data-class=v] .vcol.vcol-70 .vsubmit.vbtn:hover {
+  background-color: rgba(0, 0, 0, 0.3) !important;
+  color: #fff;
+}
+
+.vcards .vcard,
+.vcards .vcard * {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.v[data-class=v] .vicon {
+cursor: pointer;
+fill: #ffffff !important;
+}
+
+.v[data-class=v] .vempty {
+padding: 1.25em;
+text-align: center;
+color: #f5f4f4 !important;
+overflow: auto;
+}
+
+/* 网格布局 */
+.explore-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+/* 卡片样式 */
+.explore-card {
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(5px);
+  border-radius: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.85); /* 白色边框 */
+  overflow: hidden;
+  text-decoration: none;
+  color: white;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.explore-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.6);
+}
+
+/* 图片 */
+.explore-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+/* 内容 */
+.explore-content {
+  padding: 8px 12px;
+}
+
+.explore-content h3 {
+  margin: 0 0 8px;
+  font-size: 1.4rem;
+}
+
+.explore-content p {
+  font-size: 1.1rem;
+  line-height: 1.4;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+.blank{
+  background-color: transparent;
+  height:3rem;
+}

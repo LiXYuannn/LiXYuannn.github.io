@@ -1,0 +1,75 @@
+---
+layout: archive
+---
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ page.title | default: "我的作品集" }}</title>
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/archive.css' | relative_url }}">
+</head>
+<body>
+  <!-- 背景层 -->
+  <div class="fixed-background"></div>
+  
+  <div class="archive-page">
+    <!-- 头部区域 -->
+    <div class="archive-header">
+      <img src="{{ '/assets/images/avatar.jpg' | relative_url }}" 
+           alt="作者头像"
+           class="archive-avatar"
+           onerror="this.style.display='none'">
+      <h1 class="archive-title">作品集 📖</h1> 
+    </div>
+    
+    {% include navigation.html %}
+    
+    <div class="archive-container">
+      <!-- 左侧列（当前为空） -->
+      <div class="archive-column1">
+        <div class="archive-card1"></div>
+      </div>
+      
+      <!-- 右侧作品展示区 -->
+      <div class="archive-column2">
+        <div class="archive-grid">
+          {% comment %} 安全获取图片文件 {% endcomment %}
+          {% assign image_files = site.static_files | where_exp: "file", "file.path contains '/assets/images/card/'" %}
+          {% assign supported_ext = '.jpg,.jpeg,.png,.gif' | split: ',' %}
+          {% assign image_files = image_files | where_exp: "file", "supported_ext contains file.extname" %}
+          
+          {% for post in site.posts %}
+            {% assign random_image = image_files | sample %}
+            <div class="card">
+              {% if random_image %}
+                <div class="card-image" 
+                     style="background-image: url('{{ random_image.path | relative_url }}');
+                            background-size: cover;
+                            background-position: center;"></div>
+              {% else %}
+                <div class="card-image default-image"></div>
+              {% endif %}
+              
+              <div class="card-content">
+                <a href="{{ post.url | relative_url }}" aria-label="{{ post.title }}">
+                  <h3 class="card-title">{{ post.title | default: "未命名作品" }}</h3>
+                  <p class="card-excerpt">
+                    {{ post.content | strip_html | truncate: 24, "" | default: "暂无描述" }}
+                  </p>
+                </a>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    {% include footer.html %}
+    {% include announcement.html %}
+    
+    <!-- 异步加载JS -->
+    <script defer src="{{ '/assets/js/script.js' | relative_url }}"></script>
+  </div>
+</body>
+</html>

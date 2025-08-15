@@ -1,0 +1,48 @@
+title: Luxynth's Website
+markdown: kramdown
+url: "www.luxynth.cn"
+
+
+# for atom feed
+author:
+  name: Luxynth
+  email: LiXY0809@outlook.com
+
+plugins:
+  - jemoji
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-archives
+
+collections_dir: all_collections
+collections:
+  posts:
+    output: true
+
+defaults:
+  - scope:
+      path: "_posts"
+    values:
+      layout: "post"
+      permalink: /posts/:title/
+exclude: ["sitemap.xml", "feed.xml", "LICENSE", "README.md"]
+
+
+# 本地调试时使用的基础URL
+baseurl: ""
+# jsDelivr 图片的基础URL
+jsdelivr_url: "https://cdn.jsdelivr.net/gh/LiXYuannn/LiXYuannn.github.io"
+
+kramdown:
+  input: GFM
+  auto_ids: true
+  syntax_highlighter: rouge
+
+jekyll-archives:
+  enabled:
+    - categories  # 启用分类归档
+  layouts:
+    categories: 'category-archive' # 指定分类归档页面使用的布局
+  permalinks:
+    category: '/category/:name/' # 定义归档页面的URL结构

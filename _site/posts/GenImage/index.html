@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <div class="fixed-background"></div>
+  <title>GENIMAGE</title>
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luxynth's Website | GENIMAGE</title>
+
+  <link rel="preload" as="image" href="/assets/images/background.jpg">
+  <link rel="preload" href="/assets/fonts/myfont.woff2" as="font" type="font/woff2" crossorigin>
+  
+  
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+</head>
+
+</head>
+<body>
+
+  <div id="swup">
+    <main class="blogfeed">
+  <section id="article">
+    <div class="profile-header">
+      <img src="/assets/images/avatar.jpg" class="profile-avatar">
+      <h1 class="profile-title">GENIMAGE</h1> 
+    </div>
+    <nav class="site-nav">
+  <ul>
+    <li><a href="/" >首页</a></li>
+    <li><a href="/about" >关于我</a></li>
+    <li><a href="/archive" >文章归档</a></li>
+    <li><a href="/explore" >探索</a></li>
+  </ul>
+</nav>
+    <div class="article-thumbnail">
+      <div class="article-bottom">
+        <small class="article-date">29 Apr 2025</small>
+        <div class="article-categories">
+          
+          <a href="#!" class="article-category">深度学习</a>
+          
+          <a href="#!" class="article-category">论文笔记</a>
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="article-content">
+      <h1 id="genimage-a-million-scale-benchmark-for-detecting-ai-generated-image">GENIMAGE: A MILLION-SCALE BENCHMARK FOR DETECTING AI-GENERATED IMAGE</h1>
+<p><a href="/assets/files/GenImage_Dataset.pdf" download="">点击下载原文pdf❤️</a></p>
+<ul>
+  <li><strong>研究背景</strong>
+ 生成模型发展引发担忧，假图像传播影响社会稳定； eg：AI生成的五角大楼着火照片影响股市</li>
+</ul>
+
+<p><img src="/assets/images/posts/1-1.jpg" alt="配图" />
+根据论文图表⬇️</p>
+
+<p><img src="/assets/images/posts/1-2.jpg" alt="配图" />
+现有假图像检测数据集存在局限，如UADFV规模小，ForgeryNet仅关注人脸、早期通用数据集依赖GAN且数据有限。
+ –&gt;GenImage数据集构建的必要性</p>
+
+<h2 id="数据集构建">数据集构建</h2>
+
+<p><img src="/assets/images/posts/1-3.jpg" alt="配图" />
+ 包含超100万对真假图像，使用ImageNet所有真实图像，依1000个标签生成1350000张假图像</p>
+
+<p><img src="/assets/images/posts/1-4.jpg" alt="配图" />
+用8种生成模型生成假图像，每个模型为每类生成近相同数量图像，保证数据集平衡，输入句子依ImageNet标签，部分模型输入语言有调整</p>
+
+<p><img src="/assets/images/posts/1-5.jpg" alt="配图" /></p>
+
+<p><strong>扩散模型（diffusion model）</strong>： Midjourney、 Wukong、 Stable Diffusio、 ADM、 GLIDE、 VQDM;</p>
+
+<p><strong>生成对抗网络（GAN）</strong>： BigGAN
+–&gt;其中SD V1.5最为逼真</p>
+
+<h2 id="数据集基准检测">数据集基准检测</h2>
+<h3 id="假图像检测器">假图像检测器</h3>
+<p><strong>假人脸检测器（Fake Face Detector）</strong>：
+专为人脸伪造检测设计，依赖人脸图像的特定特征。</p>
+
+<p><strong>代表模型</strong>：</p>
+<ul>
+  <li>F3Net：通过分析频率成分划分和真假人脸频率统计差异进行检测</li>
+  <li>GramNet：利用全局纹理特征提升检测的鲁棒性和泛化性</li>
+</ul>
+
+<p><em>特点</em>：</p>
+<ul>
+  <li>训练数据仅为人脸图像，难以直接泛化到非人脸领域</li>
+  <li>设计思路可启发通用检测器的开发（eg：频率分析、纹理特征）</li>
+</ul>
+
+<p><strong>通用假图像检测器（General Fake Image Detector）</strong>
+突破人脸内容的限制，检测各类假图像（如GAN或扩散模型生成）。</p>
+
+<p><strong>代表模型</strong>：</p>
+<ul>
+  <li>Spec：以频谱为输入，直接在真实图像中合成GAN伪影，无需依赖特定GAN生成的训练数据
+ CNNSpot：基于ResNet-50的二分类器，通过特定的预处理、后处理和数据增强优化</li>
+</ul>
+
+<p><em>特点</em>：</p>
+<ul>
+  <li>现有方法在混合GAN和扩散模型生成图像的数据集上性能不足</li>
+  <li>急需开发针对此类混合特征的专用检测器</li>
+</ul>
+
+<p><img src="/assets/images/posts/1-6.jpg" alt="配图" />
+检测器能轻松识别同一生成器生成的假图像，说明生成器会留下高度一致的痕迹（如特定频率模式、纹理特征等）。而我们需要提升检测器的泛化能力，即独立于所使用的生成器来区分图像真伪的能力。 
+ →跨生成器图像分类</p>
+<h3 id="单模型-跨生成器图像分类">单模型 跨生成器图像分类</h3>
+<p><img src="/assets/images/posts/1-7.jpg" alt="配图" />
+先在SD V1.4上用七种不同的方法训练的模型 然后用八种不同的检测器进行检验
+//该表格可反应模型在特定训练数据下的泛化能力，根据各检测器检测准确率平均之前数据可知，<strong>Swin-T的泛化能力最强</strong></p>
+
+<h3 id="多模型-全组合测试">多模型 全组合测试</h3>
+<p><img src="/assets/images/posts/1-8.jpg" alt="配图" />
+对每个方法 都用8个生成器训练8个模型然后在8个生成器上测试并取平均值
+//该测试模式反映了方法在所有可能生成器组合下的综合性能</p>
+
+<h3 id="退化图像处理">退化图像处理</h3>
+<p>图像在传播过程中经常遇到<strong>退化问题</strong>（eg：低分辨率、压缩和噪声干扰）</p>
+
+<p><img src="/assets/images/posts/1-9.jpg" alt="配图" />
+检测器应该对这些挑战具有鲁棒性</p>
+
+<p>→通过评估检测器在这些退化图像上的性能，使之更准确的模拟实际条件
+<img src="/assets/images/posts/1-10.jpg" alt="配图" /></p>
+
+<ul>
+  <li>作为baseline model，ResNet-50，DeiT-S和Swin-T都呈现出类似的效果 //数据十分相近</li>
+  <li>CNNSpot对JPEG压缩和高斯模糊都具有鲁棒性 //因为CNNSpot在训练过程中使用JPEG压缩和高斯模糊作为额外的数据预处理</li>
+</ul>
+
+<p>数据预处理即是方法论</p>
+
+<h2 id="数据分析">数据分析</h2>
+<p><img src="/assets/images/posts/1-11.jpg" alt="配图" /></p>
+
+<p><em>真实图像和生成图像的频率分析对比</em></p>
+<ul>
+  <li>GAN伪影以规则网格的形式显示
+来自扩散模型的图像比BigGAN更接近真实的图像
+    <h4 id="reasons">reasons：</h4>
+  </li>
+  <li>在文献Adversarial Perturbations Fool Deepfake Detectors中有提到，<strong>上采样方法</strong>（上卷积或转置卷积）导致GAN无法正常地近似训练数据的频谱分布，所以GAN生成的图像有较多伪影</li>
+  <li>因为匹配较低的频率对于所生成的图像的感知质量更重要，而训练期间较少的权重被附加到较高的频率，<strong>扩散模型不会在频谱中产生网格状伪影</strong>，但是对于较高的频率表现出系统性的不匹配
+    <h3 id="为验证检测器是否能泛化到不同图像内容类别">为验证检测器是否能泛化到不同图像内容类别</h3>
+    <p><strong>数据集</strong>：
+• 训练集：从GenImage的1000类中抽取子集（10、50、100），每类生成固定数量图像
+• 测试集：覆盖全部1000类，每类50张生成图像，并且来自8种生成器
+• 真实图像比例：每类真实图像与生成图像数量相同（平衡数据）</p>
+  </li>
+</ul>
+
+<p><img src="/assets/images/posts/1-12.jpg" alt="配图" /></p>
+
+<ul>
+  <li>控制变量分析可得到，数据集标签的数量对准确度的影响程度远大于数据数量的影响程度</li>
+  <li>假图像检测器的泛化能力高度依赖训练数据的类别覆盖度，其中100类以上可达到较好效果
+<img src="/assets/images/posts/1-13.jpg" alt="配图" /></li>
+</ul>
+
+<p><strong>CONCLUSION</strong>：SD V1.4和SD V1.5与Wukong的训练产生了最佳的整体泛化性能</p>
+
+<p>GenImage范围广：不仅包含传统的人脸（face）和艺术作品（art）图像，
+还涵盖更广泛的类别。
+<em>数据来源</em>：</p>
+<ul>
+  <li>LFW：用于人脸识别的公开数据集，从中选取了10,000张真实人脸图像，并生成相同数量的合成人脸</li>
+  <li>Laion-Art：基于Laion-5B的子集，筛选出美学评分高的艺术作品，并从中选取10,000张真实艺术图像，同时生成10,000张合成艺术图像
+<img src="/assets/images/posts/1-14.jpg" alt="配图" /></li>
+</ul>
+
+<h3 id="泛化性能优异">泛化性能优异：</h3>
+<p><img src="/assets/images/posts/1-15.jpg" alt="配图" /></p>
+<ul>
+  <li>人脸检测：99.9% 准确率（区分LFW真实人脸 vs. SDV1.4生成人脸）</li>
+  <li>艺术图像检测：95.0% 准确率</li>
+</ul>
+
+<p><strong>结论</strong>：该数据集在跨内容（人脸、艺术）检测任务上表现出强泛化能力。</p>
+
+<h2 id="结论">结论</h2>
+<ul>
+  <li>GenImage是一个专为检测生成模型生成的虚假图像而设计的大规模数据集，其规模、图像内容和生成器多样性均超越以往的数据集和基准。</li>
+  <li>研究提出了两项任务——跨生成器图像分类和退化图像分类，用于评估现有检测器在GenImage上的性能。</li>
+  <li>此外，通过对数据集的详细分析，研究揭示了GenImage如何推动开发适用于真实场景的虚假图像检测器。</li>
+</ul>
+
+      <h6>说点什么…</h6>
+
+<div id="vcomments"></div>
+    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+    <script>
+        new Valine({
+            el: '#vcomments',
+            appId: 'it55DzxX1q0dJJ3x27Ietfhq-gzGzoHsz',
+            appKey: '0voRk494pOPc2N4hBNvAtgIa',
+            placeholder: '欢迎打扰！',
+            avatar: 'mp'
+        })
+    </script>
+    </div>
+  </section>
+</main>
+
+
+  </div>
+
+  <footer>
+   <div class="friends-links-container">
+      <div class="friends-links-header">
+        <p>Friend_Link😝</p>
+      </div>
+        
+      <div class="friends-list">
+            
+        <div class="friend-item">
+          <a href="https://www.cclmsy.cc" target="_blank" rel="noopener noreferrer">
+            <img src="/assets/images/cclmsy.jpg" alt="好友一" class="friend-avatar">
+          </a>
+          <span class="friend-name">深翼cclmsy</span>
+        </div>
+            
+        <!-- <div class="friend-item">
+          <a href="https://another-example.com" target="_blank" rel="noopener noreferrer">
+            <img src="/path/to/friend-avatar2.jpg" alt="好友二" class="friend-avatar">
+          </a>
+          <span class="friend-name">好友二</span>
+        </div> -->
+            
+      </div>
+    </div>
+    <p class="ps">—— 如果你也想添加友链，请邮箱联系我！💐</p>
+    <hr>
+      <p>&copy; 2025 | Luxynth</p>
+
+</footer>
+
+  <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  
+<!-- 懒加载 -->
+  <script>
+      window.addEventListener('DOMContentLoaded', (event) => {
+        const images = document.querySelectorAll('img');
+        images.forEach(image => {
+          if (!image.hasAttribute('loading')) {
+            image.setAttribute('loading', 'lazy');
+          }
+        });
+      });
+    </script>
+
+  <!-- ✅ 放这里：MathJax 配置 + 加载脚本 -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+  <script type="text/javascript" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+  <script src="/assets/js/script.js"></script>
+  <div class="announcement-container">
+   <div class="announcement-icon" id="announcement-icon">
+        <img src="/assets/images/logo.svg" alt="公告图标">
+    </div>
+    <div class="announcement-panel" id="announcement-panel">
+        <span class="close-btn">&times;</span>
+            <div class="announcement-content">
+                <div class="announcement-header">
+                <p>公告栏🪧</p>
+            </div>
+            <p>📌亲爱的读者，这里是Luxynth的小破站🌻～</p>
+            <p>📌很高兴，我们在这片广袤的网络世界相遇。请随意漫步，这里的一切都献给你❤️</p>
+            <p>📌文章持续更新中，欢迎你经常来访～</p>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

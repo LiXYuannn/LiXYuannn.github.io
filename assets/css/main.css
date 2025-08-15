@@ -1,0 +1,560 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,900;1,300;1,400;1,900&display=swap");
+
+@font-face {
+    font-family: 'MyCustomFont';
+    src: url('/assets/fonts/myfont.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+  --border-radius: 2rem;
+}
+
+* {
+  font-family: inherit;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  -webkit-user-drag: none;
+  -moz-window-dragging: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+* img {
+  max-width: 100%;
+}
+
+html,
+body {
+  color: #fff;
+  
+  font-family: 'MyCustomFont', serif;
+  line-height: 2rem;
+
+  height: 100%; /* 确保元素高度为100% */
+  margin: 0;
+  padding: 0;
+}
+
+/* 新增 body 样式，用于 Flexbox 布局 */
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.fixed-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* 确保它在所有内容之后 */
+  background-image: url('/assets/images/background.jpg');
+  background-size: cover;
+  background-position: center;
+
+  /* 核心优化：强制浏览器使用GPU硬件加速 */
+  transform: translateZ(0); 
+  will-change: transform;
+}
+
+main {
+  flex: 1;
+  margin: 0 auto;
+  max-width: 900px;
+  width:80%;
+  padding: 3rem 0;
+  align-self: center;
+}
+
+main.blogfeed * {
+  font-weight: 900;
+}
+
+header {
+  padding: 2rem 0 4rem 0;
+}
+
+header .site-title {
+  font-size: 8rem;
+  font-weight: bolder;
+  line-height: 110%;
+  color:  #ffa4a4;
+  text-shadow: 7px 7px 9px rgba(0, 0, 0, 0.4);
+}
+
+#bio {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3rem;
+}
+/* #bio-avatar-wrapper {} */
+#bio-avatar {
+  width: 260px;
+  border-radius: 50%;
+  border:#fff 3px solid;
+  padding: 5px;
+}
+/* #bio-text-and-social-links {} */
+#bio-text {
+  line-height: 260%;
+  color: #fff;
+  text-shadow: 1px 1px 6px rgba(8, 8, 8, 0.4);
+  font-size: 1.25rem;
+}
+
+#bio-text a {
+  color: #a6c3ea;
+  text-decoration: underline;
+}
+
+#social-links {
+  margin: 2rem 0 3rem 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+}
+
+#social-links a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: var(--border-radius);
+  color: #000;
+  background-color: #92b6e5;
+}
+
+#social-links a img {
+  width: 20px;
+  border-radius: 50%;
+}
+
+/* article list styles */
+
+#articles {
+  display: grid;
+  grid-template-columns: none;
+  grid-template-rows: 1fr;
+  row-gap: 3rem;
+  margin-top: 2rem;  
+}
+
+
+.article {
+  background-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 8px 8px 3px rgba(0, 0, 0, 0.3);;
+  text-shadow: 5px 5px 3px rgba(0, 0, 0, 0.3);
+  padding: 2rem 2.5rem;
+  border-radius: 25px;
+  display: flex; 
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  margin: 0 auto;
+  max-width: 700px;
+  min-width: 700px;
+}
+
+.article-thumbnail {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: inset 0 -80px 90px 11px rgba(255, 255, 255, 0.6);
+  width: 100%;
+  min-height: 160px;
+  height: auto;
+  margin: -2rem -2.5rem;
+  inset: 0;
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  margin-bottom: 0.2rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  padding: 0 2.5rem 1rem 2.5rem;
+
+}
+
+.article-title * {
+  color: #fff;
+  font-size: 2rem;
+  font-family: 'MyCustomFont', serif;
+  text-shadow: 0px 0px 3px rgba(73, 70, 70, 0.5);
+  line-height: 120%;
+}
+
+.article-bottom {
+  margin-top: 1.5rem;
+}
+
+.article-date {
+  color: #fff;
+  text-shadow: 0px 0px 3px rgba(86, 83, 83, 0.5);
+}
+
+.article-categories {
+  margin-top: 0.2rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.article-category {
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--border-radius);
+  color: #fff;
+  text-shadow: 0px 0px 3px rgba(117, 113, 113, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+}
+
+.ps {
+  text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* 导航栏容器样式 */
+.site-nav {
+  position: relative;
+  width: 80%; /* 关键：设置宽度 */
+  max-width: 630px; /* 关键：设置最大宽度 */
+  margin: 0 auto; /* 关键：水平居中 */
+  }
+
+.site-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 16px;
+  justify-content: center;
+  align-items: center;
+}
+
+.site-nav li {
+  padding: 10px 30px;
+  position: relative; /* 为下拉菜单定位 */
+}
+
+.site-nav a {
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+.site-nav a.active {
+  font-weight: bold;
+  color: #8abef7;
+  text-shadow: 1px 1px 6px rgba(54, 52, 52, 0.4);
+}
+
+/* 箭头容器样式 */
+.scroll-down-arrow {
+  position: absolute; /* 相对于父容器进行定位 */
+  bottom: 50px; /* 距离底部 50px */
+  left: 50%; /* 水平居中 */
+  transform: translateX(-50%); /* 修正水平居中的偏移 */
+  z-index: 10;
+  cursor: pointer;
+  
+  /* 添加平滑过渡和动画 */
+  transition: opacity 0.5s ease-in-out;
+  animation: bounce 2s infinite; /* 应用 bounce 动画，持续 2 秒，无限循环 */
+}
+
+/* 箭头 SVG 或 IMG 的样式 */
+.scroll-down-arrow img{
+  display: block; /* 确保是块级元素 */
+  width: 40px;  /* 调整箭头宽度 */
+  height: 40px; /* 调整箭头高度 */
+  fill: #fff;   /* 如果是 SVG，控制内部填充颜色 */
+  stroke: #fff; /* 如果是 SVG，控制边框颜色 */
+  text-shadow: 0 0 5px rgba(0,0,0,0.4);
+}
+/* 隐藏箭头的 CSS 类，JavaScript 会使用它 */
+.scroll-down-arrow.hidden {
+  opacity: 0; /* 将透明度设置为 0 */
+  pointer-events: none; /* 禁用点击事件 */
+}
+
+/* 动画关键帧：定义跳动效果 */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0); /* 初始位置和最终位置 */
+  }
+  40% {
+    transform: translateY(-20px); /* 向上跳动 */
+  }
+  60% {
+    transform: translateY(-10px); /* 向上跳动（幅度小一些） */
+  }
+}
+
+/* footer */
+footer {
+  background: rgba(82, 143, 228, 0.4);
+  margin-top: 3rem;
+  padding: 2rem 2.5rem;
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  font-size: 1.2rem;
+  color: #fff;
+  width: 80%; /* 调整这个值以匹配你的 .archive-container 宽度 */
+  max-width: 1000px; /* 调整这个值以匹配你的 .archive-container 最大宽度 */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.extra-container {
+  display: flex;
+  gap: 30px;
+  width: 100%; /* 控制整体宽度 */
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  margin-top: 2rem;
+}
+
+/* 左右栏样式调整 */
+.extra-column {
+  flex: 1;
+  position: relative; /* 保持相对定位，以备将来需要 */
+  min-width: 100px; /* 设置最小宽度 */
+}
+
+/* 卡片样式优化 */
+.extra-card {
+  background: rgba(255, 255, 255, 0.2);
+  text-shadow: 0px 1px 3px rgba(22, 21, 21, 0.2);
+  font-size: 1.1rem;
+  border-radius: 25px;
+  padding-bottom: 10px;
+  padding-top: 50px;
+  padding-left: 40px;
+  padding-right: 40px;
+  box-shadow: 8px 8px 3px rgba(0, 0, 0, 0.3);
+  height: 100%;
+}
+
+/* 响应式调整 */
+@media (max-width: 1200px) {
+  .extra-container {
+    width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .extra-page {
+    padding: 20px 0;
+    flex: 1;
+  }
+  .extra-header {
+    margin-bottom: 30px;
+  }
+  .extra-container {
+    width: 95%;
+    flex-direction: column;
+    gap: 40px;
+  }
+  .extra-avatar {
+    width: 80px;
+    height: 80px;
+  }
+  .extra-card {
+    padding: 30px;
+  }
+}
+
+/* 友链容器样式 */
+.friends-links-container {
+  padding-top: 0rem;
+  text-align: left;
+}
+
+.friends-links-container h2 {
+  font-size: 1em;
+  margin-bottom: 2rem;
+  color: #fff;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* 友链列表布局 */
+.friends-list {
+  display: flex;
+  flex-wrap: wrap; /* 友链太多时自动换行 */
+  justify-content: left;
+  gap: 30px; /* 友链项之间的间距 */
+}
+
+/* 单个友链项的样式 */
+.friend-item {
+  display: flex;
+  flex-direction: column; /* 头像和名字垂直排列 */
+  align-items: center; /* 水平居中 */
+  text-align: center;
+  transition: transform 0.3s ease-in-out; /* 添加悬停动画 */
+}
+
+/* 悬停效果 */
+.friend-item:hover {
+  transform: translateY(-5px); /* 悬停时向上移动 */
+}
+
+/* 友链头像样式 */
+.friend-avatar {
+  width: 70px; /* 头像大小 */
+  height: 70px;
+  border-radius: 50%; /* 关键：使头像变为圆形 */
+  border: 3px solid #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  object-fit: cover; /* 确保图片不变形 */
+}
+
+/* 友链名字样式 */
+.friend-name {
+  margin-top: -10px;
+  font-size: 1rem;
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.friends-links-header {
+  font-size: 1.4em;
+  color: #fdafaf;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  margin-bottom: 1rem;
+}
+
+.ps {
+  font-size: 1rem;
+  color: #6ca4f9;
+  text-align: left;
+}
+
+/* 公告栏样式 */
+/* 让容器固定在右下角 */
+.announcement-container {
+    position: fixed;
+    bottom: 40px;
+    right: 20px;
+    z-index: 1000;
+}
+
+/* 悬浮图标样式 */
+.announcement-icon {
+    width: 60px;
+    height: 60px;
+    background-color: transparent;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    filter: drop-shadow(3px 3px 4px rgba(187, 185, 185, 0.6));
+    transition: transform 0.3s ease;
+    /* 应用晃动动画 */
+    animation-name: shake;            /* 动画名称 */
+    animation: shake 3s infinite; /* 3秒为一整个周期，无限循环 */
+}
+
+.announcement-icon:hover {
+    transform: scale(1.1);
+}
+
+/* 公告面板样式 */
+.announcement-panel {
+    width: 280px;
+    max-height: 400px;
+    background-color: rgba(255, 255, 255, 0.65);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    position: absolute;
+    bottom: 60px;
+    right: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+}
+
+/* 面板激活时（显示）的样式 */
+.announcement-panel.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    backdrop-filter: blur(5px);
+}
+
+.announcement-content {
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+    padding-left: 1.5rem;
+    padding-right: 1rem;
+    font-size: 1.1rem;
+    color: #333;
+    max-height: 300px;
+    overflow-y: auto; /* 如果内容过多，允许滚动 */
+    display: flex;           /* 开启 Flexbox 布局 */
+    flex-direction: column;  /* 让内容沿垂直方向排列 */
+    justify-content: center; /* 在垂直方向上居中对齐子元素 */
+    height: 100%;           /* 确保容器占据足够的垂直空间，以便居中生效 */
+}
+
+.announcement-header{
+  font-size: 2rem;
+  color: #000;
+  line-height: 160%;
+}
+.announcement-panel ul {
+    list-style-type: none; /* 移除列表项前面的符号 */
+    margin: 0;           /* 可选：移除默认的外边距 */
+    padding: 0;          /* 可选：移除默认的内边距 */
+}
+
+.announcement-icon img {
+    fill: white;
+}
+
+@keyframes shake {
+    0%, 83% { transform: rotate(0deg); } 
+
+    /* 第一次摇晃 */
+    86% { transform: rotate(-5deg); } /* 向左摇晃 */
+    89% { transform: rotate(5deg); }  /* 向右摇晃 */
+
+    /* 第二次摇晃 */
+    92% { transform: rotate(-5deg); } /* 再次向左摇晃 */
+    95% { transform: rotate(5deg); }  /* 再次向右摇晃 */
+
+    /* 回到初始位置 */
+    100% { transform: rotate(0deg); }   
+}
+
+.close-btn {
+    font-size: 18px;
+    color: white;
+    background-color: #dc3545; /* 红色背景 */
+    width: 25px;
+    height: 25px;
+    border-radius: 50%; /* 圆形 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    line-height: 1;
+    transition: background-color 0.3s ease; /* 添加过渡效果 */
+    position: absolute;
+    top: 10px; /* 距离面板顶部5px */
+    right: 10px; /* 距离面板右侧5px */
+    z-index: 10; /* 确保它在公告栏内容的上面 */
+}
+.close-btn:hover {
+    background-color: #c82333; /* 鼠标悬停时颜色变深 */
+}

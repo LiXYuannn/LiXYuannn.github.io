@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <div class="fixed-background"></div>
+  <title>Pytorch笔记📓第一弹</title>
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luxynth's Website | Pytorch笔记📓第一弹</title>
+
+  <link rel="preload" as="image" href="/assets/images/background.jpg">
+  <link rel="preload" href="/assets/fonts/myfont.woff2" as="font" type="font/woff2" crossorigin>
+  
+  
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/post.css" />
+  <link rel="stylesheet" href="/assets/css/syntax.css" />
+  
+  <link rel="stylesheet" href="/assets/css/common.css" />
+  <script src="/assets/js/categories.js"></script>
+  
+  <script defer src="/assets/js/lbox.js"></script>
+  
+</head>
+
+</head>
+<body>
+
+  <div id="swup">
+    <main class="blogfeed">
+  <section id="article">
+    <div class="profile-header">
+      <img src="/assets/images/avatar.jpg" class="profile-avatar">
+      <h1 class="profile-title">Pytorch笔记📓第一弹</h1> 
+    </div>
+    <nav class="site-nav">
+  <ul>
+    <li><a href="/" >首页</a></li>
+    <li><a href="/about" >关于我</a></li>
+    <li><a href="/archive" >文章归档</a></li>
+    <li><a href="/explore" >探索</a></li>
+  </ul>
+</nav>
+    <div class="article-thumbnail">
+      <div class="article-bottom">
+        <small class="article-date">10 Aug 2025</small>
+        <div class="article-categories">
+          
+          <a href="#!" class="article-category">深度学习</a>
+          
+          <a href="#!" class="article-category">Pytorch</a>
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="article-content">
+      <h3 id="pytorch的核心张量">Pytorch的核心——张量</h3>
+
+<p>在深度学习中，所有的数据和模型参数都用张量表示。</p>
+
+<p>张量（Tensor）可以看成是：</p>
+
+<ul>
+  <li><strong>0 维</strong>：标量（scalar），比如 3</li>
+  <li><strong>1 维</strong>：向量（vector），比如 [1, 2, 3]</li>
+  <li><strong>2 维</strong>：矩阵（matrix）</li>
+  <li><strong>3 维及以上</strong>：高维数组，比如一批图片 (batch_size, height, width, channels)</li>
+</ul>
+
+<p>📌 在 PyTorch 里：</p>
+
+<ul>
+  <li><strong>torch.tensor()</strong> 创建张量</li>
+  <li><strong>.shape</strong> 查看维度</li>
+  <li><strong>.dtype</strong> 数据类型</li>
+  <li><strong>.to(device)</strong> 把张量放到 CPU/GPU</li>
+</ul>
+
+<h3 id="gpu加速">GPU加速</h3>
+
+<p>如果有GPU，PyTorch 会自动帮你用 CUDA 加速</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">device</span><span class="p">(</span><span class="s">"cuda"</span> <span class="k">if</span> <span class="n">torch</span><span class="p">.</span><span class="n">cuda</span><span class="p">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s">"cpu"</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">).</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="自动求导">自动求导</h3>
+
+<p>PyTorch 可以自动计算梯度，这就是深度学习训练的基础。</p>
+
+<ul>
+  <li>创建张量时加 requires_grad=True，PyTorch 会记录计算图。</li>
+  <li>调用 .backward() 自动反向传播，计算梯度。</li>
+  <li>梯度存放在 .grad 里。</li>
+</ul>
+
+<h4 id="第一个pytorch文件">第一个Pytorch文件</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#myfirstPytorch
+</span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="k">print</span><span class="p">(</span><span class="n">torch</span><span class="p">.</span><span class="n">__version__</span><span class="p">)</span>
+  
+<span class="n">x</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]],</span><span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">y</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"x:</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"y:</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+
+<span class="n">z</span><span class="o">=</span><span class="n">x</span><span class="o">+</span><span class="n">y</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"z:</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">z</span><span class="p">)</span>
+
+<span class="n">device</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">device</span><span class="p">(</span><span class="s">"cuda"</span> <span class="k">if</span> <span class="n">torch</span><span class="p">.</span><span class="n">cuda</span><span class="p">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s">"cpu"</span><span class="p">)</span>
+<span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"设备:"</span><span class="p">,</span><span class="n">device</span><span class="p">)</span>
+  
+<span class="n">a</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="n">requires_grad</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">b</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">c</span><span class="o">=</span><span class="n">a</span><span class="o">*</span><span class="n">b</span>
+<span class="n">out</span><span class="o">=</span><span class="n">c</span><span class="p">.</span><span class="nb">sum</span><span class="p">()</span>
+<span class="n">out</span><span class="p">.</span><span class="n">backward</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"a的梯度:</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">a</span><span class="p">.</span><span class="n">grad</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#运行结果</span>
+2.6.0
+x:
+ tensor<span class="o">([[</span>1., 2.],
+        <span class="o">[</span>3., 4.]]<span class="o">)</span>
+y:
+ tensor<span class="o">([[</span>1., 1.],
+        <span class="o">[</span>1., 1.]]<span class="o">)</span>
+x:
+ tensor<span class="o">([[</span>2., 3.],
+        <span class="o">[</span>4., 5.]]<span class="o">)</span>
+设备: cpu
+a的梯度:
+ tensor<span class="o">([[</span> 0.4779,  1.5350,  0.0037,  1.2580],
+        <span class="o">[</span><span class="nt">-0</span>.5812,  1.6379,  0.7242,  1.2655],
+        <span class="o">[</span><span class="nt">-0</span>.6917, <span class="nt">-0</span>.8033, <span class="nt">-1</span>.8678, <span class="nt">-1</span>.1883]]<span class="o">)</span>
+
+</code></pre></div></div>
+
+<h3 id="进阶任务-️">进阶任务 🖊️</h3>
+<ul>
+  <li>创建一个 (2, 3, 4) 的随机张量 t（float 类型）</li>
+  <li>对它做：
+    <ul>
+      <li>加法（+ 1）</li>
+      <li>减法（- 0.5）</li>
+      <li>矩阵乘法（用 .matmul() 或 @）*</li>
+    </ul>
+  </li>
+  <li>把它移到 GPU（如果没有 GPU 就依然用 CPU），并打印：
+    <ul>
+      <li>.shape</li>
+      <li>.dtype</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">import</span> <span class="nn">torch</span>
+
+<span class="n">t</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">x</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"t:</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">t</span><span class="p">)</span>
+<span class="n">a</span><span class="o">=</span><span class="n">t</span><span class="o">+</span><span class="n">x</span>
+<span class="n">b</span><span class="o">=</span><span class="n">t</span><span class="o">-</span><span class="n">x</span><span class="o">*</span><span class="mf">0.5</span>
+  
+<span class="n">device</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">device</span><span class="p">(</span><span class="s">"cuda"</span> <span class="k">if</span> <span class="n">torch</span><span class="p">.</span><span class="n">cuda</span><span class="p">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s">"cpu"</span><span class="p">)</span>
+<span class="c1"># t=t.to(device)
+# x=x.to(device)
+# a=a.to(device)
+# b=b.to(device)
+</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="p">[</span><span class="n">tensor</span><span class="p">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span> <span class="k">for</span> <span class="n">tensor</span> <span class="ow">in</span> <span class="p">[</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">]]</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"设备:</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">device</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"a:</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">a</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"b:</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+  
+<span class="k">print</span><span class="p">(</span><span class="s">".shape:</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">t</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">".dtype:</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">t</span><span class="p">.</span><span class="n">dtype</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#运行结果</span>
+t:
+ tensor<span class="o">([[[</span><span class="nt">-0</span>.5283,  1.2119,  1.6814,  0.6434],
+         <span class="o">[</span><span class="nt">-0</span>.3742, <span class="nt">-0</span>.8421, <span class="nt">-1</span>.6161,  0.2300],
+         <span class="o">[</span><span class="nt">-1</span>.2224,  0.4019, <span class="nt">-1</span>.4070,  0.4027]],
+
+        <span class="o">[[</span> 0.0407, <span class="nt">-0</span>.5536, <span class="nt">-0</span>.7496,  1.7721],
+         <span class="o">[</span> 1.4842,  0.2181, <span class="nt">-0</span>.0732, <span class="nt">-1</span>.1741],
+         <span class="o">[</span> 0.4077, <span class="nt">-0</span>.7331, <span class="nt">-2</span>.2628,  0.8560]]]<span class="o">)</span>
+设备:
+ cpu
+a:
+ tensor<span class="o">([[[</span> 0.4717,  2.2119,  2.6814,  1.6434],
+         <span class="o">[</span> 0.6258,  0.1579, <span class="nt">-0</span>.6161,  1.2300],
+         <span class="o">[</span><span class="nt">-0</span>.2224,  1.4019, <span class="nt">-0</span>.4070,  1.4027]],
+
+        <span class="o">[[</span> 1.0407,  0.4464,  0.2504,  2.7721],
+         <span class="o">[</span> 2.4842,  1.2181,  0.9268, <span class="nt">-0</span>.1741],
+         <span class="o">[</span> 1.4077,  0.2669, <span class="nt">-1</span>.2628,  1.8560]]]<span class="o">)</span>
+b:
+ tensor<span class="o">([[[</span><span class="nt">-1</span>.0283,  0.7119,  1.1814,  0.1434],
+         <span class="o">[</span><span class="nt">-0</span>.8742, <span class="nt">-1</span>.3421, <span class="nt">-2</span>.1161, <span class="nt">-0</span>.2700],
+         <span class="o">[</span><span class="nt">-1</span>.7224, <span class="nt">-0</span>.0981, <span class="nt">-1</span>.9070, <span class="nt">-0</span>.0973]],
+
+        <span class="o">[[</span><span class="nt">-0</span>.4593, <span class="nt">-1</span>.0536, <span class="nt">-1</span>.2496,  1.2721],
+         <span class="o">[</span> 0.9842, <span class="nt">-0</span>.2819, <span class="nt">-0</span>.5732, <span class="nt">-1</span>.6741],
+         <span class="o">[</span><span class="nt">-0</span>.0923, <span class="nt">-1</span>.2331, <span class="nt">-2</span>.7628,  0.3560]]]<span class="o">)</span>
+.shape:
+ torch.Size<span class="o">([</span>2, 3, 4]<span class="o">)</span>
+.dtype:
+ torch.float32
+ 
+</code></pre></div></div>
+
+<blockquote>
+  <p>矩阵乘法的实现
+——用 .matmul() 或 @</p>
+</blockquote>
+
+<p>因为张量t相当于2个3* 4的矩阵，不能直接和自己相乘，所以需要再随机生成一个（2，4，k）的矩阵//令k=6</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">import</span> <span class="nn">torch</span>
+
+<span class="n">t</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">s</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">float32</span><span class="p">)</span>
+  
+<span class="n">device</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">device</span><span class="p">(</span><span class="s">"cuda"</span> <span class="k">if</span> <span class="n">torch</span><span class="p">.</span><span class="n">cuda</span><span class="p">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s">"cpu"</span><span class="p">)</span>
+<span class="n">t</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="p">[</span><span class="n">tensor</span><span class="p">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span> <span class="k">for</span> <span class="n">tensor</span> <span class="ow">in</span> <span class="p">[</span><span class="n">t</span><span class="p">,</span><span class="n">s</span><span class="p">]]</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"设备:</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">device</span><span class="p">)</span>
+  
+<span class="n">out</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">s</span><span class="p">)</span>
+<span class="c1">#或者out=t@s
+</span><span class="k">print</span><span class="p">(</span><span class="s">"out:</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">out</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">".shape:</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">out</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">".dtype:</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">out</span><span class="p">.</span><span class="n">dtype</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#运行结果</span>
+设备:
+ cpu
+out:
+ tensor<span class="o">([[[</span><span class="nt">-0</span>.6649, <span class="nt">-0</span>.7129,  1.1296, <span class="nt">-1</span>.8482,  1.4739,  0.7178],
+         <span class="o">[</span><span class="nt">-1</span>.5440,  4.1733, <span class="nt">-3</span>.7995, <span class="nt">-1</span>.6282, <span class="nt">-3</span>.5405, <span class="nt">-0</span>.3269],
+         <span class="o">[</span> 2.4297, <span class="nt">-4</span>.6300,  0.9426,  2.7147,  1.8590,  4.4622]],
+
+        <span class="o">[[</span> 1.0501,  0.4767,  1.8069, <span class="nt">-3</span>.8165,  2.4047, <span class="nt">-1</span>.2312],
+         <span class="o">[</span><span class="nt">-1</span>.2006,  0.1548, <span class="nt">-0</span>.6207,  1.4950, <span class="nt">-1</span>.4686,  1.2318],
+         <span class="o">[</span><span class="nt">-1</span>.5264,  0.0297, <span class="nt">-0</span>.2412, <span class="nt">-1</span>.4789,  1.6743, <span class="nt">-1</span>.2765]]]<span class="o">)</span>
+.shape:
+ torch.Size<span class="o">([</span>2, 3, 6]<span class="o">)</span>
+.dtype:
+ torch.float32
+ 
+</code></pre></div></div>
+
+
+      <h6>说点什么…</h6>
+
+<div id="vcomments"></div>
+    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+    <script>
+        new Valine({
+            el: '#vcomments',
+            appId: 'it55DzxX1q0dJJ3x27Ietfhq-gzGzoHsz',
+            appKey: '0voRk494pOPc2N4hBNvAtgIa',
+            placeholder: '欢迎打扰！',
+            avatar: 'mp'
+        })
+    </script>
+    </div>
+  </section>
+</main>
+
+
+  </div>
+
+  <footer>
+   <div class="friends-links-container">
+      <div class="friends-links-header">
+        <p>Friend_Link😝</p>
+      </div>
+        
+      <div class="friends-list">
+            
+        <div class="friend-item">
+          <a href="https://www.cclmsy.cc" target="_blank" rel="noopener noreferrer">
+            <img src="/assets/images/cclmsy.jpg" alt="好友一" class="friend-avatar">
+          </a>
+          <span class="friend-name">深翼cclmsy</span>
+        </div>
+            
+        <!-- <div class="friend-item">
+          <a href="https://another-example.com" target="_blank" rel="noopener noreferrer">
+            <img src="/path/to/friend-avatar2.jpg" alt="好友二" class="friend-avatar">
+          </a>
+          <span class="friend-name">好友二</span>
+        </div> -->
+            
+      </div>
+    </div>
+    <p class="ps">—— 如果你也想添加友链，请邮箱联系我！💐</p>
+    <hr>
+      <p>&copy; 2025 | Luxynth</p>
+
+</footer>
+
+  <section id="category-modal-bg"></section>
+<section id="category-modal">
+  <h1 id="category-modal-title"></h1>
+  <section id="category-modal-content"></section>
+</section>
+
+  
+<!-- 懒加载 -->
+  <script>
+      window.addEventListener('DOMContentLoaded', (event) => {
+        const images = document.querySelectorAll('img');
+        images.forEach(image => {
+          if (!image.hasAttribute('loading')) {
+            image.setAttribute('loading', 'lazy');
+          }
+        });
+      });
+    </script>
+
+  <!-- ✅ 放这里：MathJax 配置 + 加载脚本 -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+  <script type="text/javascript" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+  <script src="/assets/js/script.js"></script>
+  <div class="announcement-container">
+   <div class="announcement-icon" id="announcement-icon">
+        <img src="/assets/images/logo.svg" alt="公告图标">
+    </div>
+    <div class="announcement-panel" id="announcement-panel">
+        <span class="close-btn">&times;</span>
+            <div class="announcement-content">
+                <div class="announcement-header">
+                <p>公告栏🪧</p>
+            </div>
+            <p>📌亲爱的读者，这里是Luxynth的小破站🌻～</p>
+            <p>📌很高兴，我们在这片广袤的网络世界相遇。请随意漫步，这里的一切都献给你❤️</p>
+            <p>📌文章持续更新中，欢迎你经常来访～</p>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

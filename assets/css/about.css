@@ -1,0 +1,91 @@
+/* 页面背景和基本布局 */
+.about-page {
+  background: transparent;
+  min-height: 100vh;
+  padding: 40px 0; /* 上下留白 */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 确保所有子元素水平居中 */
+  flex: 1;
+}
+
+/* 顶部头像和标题容器 */
+.about-header {
+  text-align: center; /* 居中内容 */
+  margin-bottom: 50px; /* 增加与下方内容的间距 */
+  position: relative;
+  z-index: 10;
+}
+
+/* 居中的单个头像 */
+.about-avatar {
+  width: 150px; /* 调整头像大小 */
+  height: 150px;
+  border-radius: 50%;
+  border: 4px solid white; /* 调整边框 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  object-fit: cover;
+  /* 移除定位，让其自然居中 */
+}
+
+/* 页面标题样式 */
+.about-title {
+  margin-top: 15px;
+  font-size: 3em;
+  color: #ffa4a4; /* 假设标题颜色为白色，与背景搭配 */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.content-container {
+  width: 80%; /* 控制整体宽度 */
+  max-width: 800px;
+  margin: 0 auto; /* 核心：左右外边距自动，实现水平居中 */
+  line-height: 250%;
+  padding: 50px; /* 可选：增加内边距，让内容与容器边缘有间距 */
+  box-sizing: border-box; /* 确保内边距和边框不会增加总宽度 */
+  background: rgba(255, 255, 255, 0.2); 
+  border-radius: 25px; /* 可选：圆角边框 */
+  box-shadow: 8px 8px 3px rgba(0, 0, 0, 0.3);
+  margin-top: 20px; /* 可选：调整与上方导航的间距 */
+  font-size: 1.2em; /* 可选：调整字体大小 */
+  text-shadow:  1px 1px 3px rgba(0, 0, 0, 0.4);
+  margin-bottom: 50px; /* 可选：调整与下方页脚的间距 */
+}
+
+.about-content {
+  margin-bottom: 25px; /* 与标题的间距 */
+  font-size: 1em; /* 调整内容字体大小 */
+  color: #fff; /* 假设内容颜色为白色 */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4); /* 添加文字阴影 */
+}
+
+.about-content a {
+  color: #ffa4a4;
+  border-bottom: 1px solid #ffa4a4;
+  text-shadow: 0px 0px 3px rgba(23, 22, 22, 0.5);
+}
+
+.about-content h1,
+.about-content h2,
+.about-content h3,
+.about-content h4,
+.about-content h5,
+.about-content h6 {
+  margin: 1.75rem 0;
+  font-weight: bolder !important;
+  line-height: 180%;
+}
+
+.about-content hr {
+  border-top: 1px dashed #fff !important;
+  border-bottom: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  margin-bottom: 1.75rem !important;
+}
+
+@media (max-width: 768px) {
+  .content-container {
+    width: 90%; /* 在小屏幕上使用更宽的比例 */
+  }
+}

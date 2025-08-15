@@ -1,0 +1,1394 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-08-15T21:24:23+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Luxynth’s Website</title><author><name>Luxynth</name><email>LiXY0809@outlook.com</email></author><entry><title type="html">Awesome-AIGC-Detection</title><link href="http://localhost:4000/posts/Awesome_AIGC_Detection/" rel="alternate" type="text/html" title="Awesome-AIGC-Detection" /><published>2025-08-15T08:00:00+08:00</published><updated>2025-08-15T08:00:00+08:00</updated><id>http://localhost:4000/posts/Awesome_AIGC_Detection</id><content type="html" xml:base="http://localhost:4000/posts/Awesome_AIGC_Detection/"><![CDATA[<p>本文取自笔者参与合作的github repo文档，并分工于大部分根据论文列表查阅搜集相关材料的工作。该repo的仓库地址为<a href="https://github.com/MuskAI/Awesome-AIGC-Detection">🔗</a>；该repo基于一已有项目<a href="https://github.com/RFAI2025/Awesome-AIGC-Image-Detection/tree/main">戳这里</a>构建（给前辈们撒花致谢🎉），并且对截止2025.7.2之前的AIGC检测相关论文进行整理。</p>
+
+<p>照片本是记录生活的介质，如今却因AI技术面临”信任危机”——AIGC的飞速发展，让”PS都弱爆了”的时代真正来临。当眼见不再为实，如何鉴别AI生成的”照骗”已成为AI安全领域的头号挑战之一。本清单系统整理AIGC图像检测相关研究，希望对大家有所帮助。</p>
+
+<h2 id="datasets">📚Datasets</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Year</th>
+      <th>Dataset</th>
+      <th>Number of Real</th>
+      <th>Number of Fake</th>
+      <th>Source of Real Image</th>
+      <th>Generation Method of Fake Image</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2020</td>
+      <td><a href="https://peterwang512.github.io/CNNDetection/">CNNSpot</a></td>
+      <td>362,000</td>
+      <td>362,000</td>
+      <td>LSUN, ImageNet, CelebA, COCO…</td>
+      <td>ProGAN, StyleGAN, BigGAN, CRN, SITD…</td>
+    </tr>
+    <tr>
+      <td>2023</td>
+      <td><a href="https://genimage-dataset.github.io/">GenImage</a></td>
+      <td>1,331,167</td>
+      <td>1,350,000</td>
+      <td>ImagNet</td>
+      <td>SDMs, Midjourney, BigGAN</td>
+    </tr>
+    <tr>
+      <td>2023</td>
+      <td><a href="https://github.com/Inf-imagine/Sentry">Fake2M</a></td>
+      <td>-</td>
+      <td>2,300,000</td>
+      <td>CC3M</td>
+      <td>SD-V1.5, IF, StyleGAN3</td>
+    </tr>
+    <tr>
+      <td>2023</td>
+      <td><a href="https://github.com/grip-unina/DMimageDetection">DMimage</a></td>
+      <td>200,000</td>
+      <td>200,000</td>
+      <td>COOC, LSUN</td>
+      <td>LDM</td>
+    </tr>
+    <tr>
+      <td>2023</td>
+      <td><a href="https://github.com/poloclub/diffusiondb">DiffusionDB</a></td>
+      <td>3,300,000</td>
+      <td>16,000,000</td>
+      <td>DiscordChatExporter</td>
+      <td>SD</td>
+    </tr>
+    <tr>
+      <td>2024</td>
+      <td>WildFake</td>
+      <td>2,557,278</td>
+      <td>1,013,446</td>
+      <td>ImagNet, Laion, Wukong, COO…</td>
+      <td>BigGAN, StyleGAN, StarGAN, Midjourney, DALLE…</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="papers">📝Papers</h2>
+
+<h3 id="2️⃣0️⃣2️⃣5️⃣">2️⃣0️⃣2️⃣5️⃣</h3>
+
+<ul>
+  <li><img src="https://img.shields.io/badge/25-ICML-blue" alt="" /> Few-Shot Learner Generalizes Across AI-Generated Image Detection  <br />
+[<a href="https://arxiv.org/pdf/2501.08763">Paper</a>] [<a href="https://github.com/teheperinko541/Few-Shot-AIGI-Detector">Code</a>]</li>
+  <li><img src="https://img.shields.io/badge/25-CVPR-green" alt="" /> Forensic Self-Descriptions Are All You Need for Zero-Shot Detection, Open-Set Source Attribution, and Clustering of AI-generated Images   <br />
+[<a href="https://arxiv.org/abs/2503.21003">Paper</a>]</li>
+  <li><img src="https://img.shields.io/badge/25-CVPR-green" alt="" /> Beyond Generation: A Diffusion-based Low-level Feature Extractor for Detecting AI-generated Images    <br />
+[<a href="https://openaccess.thecvf.com/content/CVPR2025/papers/Zhong_Beyond_Generation_A_Diffusion-based_Low-level_Feature_Extractor_for_Detecting_AI-generated_CVPR_2025_paper.pdf">Paper</a>]</li>
+  <li><img src="https://img.shields.io/badge/25-CVPR-green" alt="" /> Secret Lies in Color: Enhancing AI-Generated Images Detection with Color Distribution Analysis     <br />
+[<a href="https://openaccess.thecvf.com/content/CVPR2025/papers/Jia_Secret_Lies_in_Color_Enhancing_AI-Generated_Images_Detection_with_Color_CVPR_2025_paper.pdf">Paper</a>]</li>
+  <li><img src="https://img.shields.io/badge/25-CVPR-green" alt="" /> Towards Universal AI-Generated Image Detection by Variational Information Bottleneck Network    <br />
+[<a href="https://openaccess.thecvf.com/content/CVPR2025/papers/Zhang_Towards_Universal_AI-Generated_Image_Detection_by_Variational_Information_Bottleneck_Network_CVPR_2025_paper.pdf">Paper</a>]</li>
+  <li><img src="https://img.shields.io/badge/25-CVPR-green" alt="" /> Where’s the Liability in the Generative Era? Recovery-based Black-Box Detection of AI-Generated Content    <br />
+[<a href="https://arxiv.org/abs/2505.01008">Paper</a>]</li>
+  <li><img src="https://img.shields.io/badge/25-CVPR-green" alt="" /> FIRE: Robust Detection of Diffusion-Generated Images via Frequency-Guided Reconstruction Error   <br />
+[<a href="https://arxiv.org/abs/2412.07140">Paper</a>]</li>
+  <li><img src="https://img.shields.io/badge/25-CVPR-green" alt="" /> Forensic Self-Descriptions Are All You Need for Zero-Shot Detection, Open-Set Source Attribution, and Clustering of AI-generated Images    <br />
+[<a href="https://arxiv.org/abs/2503.21003">Paper</a>]</li>
+  <li><img src="https://img.shields.io/badge/25-ICML-blue" alt="" /> Orthogonal Subspace Decomposition for Generalizable AI-Generated Image Detection    <br />
+[<a href="https://arxiv.org/pdf/2411.15633">Paper</a>] [<a href="https://github.com/YZY-stack/Effort-AIGI-Detection">code</a>]</li>
+  <li><img src="https://img.shields.io/badge/25-CVPR-green" alt="" /> D<sup>3</sup> Scaling Up Deepfake Detection by Learning   <br />
+[<a href="https://openaccess.thecvf.com/content/CVPR2025/papers/Yang_D3_Scaling_Up_Deepfake_Detection_by_Learning_from_Discrepancy_CVPR_2025_paper.pdf">Paper</a>] [<a href="https://github.com/BigAandSmallq/D3">Code</a>]</li>
+  <li><img src="https://img.shields.io/badge/25-CVPR-green" alt="" /> SIDA: Social Media Image Deepfake Detection, Localization and Explanation with Large Multimodal Model     <br />
+[<a href="https://openaccess.thecvf.com/content/CVPR2025/supplemental/Huang_SIDA_Social_Media_CVPR_2025_supplemental.pdf">Paper</a>] [<a href="https://github.com/hzlsaber/SIDA">Code</a>]</li>
+  <li><img src="https://img.shields.io/badge/25-CVPR-green" alt="" /> A Bias-Free Training Paradigm for More General AI-generated Image Detection    <br />
+[<a href="https://openaccess.thecvf.com/content/CVPR2025/papers/Guillaro_A_Bias-Free_Training_Paradigm_for_More_General_AI-generated_Image_Detection_CVPR_2025_paper.pdf">Paper</a>] [<a href="https://github.com/grip-unina/B-Free">Code</a>]</li>
+  <li><img src="https://img.shields.io/badge/25-CVPR-green" alt="" /> Any-Resolution AI-Generated Image Detection by Spectral Learning   <br />
+[<a href="https://openaccess.thecvf.com/content/CVPR2025/papers/Karageorgiou_Any-Resolution_AI-Generated_Image_Detection_by_Spectral_Learning_CVPR_2025_paper.pdf">Paper</a>] [<a href="https://github.com/mever-team/spai">Code</a>]</li>
+  <li><img src="https://img.shields.io/badge/25-CVPR-green" alt="" /> TextureCrop: Enhancing Synthetic Image Detection through Texture-based Cropping    <br />
+[<a href="https://arxiv.org/pdf/2407.15500">Paper</a>] [<a href="https://github.com/mever-team/texture-crop">Code</a>]</li>
+  <li><img src="https://img.shields.io/badge/25-CVPR-green" alt="" /> HEIE: MLLM-Based Hierarchical Explainable AIGC Image Implausibility Evaluator   <br />
+[<a href="https://openaccess.thecvf.com/content/CVPR2025/papers/Yang_HEIE_MLLM-Based_Hierarchical_Explainable_AIGC_Image_Implausibility_Evaluator_CVPR_2025_paper.pdf">Paper</a>] [<a href="https://github.com/yfthu/HEIE/tree/main/Expl-AIGI-Eval%20Dataset">Datasets</a>] [<a href="https://github.com/yfthu/HEIE/tree/main/Expl-AIGI-Eval%20Dataset">Code</a>]</li>
+  <li><img src="https://img.shields.io/badge/25-KDD-yellow" alt="" /> Improving Synthetic Image Detection Towards Generalization: An Image Transformation Perspective     <br />
+[<a href="https://arxiv.org/pdf/2408.06741">Paper</a>] [<a href="https://github.com/Ouxiang-Li/SAFE">Code</a>]</li>
+  <li><img src="https://img.shields.io/badge/25-WACV-red" alt="" /> SFLD: Reducing the content bias for AI-generated Image Detection   <br />
+[<a href="https://openaccess.thecvf.com/content/WACV2025/papers/Gye_Reducing_the_Content_Bias_for_AI-Generated_Image_Detection_WACV_2025_paper.pdf">Paper</a>]</li>
+  <li><img src="https://img.shields.io/badge/25-ICLR-orange" alt="" /> A SANITY CHECK FOR AI-GENERATED IMAGE DETECTION     <br />
+[<a href="https://arxiv.org/pdf/2406.19435">Paper</a>] [<a href="https://github.com/shilinyan99/AIDE">Code</a>]</li>
+  <li><img src="https://img.shields.io/badge/25-ICLR-orange" alt="" /> FAKESHIELD: EXPLAINABLE IMAGE FORGERY DETECTION AND LOCALIZATION VIA MULTI-MODAL LARGE LANGUAGE MODELS   <br />
+[<a href="https://arxiv.org/pdf/2410.02761">Paper</a>] [<a href="https://github.com/zhipeixu/FakeShield">Code</a>]</li>
+  <li><img src="https://img.shields.io/badge/25-arxiv-purple" alt="" /> Exploring the Collaborative Advantage of Low-level Information on Generalizable AI-Generated Image Detection   <br />
+[<a href="https://arxiv.org/pdf/2504.00463">Paper</a>]</li>
+  <li><img src="https://img.shields.io/badge/25-arxiv-purple" alt="" /> HYPERDET: GENERALIZABLE DETECTION OF SYNTHESIZED IMAGES BY GENERATING AND MERGING A MIXTURE OF HYPER LORAS    <br />
+[<a href="https://arxiv.org/pdf/2410.06044">Paper</a>]</li>
+  <li><img src="https://img.shields.io/badge/25-arxiv-purple" alt="" /> Zooming In on Fakes: A Novel Dataset for Localized AI-Generated Image Detection with Forgery Amplification Approach   <br />
+[<a href="https://arxiv.org/pdf/2504.11922">Paper</a>] [<a href="https://github.com/clpbc/BR-Gen">Code</a>]</li>
+  <li><img src="https://img.shields.io/badge/25-arxiv-purple" alt="" /> AntifakePrompt: Prompt-Tuned Vision-Language Models are Fake Image Detectors  <br />
+[<a href="https://arxiv.org/pdf/2310.17419">Paper</a>] [<a href="https://github.com/nctu-eva-lab/AntifakePrompt">Code</a>]</li>
+  <li><img src="https://img.shields.io/badge/25-arxiv-purple" alt="" /> Can GPT tell us why these images are synthesized? Empowering Multimodal Large Language Models for Forensics   <br />
+[<a href="https://arxiv.org/pdf/2504.11686">Paper</a>]</li>
+  <li><img src="https://img.shields.io/badge/25-arxiv-purple" alt="" /> Exploring Modality Disruption in Multimodal Fake News Detection    <br />
+[<a href="https://arxiv.org/pdf/2504.09154">Paper</a>]</li>
+</ul>
+
+<h3 id="2️⃣0️⃣2️⃣4️⃣">2️⃣0️⃣2️⃣4️⃣</h3>
+
+<ul>
+  <li><img src="https://img.shields.io/badge/24-CVPR-green" alt="" /> FakeInversion: Learning to Detect Images from Unseen Text-to-Image Models by Inverting Stable Diffusion  <br />
+[<a href="https://arxiv.org/pdf/2406.08603">Paper</a>] [<a href="https://fake-inversion.github.io/">Code</a>]</li>
+  <li><img src="https://img.shields.io/badge/24-CVPR-green" alt="" /> Forgery-aware Adaptive Transformer for Generalizable Synthetic   <br />
+[<a href="https://openaccess.thecvf.com/content/CVPR2024/papers/Liu_Forgery-aware_Adaptive_Transformer_for_Generalizable_Synthetic_Image_Detection_CVPR_2024_paper.pdf">Paper</a>] [<a href="https://github.com/Michel-liu/FatFormer?tab=readme-ov-file">Code</a>]</li>
+  <li><img src="https://img.shields.io/badge/24-CVPR-green" alt="" /> Rethinking the Up-Sampling Operations in CNN-based Generative Network for Generalizable Deepfake Detection  <br />
+[<a href="https://openaccess.thecvf.com/content/CVPR2024/papers/Tan_Rethinking_the_Up-Sampling_Operations_in_CNN-based_Generative_Network_for_Generalizable_CVPR_2024_paper.pdf">Paper</a>] [<a href="https://github.com/chuangchuangtan/NPR-DeepfakeDetection">Code</a>]</li>
+  <li><img src="https://img.shields.io/badge/24-CVPR-green" alt="" /> LaRE<sup>2</sup>: Latent Reconstruction Error Based Method for Diffusion-Generated Image Detection  <br />
+[<a href="https://arxiv.org/pdf/2403.17465">Paper</a>] [<a href="https://github.com/luo3300612/LaRE">Code</a>]</li>
+  <li><img src="https://img.shields.io/badge/24-CVPR-green" alt="" /> AEROBLADE: Training-Free Detection of Latent Diffusion Images Using Autoencoder Reconstruction Error   <br />
+[<a href="https://arxiv.org/pdf/2401.17879">Paper</a>] [<a href="https://github.com/jonasricker/aeroblade">Code</a>]</li>
+  <li><img src="https://img.shields.io/badge/24-ACL-brown" alt="" /> MiRAGeNews: Multimodal Realistic AI-Generated News Detection    <br />
+[<a href="https://aclanthology.org/2024.findings-emnlp.959.pdf">Paper</a>] [<a href="https://github.com/nosna/miragenews">Code</a>]</li>
+  <li><img src="https://img.shields.io/badge/24-ECCV-blue" alt="" /> Zero-Shot Detection of AI-Generated Images   <br />
+[<a href="https://www.ecva.net/papers/eccv_2024/papers_ECCV/papers/02665.pdf">Paper</a>] [<a href="https://github.com/grip-unina/ZED/">Code</a>]</li>
+  <li><img src="https://img.shields.io/badge/24-ECCV-blue" alt="" /> Leveraging Representations from Intermediate Encoder-blocks for Synthetic Image Detection   <br />
+[<a href="https://arxiv.org/pdf/2402.19091">Paper</a>] [<a href="https://github.com/mever-team/rine/tree/main?tab=readme-ov-file">Code</a>]</li>
+  <li><img src="https://img.shields.io/badge/24-ECCV-blue" alt="" /> Contrasting Deepfakes Diffusion via Contrastive Learning and Global-Local Similarities    <br />
+[<a href="https://arxiv.org/pdf/2407.20337">Paper</a>] [<a href="https://github.com/aimagelab/CoDE">Code</a>]</li>
+  <li><img src="https://img.shields.io/badge/24-ICML-yellow" alt="" /> DRCT: Diffusion Reconstruction Contrastive Training towards Universal Detection of Diffusion Generated Images [<a href="https://openreview.net/pdf?id=oRLwyayrh1">Paper</a>] [<a href="https://github.com/beibuwandeluori/DRCT">Code</a>]</li>
+  <li><img src="https://img.shields.io/badge/24-ICML-yellow" alt="" /> Exposing the Fake: Effective Diffusion-Generated Images Detection    <br />
+[<a href="https://arxiv.org/pdf/2307.06272">Paper</a>] [<a href="https://github.com/grip-unina/DMimageDetection">Code</a>]</li>
+  <li><img src="https://img.shields.io/badge/24-ICML-yellow" alt="" /> How to Trace Latent Generative Model Generated Images without Artificial Watermark?    <br />
+[<a href="https://arxiv.org/pdf/2405.13360">Paper</a>] [<a href="https://github.com/ZhentingWang/LatentTracer">Code</a>]</li>
+  <li><img src="https://img.shields.io/badge/24-ICMR-orange" alt="" /> CLIPping the Deception: Adapting Vision-Language Models for Universal Deepfake Detection    <br />
+[<a href="https://dl.acm.org/doi/pdf/10.1145/3652583.3658035?__cf_chl_tk=52uMrPHjHFZ_5l.v3gqWEAAZLY7rDpWSndFDcA4MsQ8-1739784272-1.0.1.1-9QaZoAk9FhSYgOCA67OOS7E44PzqmrDa0Bdu6dzlPFY">Paper</a>] [<a href="https://github.com/sfimediafutures/CLIPping-the-Deception">Code</a>]</li>
+  <li><img src="https://img.shields.io/badge/24-ICASSP-red" alt="" /> Harnessing the Power of Large Vision Language Models for Synthetic Image Detection    <br />
+[<a href="https://arxiv.org/pdf/2404.02726">Paper</a>] [<a href="https://github.com/Mamadou-Keita/VLM-DETECT?tab=readme-ov-file">Code</a>]</li>
+  <li><img src="https://img.shields.io/badge/24-ACM_CSS-brown" alt="" /> DE-FAKE: Detection and Attribution of Fake Images Generated by Text-to-Image Generation Models    <br />
+[<a href="https://arxiv.org/pdf/2210.06998">Paper</a>] [<a href="https://github.com/zeyangsha/De-Fake">Code</a>]</li>
+  <li><img src="https://img.shields.io/badge/24-CVPRW-green" alt="" /> Raising the Bar of AI-generated Image Detection with CLIP    <br />
+[<a href="https://openaccess.thecvf.com/content/CVPR2024W/WMF/papers/Cozzolino_Raising_the_Bar_of_AI-generated_Image_Detection_with_CLIP_CVPRW_2024_paper.pdf">Paper</a>] [<a href="https://github.com/grip-unina/ClipBased-SyntheticImageDetection/">Code</a>]</li>
+  <li><img src="https://img.shields.io/badge/24-CVPRW-green" alt="" /> Faster Than Lies: Real-time Deepfake Detection using Binary Neural Networks    <br />
+[<a href="https://openaccess.thecvf.com/content/CVPR2024W/DFAD/papers/Lanzino_Faster_Than_Lies_Real-time_Deepfake_Detection_using_Binary_Neural_Networks_CVPRW_2024_paper.pdf">Paper</a>] [<a href="https://github.com/fedeloper/binary_deepfake_detection">Code</a>]</li>
+  <li><img src="https://img.shields.io/badge/24-NIPS-red" alt="" /> Breaking Semantic Artifacts for Generalized AI-generated Image Detection    <br />
+[<a href="https://papers.nips.cc/paper_files/paper/2024/file/6dddcff5b115b40c998a08fbd1cea4d7-Paper-Conference.pdf">Paper</a>] [<a href="https://github.com/Zig-HS/FakeImageDetection">Code</a>]</li>
+  <li><img src="https://img.shields.io/badge/24-arxiv-purple" alt="" /> Mixture of Low-rank Experts for Transferable AI-Generated Image Detection     <br />
+[<a href="https://arxiv.org/pdf/2404.04883">Paper</a>] [<a href="https://github.com/zhliuworks/CLIPMoLE">Code</a>]</li>
+  <li><img src="https://img.shields.io/badge/24-arxiv-purple" alt="" /> Guided and Fused: Efficient Frozen CLIP-ViT with Feature Guidance and Multi-Stage Feature Fusion for Generalizable Deepfake Detection     <br />
+[<a href="https://arxiv.org/pdf/2408.13697">Paper</a>]</li>
+  <li><img src="https://img.shields.io/badge/24-arxiv-purple" alt="" /> A Single Simple Patch is All You Need for AI-generated Image Detection    <br />
+[<a href="https://arxiv.org/pdf/2402.01123">Paper</a>] [<a href="https://github.com/bcmi/SSP-AI-Generated-Image-Detection">Code</a>]</li>
+  <li><img src="https://img.shields.io/badge/24-arxiv-purple" alt="" /> RIGID: A Training-Free and Model-Agnostic Framework for Robust AI-Generated Image Detection   <br />
+[<a href="https://arxiv.org/pdf/2405.20112">Paper</a>]</li>
+  <li><img src="https://img.shields.io/badge/24-arxiv-purple" alt="" /> Improving Interpretability and Robustness for the Detection of AI-Generated Images   <br />
+[<a href="https://arxiv.org/pdf/2406.15035">Paper</a>]</li>
+  <li><img src="https://img.shields.io/badge/24-arxiv-purple" alt="" /> Continuous fake media detection: adapting deepfake detectors to new generative techniques   <br />
+[<a href="https://arxiv.org/pdf/2406.08171">Paper</a>]</li>
+  <li><img src="https://img.shields.io/badge/24-arxiv-purple" alt="" /> Organic or Diffused: Can We Distinguish Human Art from AI-generated Images?    <br />
+[<a href="https://arxiv.org/pdf/2402.03214">Paper</a>]</li>
+  <li><img src="https://img.shields.io/badge/24-arxiv-purple" alt="" /> Let Real Images be as a Judger, Spotting Fake Images Synthesized with Generative Models    <br />
+[<a href="https://arxiv.org/pdf/2403.16513">Paper</a>]</li>
+  <li><img src="https://img.shields.io/badge/24-arxiv-purple" alt="" /> Detecting Image Attribution for Text-to-Image Diffusion Models in RGB and Beyond   <br />
+[<a href="https://arxiv.org/pdf/2403.19653">Paper</a>] [<a href="https://github.com/k8xu/ImageAttribution">Code</a>] [<a href="https://github.com/k8xu/ImageAttribution">Code</a>]</li>
+  <li><img src="https://img.shields.io/badge/24-arxiv-purple" alt="" /> MLEP: Multi-granularity Local Entropy Patterns for Generalized AI-generated Image Detection    <br />
+[<a href="https://arxiv.org/pdf/2504.13726">Paper</a>]</li>
+  <li><img src="https://img.shields.io/badge/24-arxiv-purple" alt="" /> FFAA: Multimodal Large Language Model based Explainable Open-World Face Forgery Analysis Assistant    <br />
+[<a href="https://arxiv.org/pdf/2408.10072">Paper</a>] [<a href="https://ffaa-vl.github.io">Code</a>]</li>
+</ul>
+
+<h3 id="2️⃣0️⃣2️⃣3️⃣">2️⃣0️⃣2️⃣3️⃣</h3>
+
+<ul>
+  <li><img src="https://img.shields.io/badge/23-CVPR-blue" alt="" /> Towards Universal Fake Image Detectors that Generalize Across Generative Models  <br />
+[<a href="https://openaccess.thecvf.com/content/CVPR2023/papers/Ojha_Towards_Universal_Fake_Image_Detectors_That_Generalize_Across_Generative_Models_CVPR_2023_paper.pdf">Paper</a>] [<a href="https://github.com/WisconsinAIVision/UniversalFakeDetect">Code</a>]</li>
+  <li><img src="https://img.shields.io/badge/23-CVPR-blue" alt="" /> Learning on Gradients: Generalized Artifacts Representation for GAN-Generated Images Detection    <br />
+[<a href="https://openaccess.thecvf.com/content/CVPR2023/papers/Tan_Learning_on_Gradients_Generalized_Artifacts_Representation_for_GAN-Generated_Images_Detection_CVPR_2023_paper.pdf">Paper</a>] [<a href="https://github.com/chuangchuangtan/LGrad">Code</a>]</li>
+  <li><img src="https://img.shields.io/badge/23-ICCV-green" alt="" /> DIRE for Diffusion-Generated Image Detection   <br />
+[<a href="https://openaccess.thecvf.com/content/ICCV2023/papers/Wang_DIRE_for_Diffusion-Generated_Image_Detection_ICCV_2023_paper.pdf">Paper</a>] [<a href="https://github.com/ZhendongWang6/DIRE">Code</a>]</li>
+  <li><img src="https://img.shields.io/badge/23-NeurIPS-yellow" alt="" /> Seeing is not always believing: Benchmarking Human and Model Perception of AI-Generated Images    <br />
+[<a href="https://arxiv.org/pdf/2304.13023">Paper</a>] [<a href="https://github.com/Inf-imagine/Sentry">Code</a>]</li>
+  <li><img src="https://img.shields.io/badge/23-ICASSP-green" alt="" /> On The Detection of Synthetic Images Generated by Diffusion Models   <br />
+[<a href="https://arxiv.org/pdf/2211.00680">Paper</a>] [<a href="https://github.com/grip-unina/DMimageDetection">Code</a>]</li>
+  <li><img src="https://img.shields.io/badge/23-CCS-red" alt="" /> DE-FAKE: Detection and Attribution of Fake Images Generated by Text-to-Image Generation Models    <br />
+[<a href="https://arxiv.org/pdf/2210.06998">Paper</a>]</li>
+  <li><img src="https://img.shields.io/badge/23-OJSP-red" alt="" /> Synthbuster: Towards Detection of Diffusion Model Generated Images   <br />
+[<a href="https://ieeexplore.ieee.org/document/10334046">Paper</a>]</li>
+  <li><img src="https://img.shields.io/badge/23-ICCVW-green" alt="" /> Online Detection of AI-Generated Images   <br />
+[<a href="https://openaccess.thecvf.com/content/ICCV2023W/DFAD/papers/Epstein_Online_Detection_of_AI-Generated_Images__ICCVW_2023_paper.pdf">Paper</a>]</li>
+  <li><img src="https://img.shields.io/badge/23-ICCVW-green" alt="" /> Detecting Images Generated by Deep Diffusion Models using their Local Intrinsic Dimensionality    <br />
+[<a href="https://openaccess.thecvf.com/content/ICCV2023W/DFAD/papers/Lorenz_Detecting_Images_Generated_by_Deep_Diffusion_Models_Using_Their_Local_ICCVW_2023_paper.pdf">Paper</a>]</li>
+  <li><img src="https://img.shields.io/badge/23-arxiv-purple" alt="" /> PatchCraft: Exploring Texture Patch for Efficient AI-generated Image Detection   <br />
+[<a href="https://arxiv.org/pdf/2311.12397v3">Paper</a>]</li>
+  <li><img src="https://img.shields.io/badge/23-arxiv-purple" alt="" /> Generalizable Synthetic Image Detection via Language-guided Contrastive Learning   <br />
+[<a href="https://arxiv.org/pdf/2305.13800">Paper</a>] [<a href="https://github.com/HighwayWu/LASTED">Code</a>]</li>
+  <li><img src="https://img.shields.io/badge/23-arxiv-purple" alt="" /> Raising the Bar of AI-generated Image Detection with CLIP    <br />
+[<a href="https://arxiv.org/pdf/2312.00195">Paper</a>] [<a href="https://github.com/grip-unina/ClipBased-SyntheticImageDetection/">Code</a>]</li>
+  <li><img src="https://img.shields.io/badge/23-arxiv-purple" alt="" /> GenDet: Towards Good Generalizations for AI-Generated Image Detection    <br />
+[<a href="https://arxiv.org/pdf/2312.08880">Paper</a>]</li>
+  <li><img src="https://img.shields.io/badge/23-arxiv-purple" alt="" /> AntifakePrompt: Prompt-Tuned Vision-Language Models are Fake Image Detectors   <br />
+[<a href="https://arxiv.org/pdf/2310.17419">Paper</a>]</li>
+  <li><img src="https://img.shields.io/badge/23-arxiv-purple" alt="" /> Generalizable Synthetic Image Detection via Language-guided Contrastive Learning   <br />
+[<a href="https://arxiv.org/pdf/2305.13800">Paper</a>] [<a href="https://github.com/HighwayWu/LASTED">Code</a>]</li>
+  <li><img src="https://img.shields.io/badge/23-arxiv-purple" alt="" /> PatchCraft: Exploring Texture Patch for Efficient AI-generated Image Detection    <br />
+[<a href="https://arxiv.org/pdf/2311.12397">Paper</a>] [<a href="[https://github.com/HighwayWu/LASTED](https://github.com/Ekko-zn/AIGCDetectBenchmark)">Code</a>]</li>
+</ul>
+
+<h3 id="2️⃣0️⃣2️⃣2️⃣">2️⃣0️⃣2️⃣2️⃣</h3>
+
+<ul>
+  <li><img src="https://img.shields.io/badge/22-ECCV-red" alt="" /> Detecting Generated Images by Real Images  <br />
+[<a href="https://www.ecva.net/papers/eccv_2022/papers_ECCV/papers/136740089.pdf">Paper</a>] [<a href="https://github.com/Tangsenghenshou/Detecting-Generated-Images-by-Real-Images">Code</a>]</li>
+  <li><img src="https://img.shields.io/badge/22-ECCV-red" alt="" /> FingerprintNet: Synthesized Fingerprints for Generated Image Detection    <br />
+[<a href="https://www.ecva.net/papers/eccv_2022/papers_ECCV/papers/136740071.pdf">Paper</a>]</li>
+</ul>
+
+<h3 id="2️⃣0️⃣2️⃣1️⃣">2️⃣0️⃣2️⃣1️⃣</h3>
+
+<ul>
+  <li><img src="https://img.shields.io/badge/21-ICME-blue" alt="" /> Are GAN generated images easy to detect? A critical analysis of the state-of-the-art  <br />
+[<a href="https://arxiv.org/pdf/2104.02617">Paper</a>]</li>
+</ul>
+
+<h3 id="2️⃣0️⃣2️⃣0️⃣">2️⃣0️⃣2️⃣0️⃣</h3>
+
+<ul>
+  <li><img src="https://img.shields.io/badge/20-CVPR-green" alt="" /> CNN-generated images are surprisingly easy to spot… for now   <br />
+[<a href="https://arxiv.org/pdf/1912.11035">Paper</a>] [<a href="https://github.com/peterwang512/CNNDetection">Code</a>]</li>
+  <li><img src="https://img.shields.io/badge/20-CVPR-green" alt="" /> Global Texture Enhancement for Fake Face Detection In the Wild   <br />
+[<a href="https://openaccess.thecvf.com/content_CVPR_2020/papers/Liu_Global_Texture_Enhancement_for_Fake_Face_Detection_in_the_Wild_CVPR_2020_paper.pdf">Paper</a>] [<a href="https://github.com/liuzhengzhe/Global_Texture_Enhancement_for_Fake_Face_Detection_in_the-Wild">Code</a>]</li>
+  <li><img src="https://img.shields.io/badge/20-CVPR-green" alt="" /> Watch your Up-Convolution: CNN Based Generative Deep Neural Networks are Failing to Reproduce Spectral Distributions   <br />
+[<a href="https://openaccess.thecvf.com/content_CVPR_2020/supplemental/Durall_Watch_Your_Up-Convolution_CVPR_2020_supplemental.pdf">Paper</a>] [<a href="https://github.com/cc-hpc-itwm/UpConv">Code</a>]</li>
+  <li><img src="https://img.shields.io/badge/20-ECCV-yellow" alt="" /> What makes fake images detectable? Understanding properties that generalize   <br />
+[<a href="https://www.ecva.net/papers/eccv_2020/papers_ECCV/papers/123710103.pdf">Paper</a>] [<a href="https://github.com/chail/patch-forensics">Code</a>]</li>
+  <li><img src="https://img.shields.io/badge/20-ECCV-yellow" alt="" /> FingerprintNet: Synthesized Fingerprints for Generated Image Detection    <br />
+[<a href="https://www.ecva.net/papers/eccv_2022/papers_ECCV/papers/136740071.pdf">Paper</a>] [<a href="https://github.com/prip-lab/fingerprint-synthesis">Code</a>]🏷️（代码貌似非官方）</li>
+</ul>]]></content><author><name>Luxynth</name><email>LiXY0809@outlook.com</email></author><category term="深度学习" /><category term="论文整理" /><summary type="html"><![CDATA[本文取自笔者参与合作的github repo文档，并分工于大部分根据论文列表查阅搜集相关材料的工作。该repo的仓库地址为🔗；该repo基于一已有项目戳这里构建（给前辈们撒花致谢🎉），并且对截止2025.7.2之前的AIGC检测相关论文进行整理。]]></summary></entry><entry><title type="html">Jekyll博客搭建教程（上）</title><link href="http://localhost:4000/posts/Jekyll%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B-%E4%B8%8A/" rel="alternate" type="text/html" title="Jekyll博客搭建教程（上）" /><published>2025-08-12T08:00:00+08:00</published><updated>2025-08-12T08:00:00+08:00</updated><id>http://localhost:4000/posts/Jekyll%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%8A%EF%BC%89</id><content type="html" xml:base="http://localhost:4000/posts/Jekyll%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B-%E4%B8%8A/"><![CDATA[<p>PS：</p>
+<ul>
+  <li>笔者想要写这篇教程的初衷是因为放眼b站等平台，对于Jekyll框架的教程局限于相关环境配置以及如何去发布自己的博客文章，但是笔者经过将material-you主题进行魔改后才发现，目前还没有找到结构性的教程；教你如何套用以及如何上传文章的通俗简易教程比比皆是，但是如果你想要改成自己喜欢的样式的话就很难了。</li>
+  <li>笔者也是让gpt和gemini成为左膀右臂磨石子过河终于弄清了框架的运作模式，但是如果大家有一份和笔者一样的魔改的心，那么希望下面的内容可以给你减少查阅资料和寻找教程所需花费的精力。</li>
+  <li>由于笔者电脑系统为MacOS，然而为了大家方便，前期环境配置内容若有区别都会将Mac和Windows模块进行区分，以及我之前已经完成的安装模块我就不重复操作进行截屏配图了，有看不懂的请在评论区进行留言～～</li>
+</ul>
+
+<hr />
+<h1 id="一安装ruby环境">一、安装Ruby环境</h1>
+<h2 id="macos系统">MacOS系统</h2>
+<p>macOS 虽然自带 Ruby，但为了避免权限问题和便于版本管理，一般使用 Homebrew 和 rbenv。</p>
+<ul>
+  <li><strong>安装Homebrew</strong>：如果没有安装过Homebrew的话在终端运行下面这个命令；
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/bin/bash <span class="nt">-c</span> <span class="s2">"</span><span class="si">$(</span>curl <span class="nt">-fsSL</span> https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh<span class="si">)</span><span class="s2">"</span>
+</code></pre></div>    </div>
+    <p>按照提示输入密码等待即可安装完成（值得注意的是输入密码的时候窗口不会有任何响应，只管输入即可）</p>
+  </li>
+  <li><strong>安装并配置rbenv</strong>：rbenv是Ruby版本的管理工具
+接下来我们用Homebrew对rbenv进行下载
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew <span class="nb">install </span>rbenv
+</code></pre></div>    </div>
+    <p>然后将rbenv添加到你的shell配置文件中（默认为～/.zshrc），这样每次打开中断的时候rbenv都会自动加载</p>
+  </li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s1">'if which rbenv &gt; /dev/null; then eval "$(rbenv init - zsh)"; fi'</span> <span class="o">&gt;&gt;</span> ~/.zshrc
+
+<span class="nb">source</span> ~/.zshrc
+</code></pre></div></div>
+<ul>
+  <li><strong>安装Ruby</strong>：接着我们要使用rbenv安装一个最新且稳定的Ruby版本，并且将其设为全局默认版本，防止后期出现不必要的麻烦
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rbenv <span class="nb">install </span>3.3.0
+rbenv global 3.3.0
+ruby <span class="nt">-v</span>
+</code></pre></div>    </div>
+    <p>ruby -v 用于验证版本是否已切换为3.3.0</p>
+  </li>
+</ul>
+
+<h2 id="windows系统️">Windows系统🖥️</h2>
+<p>Windows不自带Ruby，所以需要手动安装确保开发环境完整。</p>
+<ul>
+  <li>安装 Git for Windows：
+    <ul>
+      <li>访问<a href="https://gitforwindows.org">Git for Windows</a>官网下载安装程序。</li>
+      <li>在安装过程中，强烈建议选择使用 Git Bash 作为默认终端，它可以提供类 Unix 环境，避免很多路径和命令问题。(eg:Win系统在cmd输入路径的时候一般使用反斜杠’',而在Jekyll的配置性文件中我们填写路径时用斜杠‘/’)
+安装完成后，以后所有命令都在 Git Bash 中执行。</li>
+    </ul>
+  </li>
+  <li>安装 RubyInstaller：
+    <ul>
+      <li>访问<a href="https://rubyinstaller.org">RubyInstaller for Windows</a>官网。</li>
+      <li>下载并运行<strong>Ruby+Devkit</strong>版本。这个版本包含了所有必要的开发工具，可以顺利安装 Jekyll。<strong>安装时请确保勾选 “Add Ruby executables to your PATH” 选项。</strong>
+安装完成后，会弹出一个命令行窗口，询问您是否安装 MSYS2 等依赖。请选择默认选项（通常是 1, 2, 3），按回车键完成安装。</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="二安装jekyll和bundler">二、安装Jekyll和Bundler</h1>
+<p>🎉该步骤MacOS与Windows方法相同故不再分模块啦！</p>
+<ul>
+  <li><strong>安装Bundler</strong>：Bundler 是一个 Ruby 的依赖管理工具，后期本地预览调试的时候经常用到。
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem <span class="nb">install </span>bundler
+</code></pre></div>    </div>
+  </li>
+  <li><strong>安装Jekyll</strong>：Jekyll 本身也是一个 Ruby Gem
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem <span class="nb">install </span>jekyll
+</code></pre></div>    </div>
+    <h3 id="创建和初始化博客">创建和初始化博客📌</h3>
+    <p>首先选择目录，你要将你的博客文件创建在哪里，然后通过cd命令行进入你要创建的所在目录。创建新博客：运行以下命令，Jekyll 会创建一个名为 my-jekyll-blog 的新文件夹。</p>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jekyll new my-jekyll-blog
+</code></pre></div>    </div>
+    <p><img src="/assets/images/posts/5-1.jpg" alt="alt text" /></p>
+  </li>
+</ul>
+
+<p>可将my-jekyll-blog替换成你想要的文件夹名称，生成的文件结构如下：
+<img src="/assets/images/posts/5-2.jpg" alt="alt text" /></p>
+
+<p>分几种情况：</p>
+<ul>
+  <li>部署在GitHub Pages上：
+  你先将你的“用户名.github.io“仓库克隆下来，当然里面是空白的或者是仅有README；然后你在仓库文件夹所在的目录生成你的my-jekyll-blog文件夹，然后将文件夹里的内容全部转移到仓库说在文件夹里。</li>
+  <li>之后上传到服务器：
+  创建好你的my-jekyll-blog文件夹后在里面编辑即可</li>
+</ul>
+
+<p>现在进入目录并安装依赖,这会根据 Gemfile 安装 Jekyll 及其主题所需的所有 Gem 包。</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>my-jekyll-blog
+bundle <span class="nb">install</span>
+</code></pre></div></div>
+<p><img src="/assets/images/posts/5-3.jpg" alt="alt text" />
+可见有警告信息 <strong>[DEPRECATED] Platform :mingw, :x64_mingw, :mswin is deprecated. Please use platform :windows instead.</strong></p>
+<ul>
+  <li>[DEPRECATED]表示“已弃用”，这意味着这个功能或写法在未来版本的 Bundler 中可能会被移除或不再支持；</li>
+  <li>Platform :mingw, :x64_mingw, :mswin is deprecated.: 明确指出，在 Gemfile 中用来指定 Windows 平台的写法（platform :mingw, platform :x64_mingw, platform :mswin）已经过时了。</li>
+</ul>
+
+<p><strong>解决方案</strong>：
+打开Gemfile文件（在Jekyll博客项目的根目录）
+找到并修改platform配置，将<strong>gem “tzinfo-data”, platforms: [:mingw, :x64_mingw, :mswin]</strong>改为<strong>gem “tzinfo-data”, platforms: :windows</strong></p>
+
+<p>👆这条针对windows系统，只有从Windows环境的jekyll中复制过来才会出现这个警告⚠️，然而你不解决也不会对你的网站部署造成任何影响</p>
+
+<p>❗️为了避免中文字乱码，一定一定要打开_config.yml文件添加配置：</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>encoding: utf-8
+</code></pre></div></div>
+<p>并且确保你的编辑器是以UTF-8格式保存所有文件。</p>
+
+<ul>
+  <li><strong>本地预览</strong>：确保现在在博客文件夹这个目录里，输入以下命令启动本地服务器
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">exec </span>jekyll serve
+</code></pre></div>    </div>
+    <p>然后在浏览器中访问http://localhost:4000，即可看到默认博客页面。
+<img src="/assets/images/posts/5-4.jpg" alt="alt text" />
+<img src="/assets/images/posts/5-5.jpg" alt="alt text" />
+<img src="/assets/images/posts/5-6.jpg" alt="alt text" /></p>
+  </li>
+</ul>
+
+<p>如上图是jekyll默认的主题页面，至此你的博客网站已经搭建成功，内容的上传以及样式的修改<strong>且听下回分解</strong></p>]]></content><author><name>Luxynth</name><email>LiXY0809@outlook.com</email></author><category term="Jekyll" /><category term="教程" /><summary type="html"><![CDATA[PS： 笔者想要写这篇教程的初衷是因为放眼b站等平台，对于Jekyll框架的教程局限于相关环境配置以及如何去发布自己的博客文章，但是笔者经过将material-you主题进行魔改后才发现，目前还没有找到结构性的教程；教你如何套用以及如何上传文章的通俗简易教程比比皆是，但是如果你想要改成自己喜欢的样式的话就很难了。 笔者也是让gpt和gemini成为左膀右臂磨石子过河终于弄清了框架的运作模式，但是如果大家有一份和笔者一样的魔改的心，那么希望下面的内容可以给你减少查阅资料和寻找教程所需花费的精力。 由于笔者电脑系统为MacOS，然而为了大家方便，前期环境配置内容若有区别都会将Mac和Windows模块进行区分，以及我之前已经完成的安装模块我就不重复操作进行截屏配图了，有看不懂的请在评论区进行留言～～ 一、安装Ruby环境 MacOS系统 macOS 虽然自带 Ruby，但为了避免权限问题和便于版本管理，一般使用 Homebrew 和 rbenv。 安装Homebrew：如果没有安装过Homebrew的话在终端运行下面这个命令； /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" 按照提示输入密码等待即可安装完成（值得注意的是输入密码的时候窗口不会有任何响应，只管输入即可） 安装并配置rbenv：rbenv是Ruby版本的管理工具 接下来我们用Homebrew对rbenv进行下载 brew install rbenv 然后将rbenv添加到你的shell配置文件中（默认为～/.zshrc），这样每次打开中断的时候rbenv都会自动加载]]></summary></entry><entry><title type="html">Pytorch笔记📓第一弹</title><link href="http://localhost:4000/posts/pytorch1/" rel="alternate" type="text/html" title="Pytorch笔记📓第一弹" /><published>2025-08-10T08:00:00+08:00</published><updated>2025-08-10T08:00:00+08:00</updated><id>http://localhost:4000/posts/pytorch1</id><content type="html" xml:base="http://localhost:4000/posts/pytorch1/"><![CDATA[<h3 id="pytorch的核心张量">Pytorch的核心——张量</h3>
+
+<p>在深度学习中，所有的数据和模型参数都用张量表示。</p>
+
+<p>张量（Tensor）可以看成是：</p>
+
+<ul>
+  <li><strong>0 维</strong>：标量（scalar），比如 3</li>
+  <li><strong>1 维</strong>：向量（vector），比如 [1, 2, 3]</li>
+  <li><strong>2 维</strong>：矩阵（matrix）</li>
+  <li><strong>3 维及以上</strong>：高维数组，比如一批图片 (batch_size, height, width, channels)</li>
+</ul>
+
+<p>📌 在 PyTorch 里：</p>
+
+<ul>
+  <li><strong>torch.tensor()</strong> 创建张量</li>
+  <li><strong>.shape</strong> 查看维度</li>
+  <li><strong>.dtype</strong> 数据类型</li>
+  <li><strong>.to(device)</strong> 把张量放到 CPU/GPU</li>
+</ul>
+
+<h3 id="gpu加速">GPU加速</h3>
+
+<p>如果有GPU，PyTorch 会自动帮你用 CUDA 加速</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">device</span><span class="p">(</span><span class="s">"cuda"</span> <span class="k">if</span> <span class="n">torch</span><span class="p">.</span><span class="n">cuda</span><span class="p">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s">"cpu"</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">).</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="自动求导">自动求导</h3>
+
+<p>PyTorch 可以自动计算梯度，这就是深度学习训练的基础。</p>
+
+<ul>
+  <li>创建张量时加 requires_grad=True，PyTorch 会记录计算图。</li>
+  <li>调用 .backward() 自动反向传播，计算梯度。</li>
+  <li>梯度存放在 .grad 里。</li>
+</ul>
+
+<h4 id="第一个pytorch文件">第一个Pytorch文件</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#myfirstPytorch
+</span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="k">print</span><span class="p">(</span><span class="n">torch</span><span class="p">.</span><span class="n">__version__</span><span class="p">)</span>
+  
+<span class="n">x</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]],</span><span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">y</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"x:</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"y:</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+
+<span class="n">z</span><span class="o">=</span><span class="n">x</span><span class="o">+</span><span class="n">y</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"z:</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">z</span><span class="p">)</span>
+
+<span class="n">device</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">device</span><span class="p">(</span><span class="s">"cuda"</span> <span class="k">if</span> <span class="n">torch</span><span class="p">.</span><span class="n">cuda</span><span class="p">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s">"cpu"</span><span class="p">)</span>
+<span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"设备:"</span><span class="p">,</span><span class="n">device</span><span class="p">)</span>
+  
+<span class="n">a</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="n">requires_grad</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">b</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">c</span><span class="o">=</span><span class="n">a</span><span class="o">*</span><span class="n">b</span>
+<span class="n">out</span><span class="o">=</span><span class="n">c</span><span class="p">.</span><span class="nb">sum</span><span class="p">()</span>
+<span class="n">out</span><span class="p">.</span><span class="n">backward</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"a的梯度:</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">a</span><span class="p">.</span><span class="n">grad</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#运行结果</span>
+2.6.0
+x:
+ tensor<span class="o">([[</span>1., 2.],
+        <span class="o">[</span>3., 4.]]<span class="o">)</span>
+y:
+ tensor<span class="o">([[</span>1., 1.],
+        <span class="o">[</span>1., 1.]]<span class="o">)</span>
+x:
+ tensor<span class="o">([[</span>2., 3.],
+        <span class="o">[</span>4., 5.]]<span class="o">)</span>
+设备: cpu
+a的梯度:
+ tensor<span class="o">([[</span> 0.4779,  1.5350,  0.0037,  1.2580],
+        <span class="o">[</span><span class="nt">-0</span>.5812,  1.6379,  0.7242,  1.2655],
+        <span class="o">[</span><span class="nt">-0</span>.6917, <span class="nt">-0</span>.8033, <span class="nt">-1</span>.8678, <span class="nt">-1</span>.1883]]<span class="o">)</span>
+
+</code></pre></div></div>
+
+<h3 id="进阶任务-️">进阶任务 🖊️</h3>
+<ul>
+  <li>创建一个 (2, 3, 4) 的随机张量 t（float 类型）</li>
+  <li>对它做：
+    <ul>
+      <li>加法（+ 1）</li>
+      <li>减法（- 0.5）</li>
+      <li>矩阵乘法（用 .matmul() 或 @）*</li>
+    </ul>
+  </li>
+  <li>把它移到 GPU（如果没有 GPU 就依然用 CPU），并打印：
+    <ul>
+      <li>.shape</li>
+      <li>.dtype</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">import</span> <span class="nn">torch</span>
+
+<span class="n">t</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">x</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"t:</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">t</span><span class="p">)</span>
+<span class="n">a</span><span class="o">=</span><span class="n">t</span><span class="o">+</span><span class="n">x</span>
+<span class="n">b</span><span class="o">=</span><span class="n">t</span><span class="o">-</span><span class="n">x</span><span class="o">*</span><span class="mf">0.5</span>
+  
+<span class="n">device</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">device</span><span class="p">(</span><span class="s">"cuda"</span> <span class="k">if</span> <span class="n">torch</span><span class="p">.</span><span class="n">cuda</span><span class="p">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s">"cpu"</span><span class="p">)</span>
+<span class="c1"># t=t.to(device)
+# x=x.to(device)
+# a=a.to(device)
+# b=b.to(device)
+</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="p">[</span><span class="n">tensor</span><span class="p">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span> <span class="k">for</span> <span class="n">tensor</span> <span class="ow">in</span> <span class="p">[</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">]]</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"设备:</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">device</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"a:</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">a</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"b:</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+  
+<span class="k">print</span><span class="p">(</span><span class="s">".shape:</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">t</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">".dtype:</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">t</span><span class="p">.</span><span class="n">dtype</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#运行结果</span>
+t:
+ tensor<span class="o">([[[</span><span class="nt">-0</span>.5283,  1.2119,  1.6814,  0.6434],
+         <span class="o">[</span><span class="nt">-0</span>.3742, <span class="nt">-0</span>.8421, <span class="nt">-1</span>.6161,  0.2300],
+         <span class="o">[</span><span class="nt">-1</span>.2224,  0.4019, <span class="nt">-1</span>.4070,  0.4027]],
+
+        <span class="o">[[</span> 0.0407, <span class="nt">-0</span>.5536, <span class="nt">-0</span>.7496,  1.7721],
+         <span class="o">[</span> 1.4842,  0.2181, <span class="nt">-0</span>.0732, <span class="nt">-1</span>.1741],
+         <span class="o">[</span> 0.4077, <span class="nt">-0</span>.7331, <span class="nt">-2</span>.2628,  0.8560]]]<span class="o">)</span>
+设备:
+ cpu
+a:
+ tensor<span class="o">([[[</span> 0.4717,  2.2119,  2.6814,  1.6434],
+         <span class="o">[</span> 0.6258,  0.1579, <span class="nt">-0</span>.6161,  1.2300],
+         <span class="o">[</span><span class="nt">-0</span>.2224,  1.4019, <span class="nt">-0</span>.4070,  1.4027]],
+
+        <span class="o">[[</span> 1.0407,  0.4464,  0.2504,  2.7721],
+         <span class="o">[</span> 2.4842,  1.2181,  0.9268, <span class="nt">-0</span>.1741],
+         <span class="o">[</span> 1.4077,  0.2669, <span class="nt">-1</span>.2628,  1.8560]]]<span class="o">)</span>
+b:
+ tensor<span class="o">([[[</span><span class="nt">-1</span>.0283,  0.7119,  1.1814,  0.1434],
+         <span class="o">[</span><span class="nt">-0</span>.8742, <span class="nt">-1</span>.3421, <span class="nt">-2</span>.1161, <span class="nt">-0</span>.2700],
+         <span class="o">[</span><span class="nt">-1</span>.7224, <span class="nt">-0</span>.0981, <span class="nt">-1</span>.9070, <span class="nt">-0</span>.0973]],
+
+        <span class="o">[[</span><span class="nt">-0</span>.4593, <span class="nt">-1</span>.0536, <span class="nt">-1</span>.2496,  1.2721],
+         <span class="o">[</span> 0.9842, <span class="nt">-0</span>.2819, <span class="nt">-0</span>.5732, <span class="nt">-1</span>.6741],
+         <span class="o">[</span><span class="nt">-0</span>.0923, <span class="nt">-1</span>.2331, <span class="nt">-2</span>.7628,  0.3560]]]<span class="o">)</span>
+.shape:
+ torch.Size<span class="o">([</span>2, 3, 4]<span class="o">)</span>
+.dtype:
+ torch.float32
+ 
+</code></pre></div></div>
+
+<blockquote>
+  <p>矩阵乘法的实现
+——用 .matmul() 或 @</p>
+</blockquote>
+
+<p>因为张量t相当于2个3* 4的矩阵，不能直接和自己相乘，所以需要再随机生成一个（2，4，k）的矩阵//令k=6</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">import</span> <span class="nn">torch</span>
+
+<span class="n">t</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">s</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">float32</span><span class="p">)</span>
+  
+<span class="n">device</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">device</span><span class="p">(</span><span class="s">"cuda"</span> <span class="k">if</span> <span class="n">torch</span><span class="p">.</span><span class="n">cuda</span><span class="p">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s">"cpu"</span><span class="p">)</span>
+<span class="n">t</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="p">[</span><span class="n">tensor</span><span class="p">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span> <span class="k">for</span> <span class="n">tensor</span> <span class="ow">in</span> <span class="p">[</span><span class="n">t</span><span class="p">,</span><span class="n">s</span><span class="p">]]</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"设备:</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">device</span><span class="p">)</span>
+  
+<span class="n">out</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">s</span><span class="p">)</span>
+<span class="c1">#或者out=t@s
+</span><span class="k">print</span><span class="p">(</span><span class="s">"out:</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">out</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">".shape:</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">out</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">".dtype:</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">out</span><span class="p">.</span><span class="n">dtype</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#运行结果</span>
+设备:
+ cpu
+out:
+ tensor<span class="o">([[[</span><span class="nt">-0</span>.6649, <span class="nt">-0</span>.7129,  1.1296, <span class="nt">-1</span>.8482,  1.4739,  0.7178],
+         <span class="o">[</span><span class="nt">-1</span>.5440,  4.1733, <span class="nt">-3</span>.7995, <span class="nt">-1</span>.6282, <span class="nt">-3</span>.5405, <span class="nt">-0</span>.3269],
+         <span class="o">[</span> 2.4297, <span class="nt">-4</span>.6300,  0.9426,  2.7147,  1.8590,  4.4622]],
+
+        <span class="o">[[</span> 1.0501,  0.4767,  1.8069, <span class="nt">-3</span>.8165,  2.4047, <span class="nt">-1</span>.2312],
+         <span class="o">[</span><span class="nt">-1</span>.2006,  0.1548, <span class="nt">-0</span>.6207,  1.4950, <span class="nt">-1</span>.4686,  1.2318],
+         <span class="o">[</span><span class="nt">-1</span>.5264,  0.0297, <span class="nt">-0</span>.2412, <span class="nt">-1</span>.4789,  1.6743, <span class="nt">-1</span>.2765]]]<span class="o">)</span>
+.shape:
+ torch.Size<span class="o">([</span>2, 3, 6]<span class="o">)</span>
+.dtype:
+ torch.float32
+ 
+</code></pre></div></div>]]></content><author><name>Luxynth</name><email>LiXY0809@outlook.com</email></author><category term="深度学习" /><category term="Pytorch" /><summary type="html"><![CDATA[Pytorch的核心——张量]]></summary></entry><entry><title type="html">LLM简介</title><link href="http://localhost:4000/posts/LLM%E7%AE%80%E4%BB%8B/" rel="alternate" type="text/html" title="LLM简介" /><published>2025-07-20T08:00:00+08:00</published><updated>2025-07-20T08:00:00+08:00</updated><id>http://localhost:4000/posts/LLM%E7%AE%80%E4%BB%8B</id><content type="html" xml:base="http://localhost:4000/posts/LLM%E7%AE%80%E4%BB%8B/"><![CDATA[<h2 id="llm的训练历程">LLM的训练历程</h2>
+
+<p><strong>非神经网络时代的完全监督学习（特征工程）</strong></p>
+<ul>
+  <li>利用特定的规则，统计学的模型对特征进行匹配和利用，进而完成特定的NLP任务——&gt;常见方法：贝叶斯隐马尔可夫模型等</li>
+</ul>
+
+<p><strong>基于神经网络的完全监督学习 （架构工程）</strong></p>
+<ul>
+  <li>不用手动设置特征和规则，节省了人力资源，但需要人工设计合适的神经网络架构对数据集进行训练——&gt;常见方法：CNN、RNN、Transformer等</li>
+</ul>
+
+<p><strong>预训练+精调范式（目标工程）</strong></p>
+<ul>
+  <li>现在数据集上进行训练，然后里用预训练好的模型在下游任务的特定数据集上进行fine-tuning，使模型更适应下游任务</li>
+</ul>
+
+<p><strong>预训练+提示——预测范式（prompt工程）</strong></p>
+<ul>
+  <li>将下游任务的建模方式重新定义，通过合适的prompt来实现直接在预训练模型上解决下游任务，这种模型需要极少的（甚至为零）下游任务数据，使小样本、零样本学习成为可能</li>
+</ul>
+
+<h2 id="llm主要类别介绍">LLM主要类别介绍</h2>
+
+<h4 id="transformer">Transformer</h4>
+
+<p><img src="/assets/images/posts/4-1.png" alt="配图" /></p>
+
+<p><strong>分类</strong>：</p>
+<ul>
+  <li>BERT：只使用了transformer编码器encoder部分而完全舍弃解码器decoder
+<img src="/assets/images/posts/4-2.jpg" alt="配图" />
+    <ul>
+      <li>预训练任务：
+        <ul>
+          <li>Masked LM：随机掩盖掉一些词然后联系上下文进行预测该词（完形填空）</li>
+          <li>Next Sentence Prediction：判断第二个句子是不是第一个句子的下文</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+<ul>
+  <li>GPT：采用了transformer经典架构的解码器decoder但是未完全照搬（去除了中间段的muti- head attention，并且相比经典架构6个decoder block，GPT采用了12个）
+<img src="/assets/images/posts/4-3.jpg" alt="配图" />
+    <ul>
+      <li>预训练任务：
+        <ul>
+          <li>无监督预训练（语言建模）：模型根据前面的文本来预测文本的下一个词</li>
+          <li>训练目标：最大似然估计（最大化正确预测下一个词的概率</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+<ul>
+  <li>T5：
+    <ul>
+      <li>相当于将所有任务都转化为文本转化任务，进行任务统一的结构</li>
+      <li>主题架构还是Transformer，但采用简化版的规范化层；使用一种简单版的相对位置编码， 在同一层内不同注意头的位置编码都是独立学习的
+<img src="/assets/images/posts/4-4.jpg" alt="配图" /></li>
+      <li>预训练任务：
+        <ul>
+          <li>自监督预训练：Masked LM（同BERT）</li>
+          <li>多任务预训练：利用不同任务的标注数据进行有监督的多任务的预训练</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>]]></content><author><name>Luxynth</name><email>LiXY0809@outlook.com</email></author><category term="深度学习" /><summary type="html"><![CDATA[LLM的训练历程]]></summary></entry><entry><title type="html">MLLM的AIGC检测</title><link href="http://localhost:4000/posts/MLLM%E7%9A%84AIGC%E6%A3%80%E6%B5%8B/" rel="alternate" type="text/html" title="MLLM的AIGC检测" /><published>2025-05-03T08:00:00+08:00</published><updated>2025-05-03T08:00:00+08:00</updated><id>http://localhost:4000/posts/MLLM%E7%9A%84AIGC%E6%A3%80%E6%B5%8B</id><content type="html" xml:base="http://localhost:4000/posts/MLLM%E7%9A%84AIGC%E6%A3%80%E6%B5%8B/"><![CDATA[<h2 id="can-gpt-tell-us-why-these-images-are-synthesized-empowering-mllms-for-forensics">Can GPT Tell Us Why These Images Are Synthesized? Empowering MLLMs for Forensics</h2>
+<p><a href="/assets/files/Empowering_MLLMs_for_Forensics.pdf" download="">点击下载原文pdf❤️</a></p>
+
+<h2 id="️摘要">✏️摘要</h2>
+<ul>
+  <li><strong>background</strong>：MLLMs不擅长通过发现图像的伪造细节对抗鉴别AIGC的生成图像</li>
+  <li><strong>methods</strong>：从语义层面分析伪造线索的框架（评估图像真实性、定位篡改区域、提供证并<strong>追踪生成方法</strong>）
+    <ul>
+      <li><strong>research</strong>：GPT-4v在Autosplice数据集上的准确率为92.1%，在LaMa数据集上为86.3%（性能接近当前最先进的AIGC检测方法）</li>
+      <li><strong>discussion</strong>：MLLMs在该任务重的局限性以及未来的改进方向</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="引言">💡引言</h2>
+<p>在影像生成消极影响猖獗的情况下，目前对于deepfake的辨别方法大多依赖于小规模的机器学习模型，尤其是CNN和光流分析。
+	光流是计算机视觉中用于估计图像序列中像素运动的技术，通过分析连续帧（如视频）中物体的运动模式，得到每个像素的运动矢量场。其核心假设是亮度恒常性（同一像素在相邻帧中的亮度不变）。</p>
+
+<p>典型应用场景：
+    运动目标检测与跟踪、视频稳像（Video Stabilization）、自动驾驶（场景流估计）、动作识别（人体运动分析）</p>
+
+<p>当下虽有MLLMs的兴起促成视觉与语言的合并与统一，然而它们对于生成图像的识别性能仍然有限。</p>
+
+<p>该研究通过激发MLLMs对于伪造识别的文本分析能力填补这个研究空白，（传统的深度伪造识别技术仅停留于例如像素不一致性和频率分析等固有方法）并如下图分两个步骤：</p>
+
+<p><img src="/assets/images/posts/2-1.jpg" alt="配图" /></p>
+
+<ul>
+  <li>1.识别图像的真伪与否</li>
+  <li>2.分析找出对应的伪造异常点</li>
+</ul>
+
+<p>例如该图中：</p>
+<ul>
+  <li>异常锐化的不自然的边缘</li>
+  <li>不和谐的亮面高光</li>
+  <li>两个单面煎的蛋黄（通常认为是一个，忽略双黄蛋的情况）</li>
+</ul>
+
+<p><strong>研究贡献分析</strong>：</p>
+
+<ul>
+  <li>MLLMs在预训练过程中就已经获得的语义认知可以助于其辨别自然和人工智能生成的图片，并且不像传统的机器学习辨别方法，大模型可以关于他们认定的选项（自然or生成）提供人类可理解的解释。</li>
+  <li>在激发大模型伪造分析能力时基于五个基本原则设计了提示，并采用联系上下文（ICL）的策略，使多模态大模型展现了识别并描述伪造特征并追踪伪造方法的能力</li>
+  <li>该研究方法能充分利用大模型的多任务处理能力，在识别生成图像的准确率达到92.1%</li>
+</ul>
+
+<h2 id="相关工作">📁相关工作</h2>
+<h4 id="合成图像检测">合成图像检测🔍</h4>
+<p>该研究主要采用了三种方法：</p>
+<ul>
+  <li>1.<strong>空间特征学习</strong>✨：从RGB输入中提取空间特征，一些方法使用全局特征，另一些则强调低级特征和局部图像块来提高检测效果。</li>
+  <li>2.<strong>频域特征学习</strong>：利用频率域分析识别伪造图像中的伪影，使用如频谱幅度和二维傅里叶变换（ 2D-FFT）等特征。</li>
+</ul>
+
+<p><img src="/assets/images/posts/2-2.jpg" alt="配图" /></p>
+
+<ul>
+  <li>3.<strong>特征融合方法</strong>：将多种特征（如RGB和YCbCr颜色空间、频率与空间特征）融合，以增强对AI合成图像的检测能力（兼具1和2）</li>
+</ul>
+
+<h4 id="多模态大模型">多模态大模型</h4>
+<p>将大模型文本与图像的对其统一得到的多模态大模型可用于医疗诊断应用、对视频的理解归纳和对图像的编辑，前景光明。</p>
+
+<h2 id="方法论">📖方法论</h2>
+<h4 id="结构概述">结构概述</h4>
+
+<p>目标包含两个议题：</p>
+<ul>
+  <li>利用大模型的文本理解能力和已有知识去分析和判断图像</li>
+  <li>进一步辅助定位出特定伪造区域并解释伪造方式</li>
+</ul>
+
+<p><strong>解决方式：</strong>
+  ～ 一种直观的方法：提示和微调一个大规模的多模态大模型来输出判断结果以及分析</p>
+
+<p><strong>Shortcomings</strong>：多任务训练会导致网络操作的难度大大增加，且各进程会相互影响和干扰。</p>
+
+<p>🔴<strong>另一可行的方法：</strong>
+<img src="/assets/images/posts/2-3.jpg" alt="配图" /></p>
+
+<p><strong>Stage1:</strong></p>
+<ul>
+  <li>通过提供输入伪造图片进行训练，然后执行二分类法是多模态大模型根据已有知识判断已知图片的真伪</li>
+</ul>
+
+<p><strong>Stage2</strong>:</p>
+
+<ul>
+  <li>1.定位到伪造的区域</li>
+  <li>2.描述伪造的特征</li>
+  <li>3.提供判断伪造的理由</li>
+  <li>4.追踪伪造对应使用的方法</li>
+</ul>
+
+<p>该方法<strong>可行性</strong>：</p>
+
+<ul>
+  <li><strong>该方法结构与人类的认知过程一致性</strong>,
+  先有个粗糙的判断然后挖掘细节去证实判断</li>
+  <li><strong>众多成功的案例</strong>:
+  FakeShield、 ForgeryGPT、 PorFact-NET</li>
+  <li><strong>过长的提示词导致模型幻觉加重</strong>,
+  “先判断后分析”的模式可以尽可能大的避免并不破坏MLLMs的性能</li>
+</ul>
+
+<p>*实验最终表明 该方法对于对抗生成和扩散生成的图像都具有较为令人满意的结果</p>
+
+<h4 id="文本提示">文本提示📝</h4>
+<p>提示词在引导模型判断图片真伪时具有关键作用，在现有的研究文献中所示，过于简单的提示词通常是无效的。</p>
+<ul>
+  <li>信息缺乏or安全隐患 –&gt; 不准确的答案或是拒绝回答</li>
+</ul>
+
+<p>为应对挑战，要寻找平衡使既不至于文本过于简单导致无效，又不至于文本过于复杂导致幻觉</p>
+
+<p><img src="/assets/images/posts/2-4.jpg" alt="配图" />
+<strong>5️⃣ Prompts五个原则</strong>：
+	//灵感来自于LangGPT的设计 并参考OpenAI官方文档</p>
+<ul>
+  <li><strong>Profile</strong>：“You are an AI visual assistant”</li>
+  <li><strong>Goal</strong>: “ help humans analyze some tampered images”</li>
+  <li><strong>Constraint:</strong> “Must return with yes or no only”</li>
+  <li>
+    <p><strong>Workflow</strong>: “you will receive one image, your job is to determine if the image is  tampered or not.”</p>
+  </li>
+  <li><strong>Style：</strong> 语言风格</li>
+</ul>
+
+<p>//上图共有5个指示示例，其中经过实践，Prompt#4达到最优的平衡</p>
+
+<p><img src="/assets/images/posts/2-5.jpg" alt="配图" /></p>
+
+<p><strong>Stage2中</strong>，引导大模型模仿人类鉴定的工作流程，同时将拒绝和幻觉的可能性降到最低
+	//ICL的使用使准确率上升12%，被拒绝率显著下降</p>
+
+<h2 id="stage1伪造检测">Stage1:伪造检测</h2>
+
+<p><img src="/assets/images/posts/2-6.jpg" alt="配图" /></p>
+
+<p>将图片真伪判断视作<strong>二元分类任务</strong>，并且在提示中加入了真实样本和伪造样本
+得到：</p>
+<ul>
+  <li>加入示例使拒答率大大降低</li>
+  <li>简洁的提示比复杂的描述更加有用</li>
+</ul>
+
+<h2 id="stage2伪造分析">Stage2:伪造分析</h2>
+
+<p>LLM已经具有检测伪造数据的能力（in stage1）但是要精确描述其中伪造篡改的区域还具有两个缺陷：</p>
+<ul>
+  <li>难以生成细致的描述性信息（对人类语言的适应度不佳</li>
+  <li>无法准确阐述图像的语义内容（不擅长对图像的读取与理解
+ *然而MLLM具有更强的语义理解能力 能够在stage2对深度伪造图像展开细粒度分析。</li>
+</ul>
+
+<p>需要从图像中提取的<strong>关键信息</strong>：</p>
+<ul>
+  <li>篡改区域定位：图像中被伪造的具体位置</li>
+  <li>篡改内容解析：该位置的元素构成（具体是什么）</li>
+  <li>篡改痕迹显化：突出显示其视觉上异常和不协调的细节</li>
+  <li>生成方法判定：
+    <ul>
+      <li>明确对应的技术（eg：对抗生成or扩散模型）</li>
+      <li>伪造层级（整体or局部）</li>
+    </ul>
+  </li>
+</ul>
+
+<p>如图例</p>
+
+<p><img src="/assets/images/posts/2-7.jpg" alt="配图" /></p>
+
+<p><strong>1.篡改定位：</strong></p>
+<ul>
+  <li>相对定位：人群的上方，建筑前面</li>
+  <li>绝对定位：图像的中心稍微偏右</li>
+</ul>
+
+<p><strong>2.篡改解析：</strong></p>
+<ul>
+  <li>篡改区域的人拿着一个旗帜，然而该旗帜是后期添加的</li>
+</ul>
+
+<p><strong>3.痕迹显化：</strong></p>
+<ul>
+  <li>色彩饱和度的过分突兀</li>
+  <li>旗帜边缘被过分锐化，既不自然</li>
+  <li>旗帜的阴影与图像真实部分不匹配</li>
+</ul>
+
+<p><strong>4.技术判定：</strong></p>
+<ul>
+  <li>扩散模型</li>
+  <li>local forgery：在原图基础上进行篡改</li>
+</ul>
+
+<h2 id="实验操作">🧪实验操作</h2>
+
+<h3 id="实验设置">实验设置</h3>
+
+<h4 id="数据集">数据集：</h4>
+
+<p><strong>真实图像</strong></p>
+<ul>
+  <li>1000真实通用图像（来自 Caltech-101）</li>
+  <li>1000真实人脸图像（来自Caltech-WebFaces）</li>
+</ul>
+
+<p><strong>生成图像</strong></p>
+<ul>
+  <li>4000全局伪造图像（来自Stable Diffusion和StyleGAN）</li>
+  <li>4000局部伪造图像（来自AutoSplice和LaMa）</li>
+  <li>各1000生成人脸图像（来自 AutoSplice 和HiSD）
+//这些数据集兼具GAN和Diffusion两种伪造方式，保障大模型的综合能力</li>
+</ul>
+
+<p><strong>类比前沿方法</strong></p>
+<ul>
+  <li>
+    <p>FreDect：利用频域分析</p>
+  </li>
+  <li>
+    <p>GramNet：增强全局纹理表现</p>
+  </li>
+  <li>
+    <p>CNNSpot：CNN生成图像会具有伪影痕迹，根据这一点进行识别</p>
+  </li>
+</ul>
+
+<p><strong>鉴别指标</strong>
+在二分类任务中：</p>
+<ul>
+  <li>
+    <p>stage1的判定图像真伪</p>
+  </li>
+  <li>
+    <p>stage2的判别技术是对抗生成or扩散</p>
+  </li>
+</ul>
+
+<p>——&gt;概率评分方法
+多次查询大模型取平均分数（No=0&amp;Yes=1）</p>
+
+<p>advantage：</p>
+<ul>
+  <li>LLM生成token具一定概率，并使用top-k策略来选择输出，利于评估模型对同一张图片判断结果的一致性和多样性</li>
+  <li>使用数值决策分数在评估性能时就不局限于简单的accuracy，可以有更全面的ROC和AUC，提供了更可靠的评估
+    <ul>
+      <li>AUC允许与现有的程序检测方法总结比较，促进大模型功能在取证任务重更广泛的评估</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+<h3 id="对roc和auc的学习">对ROC和AUC的学习</h3>
+
+<h4 id="1-rocreceiver-operating-characteristic"><strong>1. ROC（Receiver Operating Characteristic）</strong></h4>
+
+<p>ROC曲线是一种用于表示分类模型性能的图形工具。它通过将[真阳性率]和[假阳性率]作为横纵坐标来描绘分类器在不同阈值下的性能。</p>
+
+<ul>
+  <li><strong>真阳性率 (True Positive Rate, TPR)</strong></li>
+</ul>
+
+<p>真阳性率（True Positive Rate，TPR）通常也被称为敏感性（Sensitivity）或召回率（Recall）。它是指分类器正确识别正例的能力。真阳性率可以理解为<strong>所有阳性群体中被检测出来的比率(1-漏诊率)，因此TPR越接近1越好</strong>。它的计算公式如下：</p>
+
+<p>其中，TP（True Positive）表示正确识别的正例数量，FN（False Negative）表示错误地将正例识别为负例的数量。</p>
+
+<ul>
+  <li><strong>假阳性率 (False Positive Rate, FPR)</strong></li>
+</ul>
+
+<p>假阳性率（False Positive Rate，FPR）是指在所有实际为负例的样本中，模型错误地预测为正例的样本比例。假阳性率可以理解为<strong>所有阴性群体中被检测出来阳性的比率(误诊率)，因此FPR越接近0越好</strong>。它的计算公式如下：</p>
+
+<p>其中，FP（False Positive）表示错误地将负例识别为正例的数量，TN（True Negative）表示正确识别的负例数量。</p>
+
+<p>FPR的值等于1-特异性特异性（Specificity）是指在所有实际为负例的样本中，模型正确地预测为负例的样本比例，其衡量的是模型对负例样本的判断能力。假如一个模型的特异性很高，则该模型在预测负例时的准确率很高，也就是说，该模型较少将负例预测为正例，从而使得假阳性率较低。因此，假阳性率和特异性都是用来衡量模型在负例样本上的性能，它们之间是负相关的，即假阳性率越低，特异性越高，反之亦然。</p>
+
+<h4 id="2-aucarea-under-the-curve"><strong>2. AUC（Area Under the Curve）</strong></h4>
+
+<p>AUC（ROC曲线下面积）是ROC曲线下的面积，用于衡量分类器性能。AUC值越接近1，表示分类器性能越好；反之，AUC值越接近0，表示分类器性能越差。在实际应用中，我们常常通过计算AUC值来评估分类器的性能。</p>
+
+<p>理论上，完美的分类器的AUC值为1，而随机分类器的AUC值为0.5。这是因为完美的分类器将所有的正例和负例完全正确地分类，而随机分类器将正例和负例的分类结果随机分布在ROC曲线上。</p>
+
+<p>综上，ROC曲线和AUC值是用于评估二分类模型性能的两个重要指标。通过ROC曲线，我们可以直观地了解分类器在不同阈值下的性能；而通过AUC值，我们可以对分类器的整体性能进行量化评估。</p>
+
+<p>roc_auc_score和roc_curve是sklearn.metrics库中的两个函数，用于评估二分类模型的性能。ROC曲线和AUC值是衡量分类器性能的两个重要指标，可以帮助我们了解模型在不同阈值下的性能。</p>
+
+<ul>
+  <li>
+    <p><strong>ROC曲线</strong>：ROC曲线（Receiver Operating Characteristic Curve）是一种描绘分类器性能的图形工具，它显示了在不同阈值下分类器的真阳性率（True Positive Rate，TPR）和假阳性率（False Positive Rate，FPR）之间的关系。</p>
+  </li>
+  <li>
+    <p><strong>AUC值</strong>： AUC（Area Under the Curve）值表示ROC曲线下的面积，用于衡量分类器性能。AUC值越接近1，表示分类器性能越好；反之，AUC值越接近0，表示分类器性能越差。</p>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="伪造位置指标">伪造位置指标</h3>
+
+<p><img src="/assets/images/posts/2-8.jpg" alt="配图" /></p>
+
+<p><strong>根据上图所给出的例子</strong>，
+模型的输出包含了相对位置（relative position）和绝对位置（absolute position），这些对于模型的性能评估能量化定位精度，然而对于模型给出的回答在语义上还要有可读性（readability）和完整性（completeness）。这四个评估指标能够衡量大模型精确定位篡改区域的效率。</p>
+
+<p><strong>实施细节</strong></p>
+<ul>
+  <li>主要模型：GPT-4o</li>
+  <li>结合：两个开源LLM：
+    <ul>
+      <li>Llama3.2</li>
+      <li>DeepSeek-VL2</li>
+    </ul>
+  </li>
+  <li>提示工程（prompt）：同图4&amp;所有LLM的<strong>双镜头学习技术</strong>（最少的数据N-shot learning技术：用最少的数据训练最多的模型）</li>
+</ul>
+
+<blockquote>
+  <p>在 N-shot学习领域中，每K个类别，我们标记了 n 个示例，这 N·K个总示例被我们称为支持集 S 。我们还必须对查询集 Q 进行分类，其中每个示例位于其中一个 K 类中。N-shot 学习有三个主要子领域：zero-shot learning、<a href="https://zhida.zhihu.com/search?content_id=106786606&amp;content_type=Article&amp;match_order=1&amp;q=one-shot+learning&amp;zd_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ6aGlkYV9zZXJ2ZXIiLCJleHAiOjE3NDU5MjA2NDgsInEiOiJvbmUtc2hvdCBsZWFybmluZyIsInpoaWRhX3NvdXJjZSI6ImVudGl0eSIsImNvbnRlbnRfaWQiOjEwNjc4NjYwNiwiY29udGVudF90eXBlIjoiQXJ0aWNsZSIsIm1hdGNoX29yZGVyIjoxLCJ6ZF90b2tlbiI6bnVsbH0.MIdSy1hJ0_XeCV9xMIi2zKJ1NFDLvSVSoKHVQPE5c_4&amp;zhida_source=entity">one-shot learning</a>和小样本学习，每个领域都值得关注
+	最有趣的子领域是<a href="https://zhida.zhihu.com/search?content_id=106786606&amp;content_type=Article&amp;match_order=1&amp;q=Zero-shot+learning&amp;zd_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ6aGlkYV9zZXJ2ZXIiLCJleHAiOjE3NDU5MjA2NDgsInEiOiJaZXJvLXNob3QgbGVhcm5pbmciLCJ6aGlkYV9zb3VyY2UiOiJlbnRpdHkiLCJjb250ZW50X2lkIjoxMDY3ODY2MDYsImNvbnRlbnRfdHlwZSI6IkFydGljbGUiLCJtYXRjaF9vcmRlciI6MSwiemRfdG9rZW4iOm51bGx9.nrWGFS7VDffPH-RlL2dQk0oJFqys9sr2Yr06RQ5UOG0&amp;zhida_source=entity">Zero-shot learning</a>，该领域的目标是不需要一张训练图像，就能够对未知类别进行分类。</p>
+</blockquote>
+
+<blockquote>
+  <p>没有任何数据可以利用的话怎么进行训练和学习呢？如果你对这个物体的外表、属性和功能有充足的信息的话，你是可以实现的。想一想，当你还是一个孩子的时候，是怎么理解这个世界的。在了解了火星的颜色和晚上的位置后，你可以在夜空中找到火星。或者你可以通过了解仙后座在天空中”基本上是一个畸形的’W’“这个信息中识别仙后座。
+根据今年NLP的趋势，Zero-shot learning 将变得更加有效。</p>
+</blockquote>
+
+<p><strong>伪造鉴别性能</strong>
+	LLM在区分真实图像生成图像方面达到了合理的精度水平，定量结果进一步支持了观察结果</p>
+
+<p><img src="/assets/images/posts/2-9.jpg" alt="配图" /></p>
+
+<p>如图 ，左边为鉴别扩散生成的精度测量，右边为鉴别生成对抗网络的精度测量
+<em>（GPT-4v准确率远大于50%，可知并不执行随机猜测）</em></p>
+
+<p>DeepSeek和Llama的准确率虽然有所下降，但还是明显优于随机猜测。</p>
+
+<p><img src="/assets/images/posts/2-10.jpg" alt="配图" /></p>
+
+<ul>
+  <li>
+    <p>如上表的准确率比较，为验证大模型检测与传统方法之间的差异，分别分析diffusion和GAN生成数据集的结果，方法中前三个为传统方法，后三个为LLM</p>
+  </li>
+  <li>
+    <p>表中对于每个数据集将ACC最高的数据bold，根据数量可知GPT-4V（1T）的性能大大优于Llama（11B）和DeepSeek（2.8B）
+  <strong>conclusion</strong>：模型的大小与deepfake检测性能呈正相关</p>
+  </li>
+  <li>
+    <p>传统的鉴别方法对于真实的数据集和特定的伪造数据集（FreDect ——&gt;Style）有较强的性能。而基于LLM的鉴别方法中 deepseek泛化能力较弱，对于真实数据集ACC仅有55.2%，接近随机猜测。
+%%（可能的原因是模型错误的讲不寻常的特征如运动模糊或失焦视为伪造标志%%</p>
+  </li>
+</ul>
+
+<p><img src="/assets/images/posts/2-11.jpg" alt="配图" /></p>
+<ul>
+  <li>如上表，生成方法从全局伪造转移到局部伪造时，传统的deepfake检测方法表现波动（eg：FreDect的AUC从94.2%掉到73.5%）</li>
+  <li>
+    <p>而LLM收到的变化影响较小</p>
+
+    <p><strong>reason</strong>：局部伪造保留原始图像的大多特征，导致信号差异不那么明显容易混淆</p>
+    <blockquote>
+      <p>但是LLM依赖于语义的不一致，语义的差异仍然存在与局部伪造图像，所以LLM的检测操作仍然有效</p>
+    </blockquote>
+  </li>
+  <li>LLM在人脸图像上的表现较弱
+——&gt;直观原因：
+    <ul>
+      <li>人脸受到年龄肤色表情和发型等多种因素的影响，引入更加复杂的语义，该复杂性致使LLM更难区分真伪
+另外GPT-4V在真实和生成的人脸数据集中都展现稳定的性能。真实人脸ACC=76.7%
+AutoSplice和HiSD的ACC分别是79.6%和76.2%</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="伪造分析性能">伪造分析性能</h1>
+<p>上文提到过的四个<strong>评估指标</strong>：</p>
+<ul>
+  <li>相对位置（relative position）</li>
+  <li>绝对位置（absolute position）</li>
+  <li>可读性（readability</li>
+  <li>完整性（completeness）
+    <blockquote>
+      <p>LLM虽然在高级语义理解方面表现出色，但他们难以进行细粒度的对象识别</p>
+    </blockquote>
+  </li>
+</ul>
+
+<blockquote>
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>解决方案：对特定数据集进行微调
+</code></pre></div>  </div>
+</blockquote>
+
+<p><strong>生成方法判断的准确率</strong></p>
+
+<p><img src="/assets/images/posts/2-12.jpg" alt="配图" /></p>
+
+<p>如上表可知：</p>
+<ul>
+  <li>DeepSeek和Llama在识别由GAN生成的数据集时展现出较为强烈的偏差</li>
+  <li>DeepSeek和Llama在识别扩散生成图像时准确率显著降低
+    <ul>
+      <li>观察数据集Autosplice和Autosplice(f)的数据比较 ，可见大模型在人脸数据集上的表现更差 <em>进一步论证了之前的结论，由于人脸的语义复杂性的增加，人脸伪造监测对llm更具挑战性</em></li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>消融研究</strong></p>
+
+<p>是机器学习、深度学习等领域中常用的一种实验方法，目的是通过“移除”或“修改”模型的某些组件（如层、模块、特征、训练技巧等），定量分析这些组件对模型性能的贡献。简单来说，就是通过“拆解”模型，验证每个部分是否真的有用</p>
+
+<p><img src="/assets/images/posts/2-13.jpg" alt="配图" /></p>
+
+<ul>
+  <li>如上图所示，随着token数量的增加，识别ACC基本持平没有太大波动（模型的鉴别性能保持稳定），然而拒绝率在prompt#1~3逐渐下降，然而prompt #5  反而上升（虽然更长的提示能提高准确性，但是也增加了LLM运行的计算成本）</li>
+</ul>
+
+<p><strong>范例敏感性</strong></p>
+
+<p>将范例纳入prompt可以显著提高大模型学习上下文的能力
+	- <strong>实验</strong>：设计10个样本，并从池中随机抽样k=0，1，2，4个样本进行k-shot学习实验，并从AutoSplice数据集中随机选择1000个人脸图像评估平均性能，使用的是prompt #4
+	- 敏感性分析如下：</p>
+
+<p><img src="/assets/images/posts/2-14.jpg" alt="配图" /></p>
+
+<p>可得：</p>
+<ul>
+  <li>增加镜头数量（范例）对提高准确率的影响并不明显，但是对下降拒绝率却有很大的作用。</li>
+  <li>在没有范例时（0-shots）GPT-4V趋向于拒答与人脸有关的鉴别问题</li>
+  <li>添加示例使得LLM可以更好泛化到检测任务</li>
+  <li>对于ACC的影响，0-shots——&gt;1-shots提升了8.8%，但后期就几乎不明显，反过来说更多的样本还会增加计算成本</li>
+</ul>
+
+<p>——&gt;寻找平衡，尽可能的确保LLM受益于上下文指导但是不产生过多的成本</p>
+
+<h2 id="提升">👆提升</h2>
+<ul>
+  <li>除了对伪造图像的检测，随着大模型生成技术的提升，其他形式的生成内容也取得重大进展，这对于DeepFake的鉴别大大增加了难度
+    <ul>
+      <li>视频中的时间一致性</li>
+      <li>音频中的光谱模式（？）
+  尽管LLM在图像分析中表现出很强的语义理解能力，但在视频和音频中很大程度上为得到探索。
+<img src="/assets/images/posts/2-15.jpg" alt="配图" />
+如上图结构：
+  将大型模型和小模型的优势进行组合——&gt;创建混合系统，利用LLM的泛化能力和专门的小模型或工具的精度来实现系力度的伪造分析。
+图中为一个探索性框架：
+数据—<code class="language-plaintext highlighter-rouge">预处理</code>—input—&gt;LLM
+LLM作为连接器和任务分配器基于预训练的知识和语义理解。
+LLM将特定任务分配给下游小模型或工具（detection tools）
+ <strong>advantage</strong>：</li>
+    </ul>
+  </li>
+  <li>LLM提供广泛的语义理解和任务协调</li>
+  <li>
+    <p>小型模型和传统鉴别工具提供高精度和效率</p>
+
+    <p>显著提高DeepFake检测系统的<strong>鲁棒性</strong>和<strong>可扩展性</strong></p>
+  </li>
+</ul>
+
+<h2 id="结论">结论</h2>
+<p>该研究采用了两阶段框架（先判断后取证分析），以系统化、全面地分析可能被伪造的图像；并利用多模态大模型丰富的语义知识库的能力无需针对特定DeepFake场景进行专门训练，即可在多样数据集上表现卓越的泛化能力。</p>]]></content><author><name>Luxynth</name><email>LiXY0809@outlook.com</email></author><category term="深度学习" /><category term="论文笔记" /><summary type="html"><![CDATA[Can GPT Tell Us Why These Images Are Synthesized? Empowering MLLMs for Forensics 点击下载原文pdf❤️]]></summary></entry><entry><title type="html">GENIMAGE</title><link href="http://localhost:4000/posts/GenImage/" rel="alternate" type="text/html" title="GENIMAGE" /><published>2025-04-29T08:00:00+08:00</published><updated>2025-04-29T08:00:00+08:00</updated><id>http://localhost:4000/posts/GenImage</id><content type="html" xml:base="http://localhost:4000/posts/GenImage/"><![CDATA[<h1 id="genimage-a-million-scale-benchmark-for-detecting-ai-generated-image">GENIMAGE: A MILLION-SCALE BENCHMARK FOR DETECTING AI-GENERATED IMAGE</h1>
+<p><a href="/assets/files/GenImage_Dataset.pdf" download="">点击下载原文pdf❤️</a></p>
+<ul>
+  <li><strong>研究背景</strong>
+ 生成模型发展引发担忧，假图像传播影响社会稳定； eg：AI生成的五角大楼着火照片影响股市</li>
+</ul>
+
+<p><img src="/assets/images/posts/1-1.jpg" alt="配图" />
+根据论文图表⬇️</p>
+
+<p><img src="/assets/images/posts/1-2.jpg" alt="配图" />
+现有假图像检测数据集存在局限，如UADFV规模小，ForgeryNet仅关注人脸、早期通用数据集依赖GAN且数据有限。
+ –&gt;GenImage数据集构建的必要性</p>
+
+<h2 id="数据集构建">数据集构建</h2>
+
+<p><img src="/assets/images/posts/1-3.jpg" alt="配图" />
+ 包含超100万对真假图像，使用ImageNet所有真实图像，依1000个标签生成1350000张假图像</p>
+
+<p><img src="/assets/images/posts/1-4.jpg" alt="配图" />
+用8种生成模型生成假图像，每个模型为每类生成近相同数量图像，保证数据集平衡，输入句子依ImageNet标签，部分模型输入语言有调整</p>
+
+<p><img src="/assets/images/posts/1-5.jpg" alt="配图" /></p>
+
+<p><strong>扩散模型（diffusion model）</strong>： Midjourney、 Wukong、 Stable Diffusio、 ADM、 GLIDE、 VQDM;</p>
+
+<p><strong>生成对抗网络（GAN）</strong>： BigGAN
+–&gt;其中SD V1.5最为逼真</p>
+
+<h2 id="数据集基准检测">数据集基准检测</h2>
+<h3 id="假图像检测器">假图像检测器</h3>
+<p><strong>假人脸检测器（Fake Face Detector）</strong>：
+专为人脸伪造检测设计，依赖人脸图像的特定特征。</p>
+
+<p><strong>代表模型</strong>：</p>
+<ul>
+  <li>F3Net：通过分析频率成分划分和真假人脸频率统计差异进行检测</li>
+  <li>GramNet：利用全局纹理特征提升检测的鲁棒性和泛化性</li>
+</ul>
+
+<p><em>特点</em>：</p>
+<ul>
+  <li>训练数据仅为人脸图像，难以直接泛化到非人脸领域</li>
+  <li>设计思路可启发通用检测器的开发（eg：频率分析、纹理特征）</li>
+</ul>
+
+<p><strong>通用假图像检测器（General Fake Image Detector）</strong>
+突破人脸内容的限制，检测各类假图像（如GAN或扩散模型生成）。</p>
+
+<p><strong>代表模型</strong>：</p>
+<ul>
+  <li>Spec：以频谱为输入，直接在真实图像中合成GAN伪影，无需依赖特定GAN生成的训练数据
+ CNNSpot：基于ResNet-50的二分类器，通过特定的预处理、后处理和数据增强优化</li>
+</ul>
+
+<p><em>特点</em>：</p>
+<ul>
+  <li>现有方法在混合GAN和扩散模型生成图像的数据集上性能不足</li>
+  <li>急需开发针对此类混合特征的专用检测器</li>
+</ul>
+
+<p><img src="/assets/images/posts/1-6.jpg" alt="配图" />
+检测器能轻松识别同一生成器生成的假图像，说明生成器会留下高度一致的痕迹（如特定频率模式、纹理特征等）。而我们需要提升检测器的泛化能力，即独立于所使用的生成器来区分图像真伪的能力。 
+ →跨生成器图像分类</p>
+<h3 id="单模型-跨生成器图像分类">单模型 跨生成器图像分类</h3>
+<p><img src="/assets/images/posts/1-7.jpg" alt="配图" />
+先在SD V1.4上用七种不同的方法训练的模型 然后用八种不同的检测器进行检验
+//该表格可反应模型在特定训练数据下的泛化能力，根据各检测器检测准确率平均之前数据可知，<strong>Swin-T的泛化能力最强</strong></p>
+
+<h3 id="多模型-全组合测试">多模型 全组合测试</h3>
+<p><img src="/assets/images/posts/1-8.jpg" alt="配图" />
+对每个方法 都用8个生成器训练8个模型然后在8个生成器上测试并取平均值
+//该测试模式反映了方法在所有可能生成器组合下的综合性能</p>
+
+<h3 id="退化图像处理">退化图像处理</h3>
+<p>图像在传播过程中经常遇到<strong>退化问题</strong>（eg：低分辨率、压缩和噪声干扰）</p>
+
+<p><img src="/assets/images/posts/1-9.jpg" alt="配图" />
+检测器应该对这些挑战具有鲁棒性</p>
+
+<p>→通过评估检测器在这些退化图像上的性能，使之更准确的模拟实际条件
+<img src="/assets/images/posts/1-10.jpg" alt="配图" /></p>
+
+<ul>
+  <li>作为baseline model，ResNet-50，DeiT-S和Swin-T都呈现出类似的效果 //数据十分相近</li>
+  <li>CNNSpot对JPEG压缩和高斯模糊都具有鲁棒性 //因为CNNSpot在训练过程中使用JPEG压缩和高斯模糊作为额外的数据预处理</li>
+</ul>
+
+<p>数据预处理即是方法论</p>
+
+<h2 id="数据分析">数据分析</h2>
+<p><img src="/assets/images/posts/1-11.jpg" alt="配图" /></p>
+
+<p><em>真实图像和生成图像的频率分析对比</em></p>
+<ul>
+  <li>GAN伪影以规则网格的形式显示
+来自扩散模型的图像比BigGAN更接近真实的图像
+    <h4 id="reasons">reasons：</h4>
+  </li>
+  <li>在文献Adversarial Perturbations Fool Deepfake Detectors中有提到，<strong>上采样方法</strong>（上卷积或转置卷积）导致GAN无法正常地近似训练数据的频谱分布，所以GAN生成的图像有较多伪影</li>
+  <li>因为匹配较低的频率对于所生成的图像的感知质量更重要，而训练期间较少的权重被附加到较高的频率，<strong>扩散模型不会在频谱中产生网格状伪影</strong>，但是对于较高的频率表现出系统性的不匹配
+    <h3 id="为验证检测器是否能泛化到不同图像内容类别">为验证检测器是否能泛化到不同图像内容类别</h3>
+    <p><strong>数据集</strong>：
+• 训练集：从GenImage的1000类中抽取子集（10、50、100），每类生成固定数量图像
+• 测试集：覆盖全部1000类，每类50张生成图像，并且来自8种生成器
+• 真实图像比例：每类真实图像与生成图像数量相同（平衡数据）</p>
+  </li>
+</ul>
+
+<p><img src="/assets/images/posts/1-12.jpg" alt="配图" /></p>
+
+<ul>
+  <li>控制变量分析可得到，数据集标签的数量对准确度的影响程度远大于数据数量的影响程度</li>
+  <li>假图像检测器的泛化能力高度依赖训练数据的类别覆盖度，其中100类以上可达到较好效果
+<img src="/assets/images/posts/1-13.jpg" alt="配图" /></li>
+</ul>
+
+<p><strong>CONCLUSION</strong>：SD V1.4和SD V1.5与Wukong的训练产生了最佳的整体泛化性能</p>
+
+<p>GenImage范围广：不仅包含传统的人脸（face）和艺术作品（art）图像，
+还涵盖更广泛的类别。
+<em>数据来源</em>：</p>
+<ul>
+  <li>LFW：用于人脸识别的公开数据集，从中选取了10,000张真实人脸图像，并生成相同数量的合成人脸</li>
+  <li>Laion-Art：基于Laion-5B的子集，筛选出美学评分高的艺术作品，并从中选取10,000张真实艺术图像，同时生成10,000张合成艺术图像
+<img src="/assets/images/posts/1-14.jpg" alt="配图" /></li>
+</ul>
+
+<h3 id="泛化性能优异">泛化性能优异：</h3>
+<p><img src="/assets/images/posts/1-15.jpg" alt="配图" /></p>
+<ul>
+  <li>人脸检测：99.9% 准确率（区分LFW真实人脸 vs. SDV1.4生成人脸）</li>
+  <li>艺术图像检测：95.0% 准确率</li>
+</ul>
+
+<p><strong>结论</strong>：该数据集在跨内容（人脸、艺术）检测任务上表现出强泛化能力。</p>
+
+<h2 id="结论">结论</h2>
+<ul>
+  <li>GenImage是一个专为检测生成模型生成的虚假图像而设计的大规模数据集，其规模、图像内容和生成器多样性均超越以往的数据集和基准。</li>
+  <li>研究提出了两项任务——跨生成器图像分类和退化图像分类，用于评估现有检测器在GenImage上的性能。</li>
+  <li>此外，通过对数据集的详细分析，研究揭示了GenImage如何推动开发适用于真实场景的虚假图像检测器。</li>
+</ul>]]></content><author><name>Luxynth</name><email>LiXY0809@outlook.com</email></author><category term="深度学习" /><category term="论文笔记" /><summary type="html"><![CDATA[GENIMAGE: A MILLION-SCALE BENCHMARK FOR DETECTING AI-GENERATED IMAGE 点击下载原文pdf❤️ 研究背景 生成模型发展引发担忧，假图像传播影响社会稳定； eg：AI生成的五角大楼着火照片影响股市 根据论文图表⬇️ 现有假图像检测数据集存在局限，如UADFV规模小，ForgeryNet仅关注人脸、早期通用数据集依赖GAN且数据有限。 –&gt;GenImage数据集构建的必要性 数据集构建 包含超100万对真假图像，使用ImageNet所有真实图像，依1000个标签生成1350000张假图像 用8种生成模型生成假图像，每个模型为每类生成近相同数量图像，保证数据集平衡，输入句子依ImageNet标签，部分模型输入语言有调整 扩散模型（diffusion model）： Midjourney、 Wukong、 Stable Diffusio、 ADM、 GLIDE、 VQDM; 生成对抗网络（GAN）： BigGAN –&gt;其中SD V1.5最为逼真 数据集基准检测 假图像检测器 假人脸检测器（Fake Face Detector）： 专为人脸伪造检测设计，依赖人脸图像的特定特征。 代表模型： F3Net：通过分析频率成分划分和真假人脸频率统计差异进行检测 GramNet：利用全局纹理特征提升检测的鲁棒性和泛化性 特点： 训练数据仅为人脸图像，难以直接泛化到非人脸领域 设计思路可启发通用检测器的开发（eg：频率分析、纹理特征） 通用假图像检测器（General Fake Image Detector） 突破人脸内容的限制，检测各类假图像（如GAN或扩散模型生成）。 代表模型： Spec：以频谱为输入，直接在真实图像中合成GAN伪影，无需依赖特定GAN生成的训练数据 CNNSpot：基于ResNet-50的二分类器，通过特定的预处理、后处理和数据增强优化 特点： 现有方法在混合GAN和扩散模型生成图像的数据集上性能不足 急需开发针对此类混合特征的专用检测器 检测器能轻松识别同一生成器生成的假图像，说明生成器会留下高度一致的痕迹（如特定频率模式、纹理特征等）。而我们需要提升检测器的泛化能力，即独立于所使用的生成器来区分图像真伪的能力。 →跨生成器图像分类 单模型 跨生成器图像分类 先在SD V1.4上用七种不同的方法训练的模型 然后用八种不同的检测器进行检验 //该表格可反应模型在特定训练数据下的泛化能力，根据各检测器检测准确率平均之前数据可知，Swin-T的泛化能力最强 多模型 全组合测试 对每个方法 都用8个生成器训练8个模型然后在8个生成器上测试并取平均值 //该测试模式反映了方法在所有可能生成器组合下的综合性能 退化图像处理 图像在传播过程中经常遇到退化问题（eg：低分辨率、压缩和噪声干扰） 检测器应该对这些挑战具有鲁棒性 →通过评估检测器在这些退化图像上的性能，使之更准确的模拟实际条件 作为baseline model，ResNet-50，DeiT-S和Swin-T都呈现出类似的效果 //数据十分相近 CNNSpot对JPEG压缩和高斯模糊都具有鲁棒性 //因为CNNSpot在训练过程中使用JPEG压缩和高斯模糊作为额外的数据预处理 数据预处理即是方法论 数据分析 真实图像和生成图像的频率分析对比 GAN伪影以规则网格的形式显示 来自扩散模型的图像比BigGAN更接近真实的图像 reasons： 在文献Adversarial Perturbations Fool Deepfake Detectors中有提到，上采样方法（上卷积或转置卷积）导致GAN无法正常地近似训练数据的频谱分布，所以GAN生成的图像有较多伪影 因为匹配较低的频率对于所生成的图像的感知质量更重要，而训练期间较少的权重被附加到较高的频率，扩散模型不会在频谱中产生网格状伪影，但是对于较高的频率表现出系统性的不匹配 为验证检测器是否能泛化到不同图像内容类别 数据集： • 训练集：从GenImage的1000类中抽取子集（10、50、100），每类生成固定数量图像 • 测试集：覆盖全部1000类，每类50张生成图像，并且来自8种生成器 • 真实图像比例：每类真实图像与生成图像数量相同（平衡数据） 控制变量分析可得到，数据集标签的数量对准确度的影响程度远大于数据数量的影响程度 假图像检测器的泛化能力高度依赖训练数据的类别覆盖度，其中100类以上可达到较好效果 CONCLUSION：SD V1.4和SD V1.5与Wukong的训练产生了最佳的整体泛化性能 GenImage范围广：不仅包含传统的人脸（face）和艺术作品（art）图像， 还涵盖更广泛的类别。 数据来源： LFW：用于人脸识别的公开数据集，从中选取了10,000张真实人脸图像，并生成相同数量的合成人脸 Laion-Art：基于Laion-5B的子集，筛选出美学评分高的艺术作品，并从中选取10,000张真实艺术图像，同时生成10,000张合成艺术图像 泛化性能优异： 人脸检测：99.9% 准确率（区分LFW真实人脸 vs. SDV1.4生成人脸） 艺术图像检测：95.0% 准确率 结论：该数据集在跨内容（人脸、艺术）检测任务上表现出强泛化能力。 结论 GenImage是一个专为检测生成模型生成的虚假图像而设计的大规模数据集，其规模、图像内容和生成器多样性均超越以往的数据集和基准。 研究提出了两项任务——跨生成器图像分类和退化图像分类，用于评估现有检测器在GenImage上的性能。 此外，通过对数据集的详细分析，研究揭示了GenImage如何推动开发适用于真实场景的虚假图像检测器。]]></summary></entry><entry><title type="html">线性回归模型</title><link href="http://localhost:4000/posts/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B/" rel="alternate" type="text/html" title="线性回归模型" /><published>2025-04-10T08:00:00+08:00</published><updated>2025-04-10T08:00:00+08:00</updated><id>http://localhost:4000/posts/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B</id><content type="html" xml:base="http://localhost:4000/posts/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B/"><![CDATA[<p><img src="/assets/images/posts/3-1.jpg" alt="配图" /></p>
+
+<p>//辅助房地产估价 （拟合直线</p>
+
+<p><strong>核心概念：</strong></p>
+<ul>
+  <li>用于训练模型的数据集称为训练集</li>
+  <li>输入变量（x） ：也称为特征或输入特征//input</li>
+  <li>输出变量（y） ：输出的量//output target</li>
+</ul>
+
+<p>（x，y）即一个训练示例, $x^{(i)}$ , $y^{(i)}$ 表示第i个训练示例
+<strong>训练模型</strong>：将训练集提供给学习算法，
+算法会产生功能function $x \to f \to \hat y$ <br />
+该过程即：feature -&gt; model -&gt; prediction
+ $f_{(w,b)}(x)=wx+b$</p>
+<h3 id="成本函数也称为代价函数">成本函数（也称为代价函数）</h3>
+<p>成本函数的思想是机器学习中最普遍和最重要的思想之一，用于线性回归和训练世界上许多最先进的人工智能模型。</p>
+
+<p>👉如何构建<strong>成本函数</strong>： <br />
+平方误差成本函数 <br />
+    \(J_{(w,b)}= \frac{1}{2m} \sum\limits_{i=1}^m(\hat{y}^{(i)} -y^{(i)})\) <br />
+    \(J_{(w,b)}= \frac{1}{2m} \sum\limits_{i=1}^m(f_{(w,b)}(x) -y^{(i)})\)</p>
+
+<p>P.S.</p>
+<ul>
+  <li>m指的是训练示例个数；</li>
+  <li>将每个预测的y值与真实的y值相差平方求和；</li>
+  <li>额外除的2是为了后续的计算更加简洁；</li>
+</ul>
+
+<p>目标是求： $minimize_{w,b} J(w,b)$
+  让成本函数尽可能的小，模型的准确度也就越高
+<img src="/assets/images/posts/3-2.jpg" alt="配图" /></p>
+
+<p>👉成本函数的可视化
+<img src="/assets/images/posts/3-3.jpg" alt="配图" /></p>
+
+<p>若规定了b一定 则图像为二维坐标图像 （汤碗侧切图状）
+<img src="/assets/images/posts/3-4.jpg" alt="配图" /></p>
+
+<p>然而用3D图形表示非常不便，于是可以化成等高线地形图的模式去表示</p>
+
+<h3 id="梯度下降算法">梯度下降算法</h3>
+<p><img src="/assets/images/posts/3-5.jpg" alt="配图" /></p>
+
+<p>在成本函数图像上，从最高点开始 不断“环顾四周”找到斜率最大的方向并移动一段极小的距离，继续找下降斜率最大的方向，如此重复。</p>
+
+<p>\(w=w-\alpha \frac{d}{dw} J_{(w,b)}\)  <br />
+ \(b=b-\alpha \frac{d}{db} J_{(w,b)}\)</p>
+
+<p>//‘=’作为赋值运算符；$\alpha$ 被称为学习率；学习率通常是0到1之间的一个小正数</p>
+
+<p>$\alpha$ 所做的是控制下坡的距离（每一步的步长）
+<strong>在曲面图图形中</strong>，我们需要采取一些小步子，直到到达值的底部；</p>
+
+<p><strong>在梯度下降算法中</strong>，我们需要不断重复上述两个公式，直到算法收敛（达到局部最小值）</p>
+
+<h4 id="学习率">学习率</h4>
+<p>👉如果学习率的值过于大会怎么样？</p>
+
+<p>有可能因为步长过长导致越过了成本函数的最小值</p>
+
+<h3 id="梯度下降算法实现">梯度下降算法实现</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 导入库
+</span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">from</span> <span class="nn">pyecharts.charts</span> <span class="kn">import</span> <span class="n">Line</span>
+<span class="kn">from</span> <span class="nn">pyecharts.options</span> <span class="kn">import</span> <span class="n">TitleOpts</span><span class="p">,</span> <span class="n">ToolboxOpts</span>
+
+<span class="c1"># 数据集导入
+</span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.18</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.16</span><span class="p">,</span> <span class="mf">0.08</span><span class="p">,</span> <span class="mf">0.09</span><span class="p">,</span> <span class="mf">0.11</span><span class="p">,</span> <span class="mf">0.17</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.14</span><span class="p">,</span> <span class="mf">0.13</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.18</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.16</span><span class="p">,</span> <span class="mf">0.08</span><span class="p">,</span> <span class="mf">0.09</span><span class="p">,</span> <span class="mf">0.11</span><span class="p">,</span> <span class="mf">0.17</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.14</span><span class="p">,</span> <span class="mf">0.13</span><span class="p">])</span>
+
+<span class="c1"># 确定学习率
+</span><span class="n">lr</span> <span class="o">=</span> <span class="mf">0.01</span>
+
+<span class="c1"># 初始化 w，为了减小难度暂时不考虑 b 的赋值
+</span><span class="n">w</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="c1"># epoches 为循环进行的次数
+</span><span class="n">epoches</span> <span class="o">=</span> <span class="mi">500</span>
+
+<span class="c1"># 先设置梯度为 0
+</span><span class="n">grad</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="c1"># 计算损失函数
+</span><span class="k">def</span> <span class="nf">loss_new</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="nb">sum</span><span class="p">((</span><span class="n">w</span> <span class="o">*</span> <span class="n">x</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># 计算梯度
+</span><span class="k">def</span> <span class="nf">grad_new</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">((</span><span class="n">x</span> <span class="o">*</span> <span class="n">w</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># 核心部分 -- 迭代
+</span><span class="n">list_w</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">list_loss</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">list_grad</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">list_i</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epoches</span><span class="p">):</span>
+    <span class="n">grad</span> <span class="o">=</span> <span class="n">grad_new</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+    <span class="c1"># 更新参数
+</span>    <span class="n">w</span> <span class="o">=</span> <span class="n">w</span> <span class="o">-</span> <span class="n">lr</span> <span class="o">*</span> <span class="n">grad</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="n">loss_new</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"第</span><span class="si">{</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="si">}</span><span class="s">次迭代，梯度为</span><span class="si">{</span><span class="n">grad</span><span class="si">}</span><span class="s">, 权值为</span><span class="si">{</span><span class="n">w</span><span class="si">}</span><span class="s">, 损失值为</span><span class="si">{</span><span class="n">loss</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+    <span class="n">list_w</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+    <span class="n">list_i</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">list_loss</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
+    <span class="n">list_grad</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">grad</span><span class="p">)</span>
+
+<span class="c1"># 绘制梯度与迭代次数的关系图
+</span><span class="n">line1</span> <span class="o">=</span> <span class="n">Line</span><span class="p">()</span>
+<span class="n">line1</span><span class="p">.</span><span class="n">add_xaxis</span><span class="p">(</span><span class="n">list_i</span><span class="p">)</span>
+<span class="n">line1</span><span class="p">.</span><span class="n">add_yaxis</span><span class="p">(</span><span class="s">"梯度"</span><span class="p">,</span> <span class="n">list_grad</span><span class="p">)</span>
+<span class="n">line1</span><span class="p">.</span><span class="n">set_global_opts</span><span class="p">(</span>
+    <span class="n">title_opts</span><span class="o">=</span><span class="n">TitleOpts</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">"梯度与迭代次数的关系"</span><span class="p">,</span> <span class="n">pos_left</span><span class="o">=</span><span class="s">"center"</span><span class="p">,</span> <span class="n">pos_bottom</span><span class="o">=</span><span class="s">"1%"</span><span class="p">),</span>
+    <span class="n">toolbox_opts</span><span class="o">=</span><span class="n">ToolboxOpts</span><span class="p">(</span><span class="n">is_show</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="n">line1</span><span class="p">.</span><span class="n">render</span><span class="p">()</span>
+
+<span class="c1"># 绘制损失值与参数的关系图
+</span><span class="n">line2</span> <span class="o">=</span> <span class="n">Line</span><span class="p">()</span>
+<span class="n">line2</span><span class="p">.</span><span class="n">add_xaxis</span><span class="p">(</span><span class="n">list_w</span><span class="p">)</span>
+<span class="n">line2</span><span class="p">.</span><span class="n">add_yaxis</span><span class="p">(</span><span class="s">"损失值"</span><span class="p">,</span> <span class="n">list_loss</span><span class="p">)</span>
+<span class="n">line2</span><span class="p">.</span><span class="n">set_global_opts</span><span class="p">(</span>
+    <span class="n">title_opts</span><span class="o">=</span><span class="n">TitleOpts</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">"损失值与参数的关系"</span><span class="p">,</span> <span class="n">pos_left</span><span class="o">=</span><span class="s">"center"</span><span class="p">,</span> <span class="n">pos_bottom</span><span class="o">=</span><span class="s">"1%"</span><span class="p">),</span>
+    <span class="n">toolbox_opts</span><span class="o">=</span><span class="n">ToolboxOpts</span><span class="p">(</span><span class="n">is_show</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="n">line2</span><span class="p">.</span><span class="n">render</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>### 运行结果大致情况
+ <img width="761" alt="截屏2025-04-10 22 29 05" src="https://github.com/user-attachments/assets/42d32c4d-94d0-4bd1-8b3f-fc242b1eb7d0" /></p>]]></content><author><name>Luxynth</name><email>LiXY0809@outlook.com</email></author><category term="机器学习" /><summary type="html"><![CDATA[]]></summary></entry></feed>

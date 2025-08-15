@@ -1,0 +1,29 @@
+---
+layout: default
+---
+
+<main class="blogfeed">
+  <section id="article">
+    <div class="profile-header">
+      <img src="{{ '/assets/images/avatar.jpg' | relative_url }}" class="profile-avatar">
+      <h1 class="profile-title">{{ page.title }}</h1> 
+    </div>
+    {% include navigation.html %}
+    <div class="article-thumbnail">
+      <div class="article-bottom">
+        <small class="article-date">{{page.date | date_to_string}}</small>
+        <div class="article-categories">
+          {% for c in page.categories %}
+          <a href="#!" class="article-category">{{c}}</a>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <div class="article-content">
+      {{ content }}
+      {% include comment.html %}
+    </div>
+  </section>
+</main>
+

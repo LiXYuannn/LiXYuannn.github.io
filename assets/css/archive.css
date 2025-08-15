@@ -1,0 +1,222 @@
+/* 页面背景和基本布局 */
+.archive-page {
+  background: transparent;
+  min-height: 100vh;
+  padding: 40px 0; /* 上下留白 */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 确保所有子元素水平居中 */
+  flex: 1;
+}
+
+/* 顶部头像和标题容器 */
+.archive-header {
+  text-align: center; /* 居中内容 */
+  margin-bottom: 50px; /* 增加与下方内容的间距 */
+  position: relative;
+  z-index: 10;
+}
+
+/* 居中的单个头像 */
+.archive-avatar {
+  width: 150px; /* 调整头像大小 */
+  height: 150px;
+  border-radius: 50%;
+  border: 4px solid white; /* 调整边框 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  object-fit: cover;
+  /* 移除定位，让其自然居中 */
+}
+
+/* 页面标题样式 */
+.archive-title {
+  margin-top: 15px;
+  font-size: 3em;
+  color: #ffa4a4; /* 假设标题颜色为白色，与背景搭配 */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* 内容容器 - 保持左右分栏布局 */
+.archive-container {
+  display: flex;
+  gap: 30px;
+  width: 80%; /* 控制整体宽度 */
+  max-width: 840px;
+  padding: 30px;
+}
+
+/* 左右栏样式调整 */
+.archive-column1 {
+  flex: 1;
+  position: relative; /* 保持相对定位，以备将来需要 */
+  max-width: 250px;
+  min-width: 250px;
+}
+
+.archive-card1 {
+  background: rgba(255, 255, 255, 0.2);
+  line-height: 150%;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  border-radius: 25px;
+  padding: 40px;
+  box-shadow: 8px 8px 3px rgba(0, 0, 0, 0.3);
+  height: 630px;             /* 固定高度 */
+  overflow-y: auto; 
+}
+
+.archive-card1 .article-category {
+  /* 把这里换成你想要的样式 */
+  background: none !important; /* 示例：去掉背景 */
+  color: #555 !important;      /* 示例：改成深灰色 */
+  padding: 0 !important;       /* 示例：去掉内边距 */
+  border-radius: 0 !important; /* 示例：去掉圆角 */
+  /* ... 其他你想要重置或修改的样式 ... */
+}
+
+.archive-column2 {
+  flex: 1;
+  position: relative; /* 保持相对定位，以备将来需要 */
+  min-width: 620px;
+  height: 710px;             /* 固定高度 */
+  overflow-y: auto; 
+}
+
+.archive-card1::-webkit-scrollbar {
+  width: 8px;                /* 滚动条宽度 */
+}
+
+.archive-card1::-webkit-scrollbar-track {
+  background: transparent;       /* 滚动条轨道颜色 */
+  border-radius: 4px;        /* 圆角轨道 */
+}
+
+.archive-card1::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.6);          /* 滑块颜色 */
+  border-radius: 4px;        /* 圆角滑块 */
+}
+
+.archive-card1::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.8);          /* 悬停时颜色 */
+}
+
+.archive-column2::-webkit-scrollbar {
+  width: 8px;                /* 滚动条宽度 */
+}
+
+.archive-column2::-webkit-scrollbar-track {
+  background: transparent;       /* 滚动条轨道颜色 */
+  border-radius: 4px;        /* 圆角轨道 */
+}
+
+.archive-column2::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.6);          /* 滑块颜色 */
+  border-radius: 4px;        /* 圆角滑块 */
+}
+
+.archive-column2::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.8);          /* 悬停时颜色 */
+}
+
+/* 网格布局 */
+.archive-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  border-radius: 20px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  min-width: 280px;
+  border: 3px solid rgba(255, 255, 255, 0.7);
+}
+
+.card-image {
+  height: 250px;
+  background-size: cover;
+  background-position: center;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.6);
+}
+
+
+.card-content {
+  background-color: transparent;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+  line-height: 120%;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.card-title {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #ffbdbd;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.card-excerpt {
+  margin: 4px 0 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.archive-card1 a {
+  color: #fff;
+  font-size: 1.2rem;
+  line-height: 250%;
+  border-bottom: 1px solid #fff;
+  text-shadow: 0px 0px 3px rgba(23, 22, 22, 0.7);
+}
+
+.card-excerpt {
+  margin: 4px 0 0;
+  font-size: 14px;
+  color: #fff;
+}
+
+.tag {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: rgb(141, 187, 252);
+  text-shadow: 0px 0px 3px rgba(23, 22, 22, 0.4);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* 响应式调整 */
+@media (max-width: 1200px) {
+  .archive-container {
+    width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .archive-page {
+    padding: 20px 0;
+    flex: 1;
+  }
+  .archive-header {
+    margin-bottom: 30px;
+  }
+  .archive-container {
+    width: 95%;
+    flex-direction: column;
+    gap: 40px;
+  }
+  .archive-avatar {
+    width: 80px;
+    height: 80px;
+  }
+  .archive-card {
+    padding: 30px;
+  }
+}
