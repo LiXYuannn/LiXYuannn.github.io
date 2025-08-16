@@ -39,10 +39,115 @@
 /* 内容容器 - 保持左右分栏布局 */
 .archive-container {
   display: flex;
+  justify-content: center;
   gap: 30px;
   width: 80%; /* 控制整体宽度 */
   max-width: 840px;
   padding: 30px;
+  
+}
+
+/* 搜索容器样式 */
+.search-container {
+  padding: 10px;
+  max-width: 860px;
+  min-width: 860px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  margin-top: 10px;
+}
+
+.search-container h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 1.5em;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+  color: #fff;
+  text-align: center;
+}
+
+/* 搜索输入框样式 */
+#search-input {
+  width: 100%;
+  padding: 10px;
+  font-size: 1em;
+  
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  box-sizing: border-box; /* 确保 padding 不会撑大宽度 */
+  transition: border-color 0.3s, box-shadow 0.3s;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+#search-input:focus {
+  border-color: #0b4f98;
+  outline: none;
+}
+
+/* 搜索结果列表样式 */
+#search-results {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 15px;
+  max-height: 400px; /* 给一个最大高度，超出则滚动 */
+  border-radius: 15px;
+  overflow-y: auto;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+#search-results li {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+#search-results li:last-child {
+  border-bottom: none;
+}
+
+#search-results a {
+  display: block;
+  text-decoration: none;
+  color: #0056b3;
+}
+
+#search-results li {
+  display: block;
+  text-decoration: none;
+  color: #0056b3;
+}
+
+#search-results a:hover {
+  text-decoration: underline;
+}
+
+#search-results small {
+  display: block;
+  color: #888;
+  font-size: 0.8em;
+  margin-top: 4px;
+}
+
+/* 修改搜索框提示词的颜色 */
+#search-input::placeholder {
+  color: #706c6c; /* 您可以在这里改成任何您喜欢的颜色，比如 #cccccc, gray, lightblue 等 */
+  opacity: 1; /* 在某些浏览器中需要这个来确保颜色生效 */
+}
+
+/* 为了兼容一些旧版浏览器，可以加上带前缀的版本 */
+#search-input::-webkit-input-placeholder { /* Chrome, Opera, Safari */
+  color: #706c6c;
+}
+#search-input::-moz-placeholder { /* Firefox 19+ */
+  color: #706c6c;
+  opacity: 1;
+}
+#search-input:-ms-input-placeholder { /* IE 10+ */
+  color: #706c6c;
+}
+#search-input:-moz-placeholder { /* Firefox 18- */
+  color: #706c6c;
+  opacity: 1;
 }
 
 /* 左右栏样式调整 */
@@ -58,85 +163,14 @@
   line-height: 150%;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
   border-radius: 25px;
-  padding: 40px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  padding-left: 25px;
+  padding-right: 15px;
   box-shadow: 8px 8px 3px rgba(0, 0, 0, 0.3);
-  height: 630px;             /* 固定高度 */
+  height: 670px;             /* 固定高度 */
   overflow-y: auto; 
 }
-
-/* 搜索组件样式 - 匹配现有卡片风格 */
-.archive-search {
-  margin-bottom: 30px;
-}
-
-.search-title {
-  color: rgba(255, 255, 255, 0.9);
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-  margin: 0 0 15px 0;
-  font-size: 1.1rem;
-}
-
-.search-box {
-  display: flex;
-  margin-bottom: 10px;
-}
-
-.search-input {
-  flex: 1;
-  padding: 10px 15px;
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 20px 0 0 20px;
-  color: white;
-  font-size: 0.95rem;
-  backdrop-filter: blur(5px);
-}
-
-.search-input::placeholder {
-  color: rgba(255, 255, 255, 0.6);
-}
-
-.search-btn {
-  padding: 0 15px;
-  background: rgba(255, 255, 255, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-left: none;
-  border-radius: 0 20px 20px 0;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.search-btn:hover {
-  background: rgba(255, 255, 255, 0.3);
-}
-
-.search-btn svg {
-  vertical-align: middle;
-  stroke-width: 2;
-}
-
-.search-results {
-  max-height: 200px;
-  overflow-y: auto;
-  padding-right: 5px;
-}
-
-.search-results a {
-  display: block;
-  padding: 8px 12px;
-  margin-bottom: 5px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  color: rgba(255, 255, 255, 0.9);
-  text-decoration: none;
-  transition: all 0.2s ease;
-}
-
-.search-results a:hover {
-  background: rgba(255, 255, 255, 0.2);
-  transform: translateX(3px);
-}
-
 
 /* 滚动条样式 */
 .archive-card1::-webkit-scrollbar {
@@ -156,7 +190,7 @@
   flex: 1;
   position: relative; /* 保持相对定位，以备将来需要 */
   min-width: 620px;
-  height: 710px;             /* 固定高度 */
+  height: 750px;             /* 固定高度 */
   overflow-y: auto; 
 }
 
@@ -200,7 +234,7 @@
 .archive-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
+  gap: 30px;
 }
 
 .card {
@@ -298,4 +332,28 @@
   .archive-card {
     padding: 30px;
   }
+}
+
+.categories-list {
+  list-style: none;
+  margin-top: 30px;
+}
+.categories-list li {
+  display: block;
+  padding: 8px 0px;
+  margin-bottom: 5px;
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+  border-radius: 5px;
+  transition: background-color 0.2s, color 0.2s;
+  line-height: 150%;
+}
+
+.reminder {
+  margin-top: 30px;
+  line-height: 150%;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  color: #fff;
 }

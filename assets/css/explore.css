@@ -92,6 +92,8 @@ padding: 10px;
 }
 
 .v[data-class=v] .vinput {
+color: #fff !important; 
+text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
 border: none;
 resize: none;
 outline: none;
@@ -102,9 +104,15 @@ font-size: 1rem !important;
 box-sizing: border-box;
 }
 
+/* 修改 Valine 评论预览框的字体颜色 */
+.v[data-class=v] .vpreview p{
+  color: #fff !important;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+}
+
 /* 修改 Valine 输入框 placeholder 的样式 */
 .v[data-class=v] .vinput::placeholder {
-  color: #fff !important; /* 将颜色改为黑色 */
+  color: #fff !important; 
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
   opacity: 1 !important; /* 可选：设置透明度，让提示词不那么突兀 */
 }

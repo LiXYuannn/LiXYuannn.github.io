@@ -22,9 +22,25 @@ layout: about
         <div class="about-content">
           {{ content }}
         </div>
+        {% include comment.html %}
       </div>
   {% include footer.html %}
   {% include announcement.html %}
+    <!-- ✅ 放这里：MathJax 配置 + 加载脚本 -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+  <script type="text/javascript" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
   <script src="{{ '/assets/js/script.js' | relative_url }}"></script>
 </body>
 </html>

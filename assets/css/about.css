@@ -89,3 +89,91 @@
     width: 90%; /* 在小屏幕上使用更宽的比例 */
   }
 }
+
+.v[data-class=v] .vinput {
+color: #fff !important; 
+text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+border: none;
+resize: none;
+outline: none;
+padding: 10px 5px;
+max-width: 100%;
+font-size: 1rem !important;
+-webkit-box-sizing: border-box;
+box-sizing: border-box;
+}
+
+/* 修改 Valine 评论预览框的字体颜色 */
+.v[data-class=v] .vpreview p{
+  color: #fff !important;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+.v[data-class=v] .vwrap {
+border: 2px solid rgba(255, 255, 255, 0.9) !important;
+border-radius: 16px !important;
+margin-bottom: 10px;
+overflow: hidden;
+position: relative;
+padding: 10px;
+}
+
+/* 修改 Valine 输入框 placeholder 的样式 */
+.v[data-class=v] .vinput::placeholder {
+  color: #fff !important; /* 将颜色改为黑色 */
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  opacity: 1 !important; /* 可选：设置透明度，让提示词不那么突兀 */
+}
+
+.v[data-class=v] .vcol.vcol-70 .vsubmit.vbtn {
+  border: 1.5px solid rgba(255, 255, 255, 0.8) !important;
+  color: rgba(255, 255, 255, 0.8)!important;
+  background-color: transparent;
+  padding: 8px 16px;
+  border-radius: 8px;
+}
+
+/* 悬停时的样式 */
+.v[data-class=v] .vcol.vcol-70 .vsubmit.vbtn:hover {
+  background-color: rgba(0, 0, 0, 0.3) !important;
+  color: #fff;
+}
+
+.vcards .vcard,
+.vcards .vcard * {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.v[data-class=v] .vicon {
+cursor: pointer;
+fill: #ffffff !important;
+}
+
+.v[data-class=v] .vempty {
+padding: 1.25em;
+text-align: center;
+color: #f5f4f4 !important;
+overflow: auto;
+}
+
+/* 代码块显示 */
+/* pre , code */
+.about-content,
+.about-content div,
+.about-content div pre,
+.about-content div pre code {
+  overflow-x: auto !important;
+}
+
+.about-content pre {
+  padding: 1rem 2rem;
+  margin-bottom: 1.75rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 3ch;
+  line-height: 150%;
+}
+
+.about-content code {
+  padding: 3px 5px;
+  white-space: pre;
+}
