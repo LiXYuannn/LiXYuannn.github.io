@@ -56,7 +56,6 @@ body {
   background-size: cover;
   background-position: center;
 
-  /* 核心优化：强制浏览器使用GPU硬件加速 */
   transform: translateZ(0); 
   will-change: transform;
 }
@@ -68,6 +67,13 @@ main {
   width:80%;
   padding: 3rem 0;
   align-self: center;
+}
+
+@media (max-width: 768px) {
+  main {
+    width: 90%; /* 增大 main 的宽度，给内容更多空间 */
+    padding: 2rem 0; /* 调整上下内边距 */
+  }
 }
 
 main.blogfeed * {
@@ -83,7 +89,7 @@ header .site-title {
   font-weight: bolder;
   line-height: 110%;
   color:  #ffa4a4;
-  text-shadow: 7px 7px 9px rgba(0, 0, 0, 0.4);
+  text-shadow: 5px 5px 9px rgba(39, 39, 39, 0.4);
 }
 
 #bio {
@@ -135,6 +141,23 @@ header .site-title {
   border-radius: 50%;
 }
 
+@media (max-width: 768px) {
+  #bio {
+    flex-direction: column; 
+    align-items: center; 
+    gap: 2rem; 
+    text-align: center;
+  }
+
+  #bio-avatar {
+    width: 200px; 
+  }
+
+  #social-links {
+    justify-content: center;
+  }
+}
+
 /* article list styles */
 
 #articles {
@@ -148,7 +171,9 @@ header .site-title {
 
 .article {
   background-color: rgba(255, 255, 255, 0.2);
-  box-shadow: 8px 8px 3px rgba(0, 0, 0, 0.3);;
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  box-shadow: 8px 8px 3px rgba(0, 0, 0, 0.3);
   text-shadow: 5px 5px 3px rgba(0, 0, 0, 0.3);
   padding: 2rem 2.5rem;
   border-radius: 25px;
@@ -214,8 +239,23 @@ header .site-title {
   font-size: 1rem;
 }
 
-.ps {
-  text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
+@media (max-width: 768px) {
+  .article {
+    min-width: auto;
+    width: 90%;
+    padding: 1.5rem;
+  }
+  
+  .article-thumbnail {
+    margin: -1.5rem -1.5rem 0.2rem -1.5rem;
+    padding: 0 1.5rem 1rem 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .article-title * {
+    font-size: 1.5rem;
+  }
 }
 
 /* 导航栏容器样式 */
@@ -223,7 +263,7 @@ header .site-title {
   position: relative;
   width: 80%; /* 关键：设置宽度 */
   max-width: 630px; /* 关键：设置最大宽度 */
-  margin: 0 auto; /* 关键：水平居中 */
+  margin: 0 auto; 
   }
 
 .site-nav ul {
@@ -232,6 +272,8 @@ header .site-title {
   margin: 0;
   display: flex;
   background-color: rgba(0, 0, 0, 0.3);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
   border-radius: 16px;
   justify-content: center;
   align-items: center;
@@ -254,18 +296,33 @@ header .site-title {
   text-shadow: 1px 1px 6px rgba(54, 52, 52, 0.4);
 }
 
+
+@media (max-width: 768px) {
+  .site-nav {
+    width: 90%; 
+    max-width: 100%;
+  }
+
+  .site-nav ul {
+    overflow-x: auto;  
+    white-space: nowrap;
+    justify-content: flex-start; 
+  }
+
+  .site-nav li {
+    padding: 10px 15px; 
+  }
+}
+
 /* 箭头容器样式 */
 .scroll-down-arrow {
-  position: absolute; /* 相对于父容器进行定位 */
-  bottom: 50px; /* 距离底部 50px */
-  left: 50%; /* 水平居中 */
-  transform: translateX(-50%); /* 修正水平居中的偏移 */
-  z-index: 10;
+  position: absolute; 
+  left: 50%; 
+  transform: translateX(-50%);
   cursor: pointer;
-  
-  /* 添加平滑过渡和动画 */
   transition: opacity 0.5s ease-in-out;
-  animation: bounce 2s infinite; /* 应用 bounce 动画，持续 2 秒，无限循环 */
+  animation: bounce 2s infinite; 
+  bottom: 30px;
 }
 
 /* 箭头 SVG 或 IMG 的样式 */
@@ -277,13 +334,11 @@ header .site-title {
   stroke: #fff; /* 如果是 SVG，控制边框颜色 */
   text-shadow: 0 0 5px rgba(0,0,0,0.4);
 }
-/* 隐藏箭头的 CSS 类，JavaScript 会使用它 */
 .scroll-down-arrow.hidden {
   opacity: 0; /* 将透明度设置为 0 */
   pointer-events: none; /* 禁用点击事件 */
 }
 
-/* 动画关键帧：定义跳动效果 */
 @keyframes bounce {
   0%, 20%, 50%, 80%, 100% {
     transform: translateY(0); /* 初始位置和最终位置 */
@@ -299,6 +354,8 @@ header .site-title {
 /* footer */
 footer {
   background: rgba(82, 143, 228, 0.4);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
   margin-top: 3rem;
   padding: 2rem 2.5rem;
   border-radius: var(--border-radius) var(--border-radius) 0 0;
@@ -308,66 +365,6 @@ footer {
   max-width: 1000px; /* 调整这个值以匹配你的 .archive-container 最大宽度 */
   margin-left: auto;
   margin-right: auto;
-}
-
-.extra-container {
-  display: flex;
-  gap: 30px;
-  width: 100%; /* 控制整体宽度 */
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  margin-top: 2rem;
-}
-
-/* 左右栏样式调整 */
-.extra-column {
-  flex: 1;
-  position: relative; /* 保持相对定位，以备将来需要 */
-  min-width: 100px; /* 设置最小宽度 */
-}
-
-/* 卡片样式优化 */
-.extra-card {
-  background: rgba(255, 255, 255, 0.2);
-  text-shadow: 0px 1px 3px rgba(22, 21, 21, 0.2);
-  font-size: 1.1rem;
-  border-radius: 25px;
-  padding-bottom: 10px;
-  padding-top: 50px;
-  padding-left: 40px;
-  padding-right: 40px;
-  box-shadow: 8px 8px 3px rgba(0, 0, 0, 0.3);
-  height: 100%;
-}
-
-/* 响应式调整 */
-@media (max-width: 1200px) {
-  .extra-container {
-    width: 90%;
-  }
-}
-
-@media (max-width: 768px) {
-  .extra-page {
-    padding: 20px 0;
-    flex: 1;
-  }
-  .extra-header {
-    margin-bottom: 30px;
-  }
-  .extra-container {
-    width: 95%;
-    flex-direction: column;
-    gap: 40px;
-  }
-  .extra-avatar {
-    width: 80px;
-    height: 80px;
-  }
-  .extra-card {
-    padding: 30px;
-  }
 }
 
 /* 友链容器样式 */
@@ -431,9 +428,10 @@ footer {
 }
 
 .ps {
-  font-size: 1rem;
-  color: #6ca4f9;
+  font-size: 1.2rem;
+  color: #bbd6ff;
   text-align: left;
+  text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
 }
 
 /* 公告栏样式 */

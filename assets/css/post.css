@@ -28,6 +28,20 @@
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
+@media (max-width: 768px) {
+  .profile-header {
+    margin-bottom: 30px; 
+  }
+
+  .profile-avatar {
+    width: 100px; 
+    height: 100px;
+  }
+
+  .profile-title {
+    font-size: 2em;
+  }
+}
 
 #article .article-thumbnail {
   margin: 0 auto;
@@ -320,4 +334,97 @@ box-sizing: border-box;
   display: block;
   color: #000;
   
+}
+
+@media (max-width: 768px) {
+  #article .article-thumbnail {
+    width: 95%; 
+    max-width: 100%;  
+    padding: 0.5rem;  
+  }
+
+  #article .article-date {
+    font-size: 1rem !important; /* 减小字体 */
+    padding-bottom: 0.5rem;
+  }
+
+  #article .article-category {
+    font-size: 1rem !important; /* 减小字体 */
+    padding-bottom: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  #article .article-content {
+    width: 95%;  
+    padding: 1.5rem; 
+    margin-top: 2rem;
+  }
+
+  .article-content * {
+    font-size: 1rem;
+    line-height: 160%;  
+  }
+  
+  .article-content h1 { font-size: 1.6rem; }
+  .article-content h2 { font-size: 1.4rem; }
+  .article-content h3 { font-size: 1.2rem; }
+  .article-content pre {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .related-posts {
+    padding-left: 20px; 
+    padding-right: 20px;
+  }
+
+  .related-posts h2 {
+    font-size: 1.2em;  
+  }
+
+  .related-posts li a {
+    font-size: 1em; 
+  }
+}
+
+@media (max-width: 768px) {
+  .v[data-class=v] {
+    font-size: 0.9rem !important;  
+  }
+
+  .v[data-class=v] .vwrap {
+    padding: 8px; 
+  }
+  
+  .v[data-class=v] .vinput {
+    font-size: 0.9rem !important;
+  }
+
+  .v[data-class=v] .vcol.vcol-70 .vsubmit.vbtn {
+    padding: 6px 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  #article .article-content {
+    width: 100%; /* 使用100%宽度 */
+    box-sizing: border-box; /* 关键：确保 padding 不会使容器变宽 */
+    padding: 1.5rem; /* 调整内边距 */
+    margin-top: 2rem;
+  }
+
+  .article-content * {
+    font-size: 1rem;
+    line-height: 160%;
+  }
+  
+  .article-content h1 { font-size: 1.6rem; }
+  .article-content h2 { font-size: 1.4rem; }
+  .article-content h3 { font-size: 1.2rem; }
+  
+  .article-content pre {
+    padding: 1rem;
+  }
 }

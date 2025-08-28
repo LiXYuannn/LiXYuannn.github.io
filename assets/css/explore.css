@@ -86,7 +86,8 @@ border: 2px solid rgba(255, 255, 255, 0.8) !important;
 border-radius: 16px !important;
 margin-bottom: 10px;
 overflow: hidden;
-
+-webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
 position: relative;
 padding: 10px;
 }

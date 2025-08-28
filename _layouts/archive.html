@@ -135,6 +135,24 @@ layout: archive
         </div>
       </div>
     </div>
+    <div class="update-log-container">
+      <div class="update-log-card timeline-card">
+        <ul class="timeline">
+          {% for log in site.data.changelog %}
+          <li class="timeline-item">
+            <div class="timeline-content">
+              <h4>{{ log.date }}</h4>
+              <ul>
+                {% for item in log.updates %}
+                <li>{{ item }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
 
     {% include footer.html %}
     {% include announcement.html %}

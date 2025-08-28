@@ -53,6 +53,8 @@
   max-width: 860px;
   min-width: 860px;
   background-color: rgba(255, 255, 255, 0.2);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
   border-radius: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
   margin-top: 10px;
@@ -78,6 +80,8 @@
   box-sizing: border-box; /* 确保 padding 不会撑大宽度 */
   transition: border-color 0.3s, box-shadow 0.3s;
   background-color: rgba(255, 255, 255, 0.5);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
 }
 
 #search-input:focus {
@@ -94,6 +98,8 @@
   border-radius: 15px;
   overflow-y: auto;
   background-color: rgba(255, 255, 255, 0.8);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
 }
 
 #search-results li {
@@ -128,14 +134,12 @@
   margin-top: 4px;
 }
 
-/* 修改搜索框提示词的颜色 */
 #search-input::placeholder {
-  color: #706c6c; /* 您可以在这里改成任何您喜欢的颜色，比如 #cccccc, gray, lightblue 等 */
-  opacity: 1; /* 在某些浏览器中需要这个来确保颜色生效 */
+  color: #706c6c; 
+  opacity: 1;
 }
 
-/* 为了兼容一些旧版浏览器，可以加上带前缀的版本 */
-#search-input::-webkit-input-placeholder { /* Chrome, Opera, Safari */
+#search-input::-webkit-input-placeholder { 
   color: #706c6c;
 }
 #search-input::-moz-placeholder { /* Firefox 19+ */
@@ -150,6 +154,15 @@
   opacity: 1;
 }
 
+@media (max-width: 768px) {
+  .search-container {
+    min-width: auto; /* 移除最小宽度限制 */
+    max-width: 100%; /* 确保它不会超过屏幕宽度 */
+    padding: 15px; /* 调整内边距，使其在手机上更紧凑 */
+    width: 95%; /* 调整宽度 */
+  }
+}
+
 /* 左右栏样式调整 */
 .archive-column1 {
   flex: 1;
@@ -160,6 +173,8 @@
 
 .archive-card1 {
   background: rgba(255, 255, 255, 0.2);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
   line-height: 150%;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
   border-radius: 25px;
@@ -168,7 +183,7 @@
   padding-left: 25px;
   padding-right: 15px;
   box-shadow: 8px 8px 3px rgba(0, 0, 0, 0.3);
-  height: 670px;             /* 固定高度 */
+  height: 670px;       
   overflow-y: auto; 
 }
 
@@ -179,6 +194,8 @@
 
 .archive-card1::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.2);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
   border-radius: 3px;
 }
 
@@ -204,8 +221,8 @@
 }
 
 .archive-card1::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.6);          /* 滑块颜色 */
-  border-radius: 4px;        /* 圆角滑块 */
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 4px; 
 }
 
 .archive-card1::-webkit-scrollbar-thumb:hover {
@@ -227,10 +244,9 @@
 }
 
 .archive-column2::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.8);          /* 悬停时颜色 */
+  background: rgba(255, 255, 255, 0.8); 
 }
 
-/* 网格布局 */
 .archive-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -241,6 +257,8 @@
   border-radius: 20px;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.3);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   min-width: 280px;
   border: 3px solid rgba(255, 255, 255, 0.7);
@@ -305,10 +323,29 @@
   text-align: center;
 }
 
-/* 响应式调整 */
-@media (max-width: 1200px) {
+@media (max-width: 768px) {
   .archive-container {
-    width: 90%;
+    flex-direction: column;
+    gap: 20px; 
+    width: 95%; 
+    padding: 10px;  
+  }
+}
+
+@media (max-width: 768px) {
+  .archive-column1,
+  .archive-column2 {
+    min-width: auto; 
+    max-width: 100%;  
+    height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .archive-card1 {
+    height: auto; 
+    overflow-y: visible;
+    padding: 20px; 
   }
 }
 
@@ -356,4 +393,155 @@
   line-height: 150%;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
   color: #fff;
+}
+
+@media (max-width: 768px) {
+  .archive-grid {
+    grid-template-columns: 1fr; 
+    gap: 20px; 
+  }
+    .card {
+    min-width: auto; /* 移除最小宽度限制 */
+  }
+    .card-image {
+    height: 180px;
+  }
+}
+
+/* --- 更新日志模块样式 --- */
+.update-log-container {
+  margin: 50px auto;  
+  width: 80%; 
+  max-width: 840px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.update-log-card {
+  border-radius: 25px;
+  padding: 40px;
+  width: 100%;
+  box-sizing: border-box;
+  color: #fff;
+  line-height: 180%;
+  text-shadow: 2px 2px 2px rgba(55, 55, 55, 0.4);
+  height: 500px;  
+  overflow-y: auto; 
+}
+
+.update-log-card::-webkit-scrollbar {
+  width: 8px;
+}
+
+.update-log-card::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.update-log-card::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 4px;
+}
+
+.update-log-card::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* 移动端响应式调整 */
+@media (max-width: 768px) {
+  .update-log-container {
+    width: 95%; /* 适应手机屏幕宽度 */
+    margin: 30px auto;
+  }
+  
+  .update-log-card {
+    padding: 20px; /* 减小内边距 */
+  }
+}
+
+/* --- 时间线样式 --- */
+.timeline-card {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.timeline {
+  list-style: none;
+  padding-left: 20px; /* 留出空间放置时间线 */
+  position: relative;
+}
+
+/* 垂直时间线线条 */
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 3px;
+  background-color: rgba(255, 255, 255, 0.5); /* 半透明的白色线条 */
+}
+
+/* 时间线上的圆形标记 */
+.timeline-item {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: -25px; /* 将圆点移动到线条左侧 */
+  width: 13px;
+  height: 13px;
+  background-color: #ffa4a4; /* 圆点的颜色 */
+  border: 3px solid rgba(255, 255, 255, 0.9); /* 圆点边框 */
+  border-radius: 50%;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+/* 时间线内容样式 */
+.timeline-content {
+  background: rgba(255, 255, 255, 0.2); /* 内容卡片背景 */
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  padding: 15px 20px;
+  border-radius: 15px;
+  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.6);
+  transition: transform 0.3s ease;
+}
+
+.timeline-content:hover {
+  transform: scale(1.02); /* 悬停时放大 */
+}
+
+.timeline-content h4 {
+  margin-top: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ffbdbd;
+}
+
+.timeline-content ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 10px 0 0;
+}
+
+.timeline-content ul li {
+  line-height: 150%;
+  margin-bottom: 5px;
+  position: relative;
+  padding-left: 20px;
+  text-shadow: 1px 1px 2px rgba(49, 49, 49, 0.8);
+}
+
+.timeline-content ul li::before {
+  content: '✓'; 
+  position: absolute;
+  left: 0;
+  color: #a6c3ea;
+  font-weight: bold;
 }

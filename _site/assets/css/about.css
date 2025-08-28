@@ -43,7 +43,9 @@
   line-height: 250%;
   padding: 50px; /* 可选：增加内边距，让内容与容器边缘有间距 */
   box-sizing: border-box; /* 确保内边距和边框不会增加总宽度 */
-  background: rgba(255, 255, 255, 0.2); 
+  background: rgba(255, 255, 255, 0.2);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px); 
   border-radius: 25px; /* 可选：圆角边框 */
   box-shadow: 8px 8px 3px rgba(0, 0, 0, 0.3);
   margin-top: 20px; /* 可选：调整与上方导航的间距 */
@@ -86,9 +88,31 @@
 
 @media (max-width: 768px) {
   .content-container {
-    width: 90%; /* 在小屏幕上使用更宽的比例 */
+    width: 95%; 
+    padding: 20px; 
   }
 }
+
+@media (max-width: 768px) {
+  .about-content {
+    line-height: 200%; 
+  }
+
+  .about-title {
+    font-size: 2.2em;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-content pre {
+    padding: 1rem 1rem;
+  }
+  
+  .about-content code {
+    font-size: 0.9em;
+  }
+}
+
 
 .v[data-class=v] .vinput {
 color: #fff !important; 
@@ -156,7 +180,16 @@ color: #f5f4f4 !important;
 overflow: auto;
 }
 
-/* 代码块显示 */
+@media (max-width: 768px) {
+  .v[data-class=v] .vwrap {
+    padding: 5px; 
+  }
+
+  .v[data-class=v] .vcol.vcol-70 .vsubmit.vbtn {
+    padding: 6px 12px; 
+  }
+}
+
 /* pre , code */
 .about-content,
 .about-content div,

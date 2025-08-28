@@ -6,7 +6,7 @@
     <main  class="blogfeed">
       {% include header.html %} {% include bio.html %} {% include navigation.html %}
      <section id="articles">
-        {% for post in site.posts limit: 3 %}
+        {% for post in site.posts limit: 5 %}
         {% if post.thumbnail %}
         <article class="article">
           <div class="article-top">
@@ -61,27 +61,6 @@
         {% endfor %}
         <h1 class="ps">……更多文章请移步文章归档🎉</h1>
       </section>
-      <div class="extra-container">
-        <div class="extra-column">
-          <div class="extra-card">
-            <h1>Music_List</h1>
-            <p>_________________________</p>
-            {{ content }}
-          </div>
-        </div>
-        
-        <div class="extra-column">
-          <div class="extra-card">
-            <h1>Mini_Album</h1>
-            <p>_________________________</p>
-            <img src="/assets/images/album/3_4/album6.jpg">
-            <img src="/assets/images/album/1_1/album1.JPG">
-            <img src="/assets/images/album/3_4/album5.JPG">
-            <p>_________________________</p>
-          </div>
-        </div>
-    </div>
-
     </main>
 
     {% include scroll-down-arrow.html %}
