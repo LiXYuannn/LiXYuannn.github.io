@@ -1,0 +1,44 @@
+---
+layout: flink
+---
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <title>{{ page.title }}</title>
+    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/css/flink.css' | relative_url }}">
+    </head>
+    <body>
+    <div class="fixed-background"></div>
+    <div class="flink-page">
+        <div class="flink-header">
+        <img src="{{ '/assets/images/avatar.jpg' | relative_url }}" class="flink-avatar">
+        <h1 class="flink-title">友链🔗</h1> 
+        </div>
+        {% include navigation.html %}
+        <div class="content-container">
+            {% if site.data.flink %}
+            <div class="friends-grid">
+                {% for friend in site.data.flink %}
+                <a href="{{ friend.url }}" target="_blank" rel="noopener noreferrer" class="friend-card">
+                <img src="{{ friend.avatar | relative_url }}" alt="{{ friend.name }}" class="friend-avatar">
+                <div class="friend-info">
+                    <h4 class="friend-name">{{ friend.name }}</h4>
+                    <p class="friend-desc">{{ friend.desc }}</p>
+                </div>
+                </a>
+                {% endfor %}
+            </div>
+            {% else %}
+            <p class="no-friends">暂无友链，期待与您相遇！</p>
+            {% endif %}
+            <div class="flink-content">
+                {{ content }}
+                {% include comment.html %}
+            </div>
+        </div>
+    {% include announcement.html %}
+    <script src="{{ '/assets/js/script.js' | relative_url }}"></script>
+    </body>
+</html>

@@ -78,6 +78,20 @@
   line-height: 180%;
 }
 
+.about-content ul {
+  margin-left: 2rem;
+  margin-bottom: 1.75rem;
+}
+.about-content ol {
+  margin-left: 1.75rem;
+  margin-bottom: 1.75rem;
+}
+.article-content ol * ol,
+.article-content ul * ul {
+  margin-left: 1rem;
+  margin-bottom: 0;
+}
+
 .about-content hr {
   border-top: 1px dashed #fff !important;
   border-bottom: none !important;

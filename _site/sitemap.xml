@@ -33,6 +33,10 @@
 <lastmod>2025-08-17T08:00:00+08:00</lastmod>
 </url>
 <url>
+<loc>http://localhost:4000/posts/Jekyll%E9%AD%94%E6%94%B9%E6%95%99%E7%A8%8B(%E4%BA%8C)/</loc>
+<lastmod>2025-08-29T08:00:00+08:00</lastmod>
+</url>
+<url>
 <loc>http://localhost:4000/about/</loc>
 </url>
 <url>
@@ -40,6 +44,9 @@
 </url>
 <url>
 <loc>http://localhost:4000/explore/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/flink/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/</loc>

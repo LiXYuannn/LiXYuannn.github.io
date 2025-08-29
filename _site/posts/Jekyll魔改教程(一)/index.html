@@ -42,6 +42,7 @@
     <li><a href="/about" >关于我</a></li>
     <li><a href="/archive" >文章归档</a></li>
     <li><a href="/explore" >探索</a></li>
+    <li><a href="/flink" >友链</a></li>
   </ul>
 </nav>
     <div class="article-thumbnail">
@@ -74,10 +75,12 @@
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"site-nav"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;ul&gt;</span>
-    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"/"</span> <span class="nt">&gt;</span>首页<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"/page1"</span> <span class="nt">&gt;</span>栏目一<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"/page2"</span> <span class="nt">&gt;</span>栏目二<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"/page3"</span> <span class="nt">&gt;</span>栏目三<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    
+    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"{{ '/' | relative_url }}"</span> <span class="err">{%</span> <span class="na">if</span> <span class="na">page.url =</span><span class="s">=</span> <span class="err">"/"</span> <span class="err">%}</span><span class="na">class=</span><span class="s">"active"</span><span class="err">{%</span> <span class="na">endif</span> <span class="err">%}</span><span class="nt">&gt;</span>首页<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"{{ '/page1' | relative_url }}"</span> <span class="err">{%</span> <span class="na">if</span> <span class="na">page.url =</span><span class="s">=</span> <span class="err">"/</span><span class="na">page1</span><span class="err">/"</span> <span class="err">%}</span><span class="na">class=</span><span class="s">"active"</span><span class="err">{%</span> <span class="na">endif</span> <span class="err">%}</span><span class="nt">&gt;</span>栏目一<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"{{ '/page2' | relative_url }}"</span> <span class="err">{%</span> <span class="na">if</span> <span class="na">page.url =</span><span class="s">=</span> <span class="err">"/</span><span class="na">page2</span><span class="err">/"</span> <span class="err">%}</span><span class="na">class=</span><span class="s">"active"</span><span class="err">{%</span> <span class="na">endif</span> <span class="err">%}</span><span class="nt">&gt;</span>栏目二<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"{{ '/page3' | relative_url }}"</span> <span class="err">{%</span> <span class="na">if</span> <span class="na">page.url =</span><span class="s">=</span> <span class="err">"/</span><span class="na">page3</span><span class="err">/"</span> <span class="err">%}</span><span class="na">class=</span><span class="s">"active"</span><span class="err">{%</span> <span class="na">endif</span> <span class="err">%}</span><span class="nt">&gt;</span>栏目三<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    
   <span class="nt">&lt;/ul&gt;</span>
 <span class="nt">&lt;/nav&gt;</span>
 </code></pre></div></div>
@@ -204,6 +207,21 @@
           
           
             
+              
+              
+
+              
+                
+                  <li>
+                    <a href="/posts/Jekyll%E9%AD%94%E6%94%B9%E6%95%99%E7%A8%8B(%E4%BA%8C)/">Jekyll魔改教程(二)</a>
+                    <small>2025年08月29日</small>
+                  </li>
+                  
+                
+              
+            
+          
+            
           
             
               
@@ -288,33 +306,12 @@
   </div>
 
   <footer>
-   <div class="friends-links-container">
-      <div class="friends-links-header">
-        <p>Friend_Link😝</p>
-      </div>
-        
-      <div class="friends-list">
-            
-        <div class="friend-item">
-          <a href="https://www.cclmsy.cc" target="_blank" rel="noopener noreferrer">
-            <img src="/assets/images/cclmsy.jpg" alt="好友一" class="friend-avatar">
-          </a>
-          <span class="friend-name">深翼cclmsy</span>
-        </div>
-            
-        <!-- <div class="friend-item">
-          <a href="https://another-example.com" target="_blank" rel="noopener noreferrer">
-            <img src="/path/to/friend-avatar2.jpg" alt="好友二" class="friend-avatar">
-          </a>
-          <span class="friend-name">好友二</span>
-        </div> -->
-            
-      </div>
-    </div>
-    <p class="ps">—— 如果你也想添加友链，相见关于我的页面或者邮箱联系我！🍉</p>
-    <hr>
-      <p>&copy; 2025 | Luxynth</p>
-
+    <p>&copy; 2025 | Luxynth</p>
+    <div class="rightmenu">
+      <img src="/assets/images/rightmenu/Frame-jekyll-green.svg">
+      <img src="/assets/images/rightmenu/ICP-2025151491-yellow.svg">
+      <img src="/assets/images/rightmenu/Theme-material_you-purple.svg">
+    </div>    
 </footer>
 
   <section id="category-modal-bg"></section>
